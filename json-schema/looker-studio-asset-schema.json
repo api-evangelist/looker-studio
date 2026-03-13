@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/looker-studio/json-schema/looker-studio-asset-schema.json",
+  "title": "Looker Studio Asset",
+  "description": "Represents a Looker Studio asset such as a report or data source. Assets are the primary objects managed through the Looker Studio API.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The resource name of the asset, serving as its unique identifier."
+    },
+    "assetType": {
+      "type": "string",
+      "description": "The type of Looker Studio asset.",
+      "enum": [
+        "REPORT",
+        "DATA_SOURCE"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "description": "The display title of the asset as shown in the Looker Studio interface."
+    },
+    "description": {
+      "type": "string",
+      "description": "A text description of the asset. Available for reports only."
+    },
+    "owner": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the asset owner who has full control over the asset."
+    },
+    "creator": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the user who originally created the asset."
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the asset was created, in RFC 3339 format."
+    },
+    "updateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the asset was last modified by any user, in RFC 3339 format."
+    },
+    "updateByMeTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the authenticated user last modified the asset."
+    },
+    "lastViewByMeTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the authenticated user last viewed the asset."
+    },
+    "trashed": {
+      "type": "boolean",
+      "description": "Whether the asset has been moved to the trash."
+    }
+  },
+  "required": [
+    "name",
+    "assetType",
+    "title"
+  ]
+}

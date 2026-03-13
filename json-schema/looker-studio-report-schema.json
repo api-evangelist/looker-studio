@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/looker-studio/json-schema/looker-studio-report-schema.json",
+  "title": "Looker Studio Report",
+  "description": "Represents a Looker Studio report, which is a collection of pages containing charts, tables, and other visualizations connected to one or more data sources.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The resource name of the report, serving as its unique identifier."
+    },
+    "title": {
+      "type": "string",
+      "description": "The display title of the report."
+    },
+    "description": {
+      "type": "string",
+      "description": "A text description of the report's purpose and contents."
+    },
+    "owner": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the report owner."
+    },
+    "creator": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the user who originally created the report."
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the report was created."
+    },
+    "updateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the report was last modified."
+    },
+    "trashed": {
+      "type": "boolean",
+      "description": "Whether the report has been moved to the trash."
+    },
+    "pages": {
+      "type": "array",
+      "description": "The pages contained within this report.",
+      "items": {
+        "$ref": "#/$defs/Page"
+      }
+    },
+    "dataSources": {
+      "type": "array",
+      "description": "The data sources connected to this report.",
+      "items": {
+        "$ref": "#/$defs/DataSourceReference"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "title"
+  ],
+  "$defs": {
+    "Page": {
+      "type": "object",
+      "description": "A single page within a Looker Studio report.",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "The unique identifier for this page within the report."
+        },
+        "name": {
+          "type": "string",
+          "description": "The display name of the page."
+        },
+        "hidden": {
+          "type": "boolean",
+          "description": "Whether this page is hidden from viewers."
+        }
+      },
+      "required": [
+        "pageId"
+      ]
+    },
+    "DataSourceReference": {
+      "type": "object",
+      "description": "A reference to a data source used by the report.",
+      "properties": {
+        "alias": {
+          "type": "string",
+          "description": "The alias identifier for the data source within the report (e.g., ds0, ds1)."
+        },
+        "dataSourceName": {
+          "type": "string",
+          "description": "The display name of the data source."
+        },
+        "connectorType": {
+          "type": "string",
+          "description": "The type of connector used by this data source.",
+          "enum": [
+            "bigQuery",
+            "cloudSpanner",
+            "communityConnector",
+            "googleAnalytics",
+            "googleCloudStorage",
+            "googleSheets",
+            "looker",
+            "searchConsole"
+          ]
+        }
+      },
+      "required": [
+        "alias"
+      ]
+    }
+  }
+}

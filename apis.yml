@@ -1,101 +1,234 @@
 name: Looker Studio API
-description: Looker Studio (formerly Google Data Studio) is a free tool that turns your data into informative, easy to read, easy to share, and fully customizable dashboards and reports. The API allows developers to programmatically manage assets and automate workflows.
+description: >-
+  Looker Studio (formerly Google Data Studio) is a free tool that turns your
+  data into informative, easy to read, easy to share, and fully customizable
+  dashboards and reports. The API allows developers to programmatically manage
+  assets, build custom connectors and visualizations, embed reports, and
+  automate workflows.
 image: https://www.gstatic.com/analytics-suite/header/suite/v2/ic_data_studio.svg
 url: https://lookerstudio.google.com
 created: '2024-01-15'
-modified: '2024-01-15'
+modified: '2026-03-04'
+jsonLd:
+  - type: JSON-LD Context
+    url: json-ld/looker-studio-context.jsonld
 specificationVersion: '0.18'
 tags:
-- analytics
-- business intelligence
-- data visualization
-- dashboards
-- reports
-- Google
+  - Analytics
+  - Business Intelligence
+  - Data Visualization
+  - Dashboards
+  - Reports
+  - Google
 apis:
-- name: Looker Studio API
-  description: The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. Automate report creation, embedding, and sharing workflows.
-  image: https://www.gstatic.com/analytics-suite/header/suite/v2/ic_data_studio.svg
-  humanURL: https://developers.google.com/looker-studio
-  baseURL: https://lookerstudio.googleapis.com
-  tags:
-  - reports
-  - data sources
-  - embedding
-  - permissions
-  properties:
+  - name: Looker Studio API
+    description: >-
+      The Looker Studio API enables developers to programmatically manage
+      reports, data sources, and permissions. It provides methods for searching
+      assets and managing asset permissions including getting, updating, adding,
+      and removing members.
+    image: >-
+      https://www.gstatic.com/analytics-suite/header/suite/v2/ic_data_studio.svg
+    humanURL: https://developers.google.com/looker-studio/integrate/api
+    baseURL: https://datastudio.googleapis.com/v1
+    tags:
+      - Reports
+      - Data Sources
+      - Permissions
+      - Assets
+      - Automation
+    properties:
+      - type: Documentation
+        url: https://developers.google.com/looker-studio/integrate/api
+      - type: Reference
+        url: https://developers.google.com/looker-studio/integrate/api/reference
+      - type: OpenAPI
+        url: openapi/looker-studio-api-openapi.yml
+      - type: OpenAPI
+        url: https://lookerstudio.googleapis.com/$discovery/rest?version=v1
+      - type: Authentication
+        url: https://developers.google.com/looker-studio/api/authentication
+      - type: Getting Started
+        url: https://developers.google.com/looker-studio/api/quickstart
+      - type: SDKs
+        url: https://developers.google.com/looker-studio/api/client-libraries
+      - type: Rate Limits
+        url: https://developers.google.com/looker-studio/api/quotas
+      - type: Errors
+        url: https://developers.google.com/looker-studio/api/errors
+      - type: JSON Schema
+        url: json-schema/looker-studio-asset-schema.json
+      - type: JSON Schema
+        url: json-schema/looker-studio-permissions-schema.json
+      - type: JSON Schema
+        url: json-schema/looker-studio-report-schema.json
+      - type: JSON Schema
+        url: json-schema/looker-studio-data-source-schema.json
+  - name: Looker Studio Linking API
+    description: >-
+      The Looker Studio Linking API enables the creation of dynamic URLs that
+      link to pre-configured reports. It allows developers to define data
+      sources, control report behavior, and customize settings through URL
+      parameters.
+    humanURL: https://developers.google.com/looker-studio/integrate/linking-api
+    baseURL: https://lookerstudio.google.com
+    tags:
+      - Linking
+      - Reports
+      - URL Parameters
+      - Data Sources
+      - Integration
+    properties:
+      - type: Documentation
+        url: https://developers.google.com/looker-studio/integrate/linking-api
+      - type: OpenAPI
+        url: openapi/looker-studio-linking-api-openapi.yml
+  - name: Looker Studio Embedding API
+    description: >-
+      Embed Looker Studio reports in your applications using HTML iframe tags,
+      oEmbed, and Open Graph Tags with customizable parameters and filtering
+      options. Supports embedding on platforms like Medium and Reddit.
+    humanURL: https://developers.google.com/looker-studio/integrate/embed
+    baseURL: https://lookerstudio.google.com/embed
+    tags:
+      - Embedding
+      - Iframe
+      - Integration
+      - Reports
+      - Sharing
+    properties:
+      - type: Documentation
+        url: https://developers.google.com/looker-studio/integrate/embed
+      - type: OpenAPI
+        url: openapi/looker-studio-embedding-api-openapi.yml
+      - type: Getting Started
+        url: >-
+          https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+      - type: Security
+        url: >-
+          https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - name: Looker Studio Community Connector API
+    description: >-
+      Build custom data connectors to bring data from any source into Looker
+      Studio. Connectors are built using Google Apps Script and implement three
+      core functions: getConfig(), getSchema(), and getData().
+    humanURL: https://developers.google.com/looker-studio/connector
+    baseURL: https://datastudio.google.com/datasources/create
+    tags:
+      - Connectors
+      - Data Sources
+      - Apps Script
+      - Custom Integration
+      - ETL
+    properties:
+      - type: Documentation
+        url: https://developers.google.com/looker-studio/connector
+      - type: Reference
+        url: https://developers.google.com/looker-studio/connector/reference
+      - type: OpenAPI
+        url: openapi/looker-studio-community-connector-api-openapi.yml
+      - type: Getting Started
+        url: https://developers.google.com/looker-studio/connector/build
+      - type: Examples
+        url: https://developers.google.com/looker-studio/connector/examples
+      - type: Gallery
+        url: https://lookerstudio.google.com/data
+      - type: Change Log
+        url: https://developers.google.com/looker-studio/connector/changelog
+      - type: Publishing
+        url: >-
+          https://developers.google.com/looker-studio/connector/publish-connector
+      - type: Sharing
+        url: https://developers.google.com/looker-studio/connector/share
+      - type: Direct Links
+        url: https://developers.google.com/looker-studio/connector/direct-links
+      - type: Codelabs
+        url: https://codelabs.developers.google.com/codelabs/community-connectors
+      - type: JSON Schema
+        url: json-schema/looker-studio-connector-schema.json
+  - name: Looker Studio Community Visualization API
+    description: >-
+      Build and deploy custom visualizations for Looker Studio using any
+      JavaScript visualization library. The dscc helper library simplifies
+      development by providing functions for data subscriptions, component
+      dimensions, and user interactions.
+    humanURL: https://developers.google.com/looker-studio/visualization
+    baseURL: https://lookerstudio.google.com/visualization
+    tags:
+      - Visualizations
+      - Custom Charts
+      - JavaScript
+      - Data Visualization
+      - Components
+    properties:
+      - type: Documentation
+        url: https://developers.google.com/looker-studio/visualization
+      - type: Reference
+        url: >-
+          https://developers.google.com/looker-studio/visualization/library-reference
+      - type: OpenAPI
+        url: openapi/looker-studio-community-visualization-api-openapi.yml
+      - type: Getting Started
+        url: https://developers.google.com/looker-studio/visualization/write-viz
+      - type: SDKs
+        url: https://developers.google.com/looker-studio/visualization/library
+      - type: Local Development
+        url: https://developers.google.com/looker-studio/visualization/local-dev
+      - type: Open Source
+        url: >-
+          https://developers.google.com/looker-studio/visualization/open-source
+      - type: Interactions
+        url: >-
+          https://developers.google.com/looker-studio/visualization/interactions-guide
+      - type: Support
+        url: https://developers.google.com/looker-studio/visualization/support
+      - type: Codelabs
+        url: >-
+          https://codelabs.developers.google.com/codelabs/community-visualization
+      - type: JSON Schema
+        url: json-schema/looker-studio-visualization-schema.json
+maintainers:
+  - name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
+common:
+  - type: Portal
+    url: https://console.cloud.google.com
   - type: Documentation
-    url: https://developers.google.com/looker-studio/api/reference
-  - type: OpenAPI
-    url: https://lookerstudio.googleapis.com/$discovery/rest?version=v1
+    url: https://docs.cloud.google.com/looker/docs/studio
+  - type: Getting Started
+    url: https://support.google.com/looker-studio/answer/6283323
   - type: Authentication
-    url: https://developers.google.com/looker-studio/api/authentication
-  - type: Quickstart
-    url: https://developers.google.com/looker-studio/api/quickstart
-  - type: SDK
-    url: https://developers.google.com/looker-studio/api/client-libraries
-  - type: Pricing
-    url: https://support.google.com/looker-studio/answer/9171315
-  - type: Rate Limits
-    url: https://developers.google.com/looker-studio/api/quotas
+    url: https://developers.google.com/identity/protocols/oauth2
+  - type: Blog
+    url: https://cloud.google.com/blog/products/data-analytics
+  - type: Status
+    url: https://status.cloud.google.com
+  - type: Support
+    url: https://cloud.google.com/looker/docs/studio/contact-us
   - type: Terms of Service
     url: https://policies.google.com/terms
   - type: Privacy Policy
     url: https://policies.google.com/privacy
-  - type: Support
-    url: https://support.google.com/looker-studio
+  - type: GitHub Organization
+    url: https://github.com/looker-open-source
   - type: Community
-    url: https://www.googlecloudcommunity.com/gc/Looker-Studio/bd-p/cloud-looker-studio
+    url: https://www.googlecloudcommunity.com/gc/Looker-Looker-Studio/ct-p/looker
+  - type: Website
+    url: https://lookerstudio.google.com
+  - type: Login
+    url: https://lookerstudio.google.com/?requirelogin=1
+  - type: Sign Up
+    url: https://lookerstudio.google.com
+  - type: Pricing
+    url: https://support.google.com/looker-studio/answer/9171315
   - type: Release Notes
-    url: https://support.google.com/looker-studio/answer/11521624
-- name: Looker Studio Embedding API
-  description: Embed Looker Studio reports in your applications with customizable parameters and filtering options.
-  humanURL: https://developers.google.com/looker-studio/integrate/embedding-api
-  baseURL: https://lookerstudio.google.com/embed
-  tags:
-  - embedding
-  - iframe
-  - integration
-  properties:
-  - type: Documentation
-    url: https://developers.google.com/looker-studio/integrate/embedding-api/overview
-  - type: Guide
-    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
-- name: Looker Studio Community Connector API
-  description: Build custom data connectors to bring data from any source into Looker Studio.
-  humanURL: https://developers.google.com/looker-studio/connector
-  baseURL: https://datastudio.google.com/datasources/create
-  tags:
-  - connectors
-  - data sources
-  - custom integration
-  properties:
-  - type: Documentation
-    url: https://developers.google.com/looker-studio/connector/reference
-  - type: Tutorial
-    url: https://developers.google.com/looker-studio/connector/build
-  - type: Examples
-    url: https://developers.google.com/looker-studio/connector/examples
-  - type: Gallery
-    url: https://datastudio.google.com/data
-maintainers:
-- name: Google LLC
-  email: google-data-studio-feedback@google.com
-  url: https://about.google
-contact:
-- name: Looker Studio Support
-  url: https://support.google.com/looker-studio/gethelp
-  email: google-data-studio-feedback@google.com
-common:
-- type: Portal
-  url: https://console.cloud.google.com
-- type: Getting Started
-  url: https://support.google.com/looker-studio/answer/6283323
-- type: Blog
-  url: https://blog.google/products/marketingplatform/analytics/
-- type: Status
-  url: https://status.cloud.google.com
-- type: Authentication
-  url: https://developers.google.com/identity/protocols/oauth2
-- type: Error Codes
-  url: https://developers.google.com/looker-studio/api/errors
+    url: https://docs.cloud.google.com/looker-studio/docs/release-notes
+  - type: Errors
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: Developer Forum
+    url: https://discuss.google.dev/c/looker/looker-q-a/looker-studio/214
+  - type: Developers
+    url: https://developers.google.com/looker-studio
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/integrate

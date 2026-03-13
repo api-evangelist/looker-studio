@@ -1,0 +1,495 @@
+openapi: 3.1.0
+info:
+  title: Looker Studio API
+  description: >-
+    The Looker Studio API enables developers to programmatically manage reports,
+    data sources, and permissions. It provides methods for searching assets and
+    managing asset permissions including getting, updating, adding, and removing
+    members. The API is available to users that belong to an organization with
+    Google Workspace or Cloud Identity.
+  version: v1
+  contact:
+    name: Google
+    url: https://developers.google.com/looker-studio/integrate/api
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+  termsOfService: https://developers.google.com/terms
+externalDocs:
+  description: Looker Studio API Reference
+  url: https://developers.google.com/looker-studio/integrate/api/reference
+servers:
+  - url: https://datastudio.googleapis.com/v1
+    description: Looker Studio API production server
+security:
+  - oauth2: []
+tags:
+  - name: Assets
+    description: Operations for searching and managing Looker Studio assets (reports and data sources).
+  - name: Permissions
+    description: Operations for managing asset permissions including getting, updating, adding, and revoking member access.
+paths:
+  /assets:search:
+    get:
+      operationId: searchAssets
+      summary: Search Looker Studio assets
+      description: >-
+        Searches the authenticated user's Looker Studio assets including reports
+        and data sources. Results can be filtered by asset type. Requires the
+        datastudio or datastudio.readonly OAuth scope.
+      tags:
+        - Assets
+      parameters:
+        - name: assetTypes
+          in: query
+          required: true
+          description: >-
+            The types of assets to search for. Valid values are REPORT and
+            DATA_SOURCE.
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AssetType'
+          style: form
+          explode: true
+        - name: title
+          in: query
+          required: false
+          description: Filter assets by title (partial match).
+          schema:
+            type: string
+        - name: includeTrash
+          in: query
+          required: false
+          description: Whether to include trashed assets in the results.
+          schema:
+            type: boolean
+            default: false
+        - name: orderBy
+          in: query
+          required: false
+          description: >-
+            Field to order results by, such as title, createTime, or updateTime.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          required: false
+          description: Maximum number of assets to return per page.
+          schema:
+            type: integer
+            format: int32
+        - name: pageToken
+          in: query
+          required: false
+          description: Token for retrieving the next page of results.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response containing matching assets.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchAssetsResponse'
+        '400':
+          description: Invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or invalid credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Insufficient permissions to access the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Rate limit exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /assets/{assetId}/permissions:
+    get:
+      operationId: getAssetPermissions
+      summary: Get asset permissions
+      description: >-
+        Retrieves the permissions for a specified Looker Studio asset. Returns
+        the role-to-member mapping and an etag for concurrency control.
+      tags:
+        - Permissions
+      parameters:
+        - name: assetId
+          in: path
+          required: true
+          description: The unique identifier of the Looker Studio asset.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response containing the asset permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+        '401':
+          description: Authentication required or invalid credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Insufficient permissions to view this asset's permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Asset not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateAssetPermissions
+      summary: Update asset permissions
+      description: >-
+        Modifies the permissions for a specified Looker Studio asset. Uses the
+        etag for optimistic concurrency control to prevent conflicting updates.
+      tags:
+        - Permissions
+      parameters:
+        - name: assetId
+          in: path
+          required: true
+          description: The unique identifier of the Looker Studio asset.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: The updated permissions to apply to the asset.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Permissions'
+      responses:
+        '200':
+          description: Successful response with the updated permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+        '400':
+          description: Invalid request body or parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or invalid credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Insufficient permissions to modify this asset's permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Asset not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Etag mismatch indicating a conflicting concurrent update.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /assets/{assetId}/permissions:addMembers:
+    post:
+      operationId: addAssetMembers
+      summary: Add members to asset permissions
+      description: >-
+        Adds one or more members to a Looker Studio asset's permissions with a
+        specified role. Members can be users, groups, domains, or service
+        accounts.
+      tags:
+        - Permissions
+      parameters:
+        - name: assetId
+          in: path
+          required: true
+          description: The unique identifier of the Looker Studio asset.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: The members and role to add to the asset.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddMembersRequest'
+      responses:
+        '200':
+          description: Successful response after adding the members.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+        '400':
+          description: Invalid request body or member format.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or invalid credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Insufficient permissions to add members to this asset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Asset not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /assets/{assetId}/permissions:revokeAllPermissions:
+    post:
+      operationId: revokeAllAssetPermissions
+      summary: Revoke all permissions for members
+      description: >-
+        Removes specified members from all roles on a Looker Studio asset,
+        effectively revoking their access to the asset entirely.
+      tags:
+        - Permissions
+      parameters:
+        - name: assetId
+          in: path
+          required: true
+          description: The unique identifier of the Looker Studio asset.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: The members whose permissions should be revoked.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RevokePermissionsRequest'
+      responses:
+        '200':
+          description: Successful response after revoking the permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+        '400':
+          description: Invalid request body or member format.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or invalid credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Insufficient permissions to revoke access on this asset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Asset not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: >-
+        OAuth 2.0 authentication with domain-wide delegation. Requires Google
+        Workspace or Cloud Identity organization.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/datastudio: Full access to manage Looker Studio assets and permissions.
+            https://www.googleapis.com/auth/datastudio.readonly: Read-only access to Looker Studio assets.
+            https://www.googleapis.com/auth/userinfo.profile: Access to user profile information.
+  schemas:
+    Asset:
+      type: object
+      description: Represents a Looker Studio asset such as a report or data source.
+      properties:
+        name:
+          type: string
+          description: >-
+            The resource name of the asset. Format depends on asset type.
+        assetType:
+          $ref: '#/components/schemas/AssetType'
+        title:
+          type: string
+          description: The display title of the asset.
+        description:
+          type: string
+          description: A description of the asset. Available for reports only.
+        owner:
+          type: string
+          description: The email address of the asset owner.
+        creator:
+          type: string
+          description: The email address of the asset creator.
+        createTime:
+          type: string
+          format: date-time
+          description: The timestamp when the asset was created (RFC 3339 format).
+        updateTime:
+          type: string
+          format: date-time
+          description: The timestamp when the asset was last modified (RFC 3339 format).
+        updateByMeTime:
+          type: string
+          format: date-time
+          description: The timestamp when the authenticated user last modified the asset.
+        lastViewByMeTime:
+          type: string
+          format: date-time
+          description: The timestamp when the authenticated user last viewed the asset.
+        trashed:
+          type: boolean
+          description: Whether the asset is in the trash.
+    AssetType:
+      type: string
+      description: The type of Looker Studio asset.
+      enum:
+        - REPORT
+        - DATA_SOURCE
+    Role:
+      type: string
+      description: The access role for a member on a Looker Studio asset.
+      enum:
+        - VIEWER
+        - EDITOR
+        - OWNER
+        - LINK_VIEWER
+        - LINK_EDITOR
+    Permissions:
+      type: object
+      description: >-
+        Represents the permissions configuration for a Looker Studio asset,
+        mapping roles to arrays of member identifiers.
+      properties:
+        permissions:
+          type: object
+          description: >-
+            A mapping of roles to arrays of member identifiers. Each key is a
+            Role value and each value is an array of member strings.
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        etag:
+          type: string
+          description: >-
+            An opaque string used for optimistic concurrency control. Include
+            this value in update requests to prevent conflicting modifications.
+    SearchAssetsResponse:
+      type: object
+      description: Response from the asset search endpoint.
+      properties:
+        assets:
+          type: array
+          description: The list of matching assets.
+          items:
+            $ref: '#/components/schemas/Asset'
+        nextPageToken:
+          type: string
+          description: >-
+            Token to retrieve the next page of results. Empty if there are no
+            more results.
+    AddMembersRequest:
+      type: object
+      description: Request body for adding members to an asset's permissions.
+      properties:
+        role:
+          $ref: '#/components/schemas/Role'
+        members:
+          type: array
+          description: >-
+            List of member identifiers to add. Members use prefixed format such
+            as user:email@example.com, group:group@googlegroups.com,
+            domain:example.com, or serviceAccount:sa@project.iam.gserviceaccount.com.
+          items:
+            type: string
+      required:
+        - role
+        - members
+    RevokePermissionsRequest:
+      type: object
+      description: Request body for revoking all permissions for specified members.
+      properties:
+        members:
+          type: array
+          description: >-
+            List of member identifiers whose permissions should be revoked.
+            Members use prefixed format such as user:email@example.com.
+          items:
+            type: string
+      required:
+        - members
+    Error:
+      type: object
+      description: Standard error response from the Looker Studio API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable error message.
+            status:
+              type: string
+              description: The error status string.
+            details:
+              type: array
+              description: Additional error details.
+              items:
+                type: object
+                properties:
+                  '@type':
+                    type: string
+                  reason:
+                    type: string
+                  domain:
+                    type: string
+                  metadata:
+                    type: object
+                    additionalProperties:
+                      type: string

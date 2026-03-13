@@ -1,0 +1,267 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/looker-studio/json-schema/looker-studio-visualization-schema.json",
+  "title": "Looker Studio Community Visualization",
+  "description": "Represents a Looker Studio community visualization manifest that defines the visualization's metadata, resource locations, data requirements, and style configuration. The manifest is a JSON file hosted on Google Cloud Storage.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The display name of the visualization."
+    },
+    "organization": {
+      "type": "string",
+      "description": "The organization or developer that created the visualization."
+    },
+    "description": {
+      "type": "string",
+      "description": "A text description of what the visualization does."
+    },
+    "logoUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the visualization's logo image."
+    },
+    "devMode": {
+      "type": "boolean",
+      "description": "Whether the visualization is in development mode. Development mode disables caching for faster iteration."
+    },
+    "components": {
+      "type": "array",
+      "description": "The visualization components defined in this manifest.",
+      "items": {
+        "$ref": "#/$defs/Component"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "name",
+    "components"
+  ],
+  "$defs": {
+    "Component": {
+      "type": "object",
+      "description": "A single visualization component within the manifest.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier for this component."
+        },
+        "name": {
+          "type": "string",
+          "description": "The display name of the component."
+        },
+        "description": {
+          "type": "string",
+          "description": "A text description of the component."
+        },
+        "iconUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the component's icon image."
+        },
+        "resource": {
+          "$ref": "#/$defs/Resource"
+        },
+        "config": {
+          "$ref": "#/$defs/Config"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "resource"
+      ]
+    },
+    "Resource": {
+      "type": "object",
+      "description": "The JavaScript and CSS resources required to render the visualization.",
+      "properties": {
+        "js": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the visualization's JavaScript bundle."
+        },
+        "css": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the visualization's CSS stylesheet."
+        }
+      },
+      "required": [
+        "js"
+      ]
+    },
+    "Config": {
+      "type": "object",
+      "description": "Configuration defining data requirements, style options, and interactions.",
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "Data configuration specifying required dimensions and metrics.",
+          "items": {
+            "$ref": "#/$defs/DataConfig"
+          }
+        },
+        "style": {
+          "type": "array",
+          "description": "Style configuration specifying user-configurable style elements.",
+          "items": {
+            "$ref": "#/$defs/StyleConfig"
+          }
+        },
+        "interactions": {
+          "type": "array",
+          "description": "Interaction configurations defining supported user interactions.",
+          "items": {
+            "$ref": "#/$defs/InteractionConfig"
+          }
+        }
+      }
+    },
+    "DataConfig": {
+      "type": "object",
+      "description": "Defines a data source slot with its dimension and metric requirements.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this data configuration."
+        },
+        "label": {
+          "type": "string",
+          "description": "Display label for this data source slot."
+        },
+        "elements": {
+          "type": "array",
+          "description": "The dimension and metric elements for this data source.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique identifier for this element."
+              },
+              "label": {
+                "type": "string",
+                "description": "Display label for this element."
+              },
+              "type": {
+                "type": "string",
+                "description": "Whether this element accepts dimensions or metrics.",
+                "enum": [
+                  "DIMENSION",
+                  "METRIC"
+                ]
+              },
+              "options": {
+                "type": "object",
+                "properties": {
+                  "min": {
+                    "type": "integer",
+                    "description": "Minimum number of fields required."
+                  },
+                  "max": {
+                    "type": "integer",
+                    "description": "Maximum number of fields allowed."
+                  }
+                }
+              }
+            },
+            "required": [
+              "id",
+              "type"
+            ]
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "StyleConfig": {
+      "type": "object",
+      "description": "Defines a group of style elements in the property panel.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this style group."
+        },
+        "label": {
+          "type": "string",
+          "description": "Display label for this style group."
+        },
+        "elements": {
+          "type": "array",
+          "description": "The individual style elements in this group.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique identifier for this style element."
+              },
+              "label": {
+                "type": "string",
+                "description": "Display label for this element."
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of style input to render.",
+                "enum": [
+                  "FONT_COLOR",
+                  "FONT_SIZE",
+                  "FONT_FAMILY",
+                  "FILL_COLOR",
+                  "BORDER_COLOR",
+                  "BORDER_WEIGHT",
+                  "OPACITY",
+                  "LINE_WEIGHT",
+                  "LINE_STYLE",
+                  "CHECKBOX",
+                  "TEXTINPUT",
+                  "SELECT_SINGLE",
+                  "SELECT_RADIO"
+                ]
+              },
+              "defaultValue": {
+                "type": "string",
+                "description": "The default value for this style element."
+              }
+            },
+            "required": [
+              "id",
+              "type"
+            ]
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "InteractionConfig": {
+      "type": "object",
+      "description": "Defines a supported interaction type.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this interaction."
+        },
+        "supportedActions": {
+          "type": "array",
+          "description": "The types of actions this interaction supports.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "FILTER"
+            ]
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  }
+}

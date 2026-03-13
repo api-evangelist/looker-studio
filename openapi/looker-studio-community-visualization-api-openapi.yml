@@ -1,0 +1,340 @@
+openapi: 3.1.0
+info:
+  title: Looker Studio Community Visualization API
+  description: >-
+    Build and deploy custom visualizations for Looker Studio using any
+    JavaScript visualization library. The dscc (Data Studio Community Component)
+    helper library simplifies development by providing functions for data
+    subscriptions, component dimensions, and user interactions. Visualizations
+    are event-driven, receiving data and style information as users interact
+    with the report. This specification documents the hosting and deployment
+    contract for community visualizations.
+  version: v1
+  contact:
+    name: Google
+    url: https://developers.google.com/looker-studio/visualization
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+  termsOfService: https://developers.google.com/terms
+externalDocs:
+  description: Looker Studio Community Visualization Documentation
+  url: https://developers.google.com/looker-studio/visualization
+servers:
+  - url: https://lookerstudio.google.com
+    description: Looker Studio production server
+tags:
+  - name: Visualization
+    description: >-
+      Operations for loading and rendering community visualizations in Looker
+      Studio reports.
+  - name: Manifest
+    description: >-
+      Operations related to the visualization manifest configuration that
+      defines how a visualization is discovered and loaded.
+paths:
+  /visualization:
+    get:
+      operationId: listCommunityVisualizations
+      summary: List community visualizations
+      description: >-
+        Accesses the community visualization gallery where users can browse and
+        discover published community visualizations for use in their Looker
+        Studio reports.
+      tags:
+        - Visualization
+      responses:
+        '200':
+          description: >-
+            Returns the visualization gallery page with available community
+            visualizations.
+          content:
+            text/html:
+              schema:
+                type: string
+  /visualization/load:
+    post:
+      operationId: loadVisualization
+      summary: Load a community visualization
+      description: >-
+        Loads a community visualization into a Looker Studio report. The
+        visualization is identified by its manifest URL hosted on Google Cloud
+        Storage. Looker Studio fetches the manifest, resolves the JavaScript and
+        CSS resources, and renders the visualization with the report's data.
+      tags:
+        - Visualization
+      requestBody:
+        required: true
+        description: >-
+          The configuration for loading a community visualization into a report
+          component.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoadVisualizationRequest'
+      responses:
+        '200':
+          description: The visualization was loaded successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoadVisualizationResponse'
+        '400':
+          description: >-
+            Invalid manifest URL or the manifest does not conform to the
+            required schema.
+        '404':
+          description: >-
+            The visualization manifest could not be found at the specified URL.
+  /visualization/manifest:
+    get:
+      operationId: getVisualizationManifest
+      summary: Get visualization manifest schema
+      description: >-
+        Returns the JSON schema definition for community visualization
+        manifests. The manifest defines the visualization's name, description,
+        resource locations, data configuration, and style elements.
+      tags:
+        - Manifest
+      responses:
+        '200':
+          description: The manifest schema definition.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisualizationManifest'
+components:
+  schemas:
+    LoadVisualizationRequest:
+      type: object
+      description: Request to load a community visualization.
+      properties:
+        manifestUrl:
+          type: string
+          format: uri
+          description: >-
+            The URL to the visualization's manifest.json file, typically hosted
+            on Google Cloud Storage.
+        componentId:
+          type: string
+          description: The unique identifier of the report component to render the visualization in.
+      required:
+        - manifestUrl
+    LoadVisualizationResponse:
+      type: object
+      description: Response after successfully loading a community visualization.
+      properties:
+        status:
+          type: string
+          description: The status of the load operation.
+          enum:
+            - SUCCESS
+            - ERROR
+        componentId:
+          type: string
+          description: The component ID where the visualization was loaded.
+        error:
+          type: object
+          description: Error details if the load failed.
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+    VisualizationManifest:
+      type: object
+      description: >-
+        The manifest file that defines a community visualization's metadata,
+        resources, data requirements, and style configuration.
+      properties:
+        name:
+          type: string
+          description: The display name of the visualization.
+        organization:
+          type: string
+          description: The organization or developer that created the visualization.
+        description:
+          type: string
+          description: A description of what the visualization does.
+        logoUrl:
+          type: string
+          format: uri
+          description: URL to the visualization's logo image.
+        devMode:
+          type: boolean
+          description: >-
+            Whether the visualization is in development mode. Development mode
+            disables caching.
+        components:
+          type: array
+          description: The list of visualization components defined in this manifest.
+          items:
+            $ref: '#/components/schemas/VisualizationComponent'
+      required:
+        - name
+        - components
+    VisualizationComponent:
+      type: object
+      description: A single visualization component within a manifest.
+      properties:
+        id:
+          type: string
+          description: The unique identifier for this component.
+        name:
+          type: string
+          description: The display name of the component.
+        description:
+          type: string
+          description: A description of the component's purpose.
+        iconUrl:
+          type: string
+          format: uri
+          description: URL to the component's icon image.
+        resource:
+          $ref: '#/components/schemas/VisualizationResource'
+        config:
+          $ref: '#/components/schemas/VisualizationConfig'
+      required:
+        - id
+        - name
+        - resource
+    VisualizationResource:
+      type: object
+      description: The JavaScript and CSS resources required to render the visualization.
+      properties:
+        js:
+          type: string
+          format: uri
+          description: URL to the visualization's JavaScript bundle.
+        css:
+          type: string
+          format: uri
+          description: URL to the visualization's CSS stylesheet.
+      required:
+        - js
+    VisualizationConfig:
+      type: object
+      description: >-
+        Configuration defining the visualization's data requirements and style
+        options.
+      properties:
+        data:
+          type: array
+          description: >-
+            Data configuration specifying what dimensions and metrics the
+            visualization requires.
+          items:
+            $ref: '#/components/schemas/DataConfig'
+        style:
+          type: array
+          description: >-
+            Style configuration specifying the user-configurable style elements
+            that appear in the Looker Studio property panel.
+          items:
+            $ref: '#/components/schemas/StyleConfig'
+        interactions:
+          type: array
+          description: >-
+            Interaction configurations defining how the visualization responds
+            to user interactions like filtering.
+          items:
+            $ref: '#/components/schemas/InteractionConfig'
+    DataConfig:
+      type: object
+      description: >-
+        Defines a data source slot that the visualization requires, specifying
+        the number and type of dimensions and metrics.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this data configuration.
+        label:
+          type: string
+          description: Display label for this data source in the property panel.
+        elements:
+          type: array
+          description: The dimension and metric slots for this data source.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Unique identifier for this element.
+              label:
+                type: string
+                description: Display label for this element.
+              type:
+                type: string
+                description: Whether this element accepts dimensions or metrics.
+                enum:
+                  - DIMENSION
+                  - METRIC
+              options:
+                type: object
+                properties:
+                  min:
+                    type: integer
+                    description: Minimum number of fields required.
+                  max:
+                    type: integer
+                    description: Maximum number of fields allowed.
+    StyleConfig:
+      type: object
+      description: >-
+        Defines a group of style elements that appear in the Looker Studio
+        property panel for the visualization.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this style group.
+        label:
+          type: string
+          description: Display label for this style group.
+        elements:
+          type: array
+          description: The individual style elements in this group.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Unique identifier for this style element.
+              label:
+                type: string
+                description: Display label for this element.
+              type:
+                type: string
+                description: The type of style input to render.
+                enum:
+                  - FONT_COLOR
+                  - FONT_SIZE
+                  - FONT_FAMILY
+                  - FILL_COLOR
+                  - BORDER_COLOR
+                  - BORDER_WEIGHT
+                  - OPACITY
+                  - LINE_WEIGHT
+                  - LINE_STYLE
+                  - CHECKBOX
+                  - TEXTINPUT
+                  - SELECT_SINGLE
+                  - SELECT_RADIO
+              defaultValue:
+                type: string
+                description: The default value for this style element.
+    InteractionConfig:
+      type: object
+      description: >-
+        Defines an interaction type that the visualization supports, such as
+        filter interactions.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this interaction.
+        supportedActions:
+          type: array
+          description: The types of actions this interaction supports.
+          items:
+            type: string
+            enum:
+              - FILTER

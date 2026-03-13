@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/looker-studio/json-schema/looker-studio-data-source-schema.json",
+  "title": "Looker Studio Data Source",
+  "description": "Represents a Looker Studio data source, which defines a connection to an underlying data set and its field schema. Data sources can be reusable (shared across reports) or embedded within a specific report.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The resource name of the data source, serving as its unique identifier."
+    },
+    "title": {
+      "type": "string",
+      "description": "The display title of the data source."
+    },
+    "owner": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the data source owner."
+    },
+    "creator": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the user who created the data source."
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the data source was created."
+    },
+    "updateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the data source was last modified."
+    },
+    "trashed": {
+      "type": "boolean",
+      "description": "Whether the data source has been moved to the trash."
+    },
+    "connectorType": {
+      "type": "string",
+      "description": "The type of connector used by this data source.",
+      "enum": [
+        "bigQuery",
+        "cloudSpanner",
+        "communityConnector",
+        "googleAnalytics",
+        "googleCloudStorage",
+        "googleSheets",
+        "looker",
+        "searchConsole"
+      ]
+    },
+    "fields": {
+      "type": "array",
+      "description": "The field definitions that make up the data source schema.",
+      "items": {
+        "$ref": "#/$defs/Field"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "title"
+  ],
+  "$defs": {
+    "Field": {
+      "type": "object",
+      "description": "Defines a single field in the data source schema.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The unique identifier for the field."
+        },
+        "label": {
+          "type": "string",
+          "description": "The display name for the field."
+        },
+        "description": {
+          "type": "string",
+          "description": "A text description of the field's contents."
+        },
+        "dataType": {
+          "type": "string",
+          "description": "The data type of the field values.",
+          "enum": [
+            "STRING",
+            "NUMBER",
+            "BOOLEAN"
+          ]
+        },
+        "conceptType": {
+          "type": "string",
+          "description": "Whether the field is a dimension (category) or metric (measurement).",
+          "enum": [
+            "DIMENSION",
+            "METRIC"
+          ]
+        },
+        "semanticType": {
+          "type": "string",
+          "description": "The semantic type describing the meaning of the field values.",
+          "enum": [
+            "TEXT",
+            "NUMBER",
+            "BOOLEAN",
+            "PERCENT",
+            "CURRENCY_USD",
+            "CURRENCY_EUR",
+            "CURRENCY_GBP",
+            "CURRENCY_JPY",
+            "YEAR",
+            "YEAR_QUARTER",
+            "YEAR_MONTH",
+            "YEAR_MONTH_DAY",
+            "YEAR_MONTH_DAY_HOUR",
+            "YEAR_MONTH_DAY_SECOND",
+            "QUARTER",
+            "MONTH",
+            "WEEK",
+            "DAY_OF_WEEK",
+            "HOUR",
+            "MINUTE",
+            "DURATION",
+            "COUNTRY",
+            "COUNTRY_CODE",
+            "CONTINENT",
+            "CONTINENT_CODE",
+            "SUB_CONTINENT",
+            "SUB_CONTINENT_CODE",
+            "REGION",
+            "REGION_CODE",
+            "CITY",
+            "CITY_CODE",
+            "METRO",
+            "METRO_CODE",
+            "LATITUDE_LONGITUDE",
+            "URL"
+          ]
+        },
+        "defaultAggregationType": {
+          "type": "string",
+          "description": "The default aggregation type for metric fields.",
+          "enum": [
+            "AVG",
+            "COUNT",
+            "COUNT_DISTINCT",
+            "MAX",
+            "MIN",
+            "SUM",
+            "AUTO",
+            "NONE"
+          ]
+        },
+        "group": {
+          "type": "string",
+          "description": "An optional group name for organizing related fields."
+        },
+        "formula": {
+          "type": "string",
+          "description": "An optional calculated field formula."
+        },
+        "isDefault": {
+          "type": "boolean",
+          "description": "Whether this field is included by default in new charts."
+        },
+        "isHidden": {
+          "type": "boolean",
+          "description": "Whether the field is hidden from the user interface."
+        }
+      },
+      "required": [
+        "name",
+        "dataType",
+        "conceptType"
+      ]
+    }
+  }
+}

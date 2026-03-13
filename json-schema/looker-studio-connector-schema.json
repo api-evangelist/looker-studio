@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/looker-studio/json-schema/looker-studio-connector-schema.json",
+  "title": "Looker Studio Community Connector",
+  "description": "Represents a Looker Studio community connector configuration, defining how the connector authenticates, presents configuration options, declares its data schema, and serves data to Looker Studio.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The display name of the connector."
+    },
+    "logoUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the connector's logo image."
+    },
+    "company": {
+      "type": "string",
+      "description": "The company or organization that developed the connector."
+    },
+    "companyUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the developer's website."
+    },
+    "addonUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the connector's Apps Script project."
+    },
+    "supportUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the connector's support page."
+    },
+    "description": {
+      "type": "string",
+      "description": "A text description of what the connector does."
+    },
+    "authType": {
+      "type": "string",
+      "description": "The authentication type required by the connector.",
+      "enum": [
+        "NONE",
+        "OAUTH2",
+        "KEY",
+        "USER_PASS",
+        "USER_TOKEN",
+        "PATH_USER_PASS",
+        "PATH_KEY"
+      ]
+    },
+    "folderId": {
+      "type": "string",
+      "description": "The Google Drive folder ID where the connector project is stored."
+    },
+    "isAdminUser": {
+      "type": "boolean",
+      "description": "Whether the current user is an admin of this connector."
+    },
+    "configParams": {
+      "type": "array",
+      "description": "The user-configurable parameters for the connector.",
+      "items": {
+        "$ref": "#/$defs/ConfigParam"
+      }
+    },
+    "dateRangeRequired": {
+      "type": "boolean",
+      "description": "Whether the connector requires a date range to be specified."
+    },
+    "schema": {
+      "type": "array",
+      "description": "The field definitions that make up the connector's data schema.",
+      "items": {
+        "$ref": "#/$defs/Field"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "authType"
+  ],
+  "$defs": {
+    "ConfigParam": {
+      "type": "object",
+      "description": "A single configuration parameter definition.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of UI element to render.",
+          "enum": [
+            "TEXTINPUT",
+            "TEXTAREA",
+            "SELECT_SINGLE",
+            "SELECT_MULTIPLE",
+            "CHECKBOX",
+            "INFO"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The unique identifier for this parameter."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The label displayed to the user."
+        },
+        "helpText": {
+          "type": "string",
+          "description": "Help text shown below the input element."
+        },
+        "placeholder": {
+          "type": "string",
+          "description": "Placeholder text for text input elements."
+        },
+        "isDynamic": {
+          "type": "boolean",
+          "description": "Whether this parameter triggers a re-fetch of config when changed."
+        },
+        "options": {
+          "type": "array",
+          "description": "Available options for SELECT_SINGLE and SELECT_MULTIPLE types.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "description": "Display label for the option."
+              },
+              "value": {
+                "type": "string",
+                "description": "The value submitted when this option is selected."
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ]
+          }
+        }
+      },
+      "required": [
+        "type",
+        "name"
+      ]
+    },
+    "Field": {
+      "type": "object",
+      "description": "Defines a single field in the connector's data schema.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The unique identifier for the field."
+        },
+        "label": {
+          "type": "string",
+          "description": "The display name for the field."
+        },
+        "description": {
+          "type": "string",
+          "description": "A text description of the field's contents."
+        },
+        "dataType": {
+          "type": "string",
+          "description": "The data type of the field values.",
+          "enum": [
+            "STRING",
+            "NUMBER",
+            "BOOLEAN"
+          ]
+        },
+        "conceptType": {
+          "type": "string",
+          "description": "Whether the field is a dimension or metric.",
+          "enum": [
+            "DIMENSION",
+            "METRIC"
+          ]
+        },
+        "semanticType": {
+          "type": "string",
+          "description": "The semantic type describing the meaning of the field values."
+        },
+        "defaultAggregationType": {
+          "type": "string",
+          "description": "The default aggregation type for metric fields.",
+          "enum": [
+            "AVG",
+            "COUNT",
+            "COUNT_DISTINCT",
+            "MAX",
+            "MIN",
+            "SUM",
+            "AUTO",
+            "NONE"
+          ]
+        },
+        "group": {
+          "type": "string",
+          "description": "An optional group name for organizing related fields."
+        },
+        "formula": {
+          "type": "string",
+          "description": "An optional calculated field formula."
+        },
+        "isHidden": {
+          "type": "boolean",
+          "description": "Whether the field is hidden from the user interface."
+        }
+      },
+      "required": [
+        "name",
+        "dataType",
+        "conceptType"
+      ]
+    }
+  }
+}

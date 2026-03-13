@@ -1,0 +1,181 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "ls": "https://developers.google.com/looker-studio/ns#",
+    "goog": "https://cloud.google.com/ns#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "prov": "http://www.w3.org/ns/prov#",
+
+    "Asset": {
+      "@id": "ls:Asset",
+      "@type": "schema:CreativeWork"
+    },
+    "Report": {
+      "@id": "ls:Report",
+      "@type": "schema:Report"
+    },
+    "DataSource": {
+      "@id": "ls:DataSource",
+      "@type": "dcat:Dataset"
+    },
+    "Connector": {
+      "@id": "ls:Connector",
+      "@type": "schema:SoftwareApplication"
+    },
+    "Visualization": {
+      "@id": "ls:Visualization",
+      "@type": "schema:SoftwareApplication"
+    },
+    "Permissions": {
+      "@id": "ls:Permissions",
+      "@type": "schema:DigitalDocumentPermission"
+    },
+    "Member": {
+      "@id": "ls:Member",
+      "@type": "schema:Person"
+    },
+
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "schema:headline",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "owner": {
+      "@id": "schema:accountablePerson",
+      "@type": "@id"
+    },
+    "creator": {
+      "@id": "schema:creator",
+      "@type": "@id"
+    },
+    "createTime": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updateTime": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "lastViewByMeTime": {
+      "@id": "ls:lastViewByMeTime",
+      "@type": "xsd:dateTime"
+    },
+    "updateByMeTime": {
+      "@id": "ls:updateByMeTime",
+      "@type": "xsd:dateTime"
+    },
+    "trashed": {
+      "@id": "ls:trashed",
+      "@type": "xsd:boolean"
+    },
+
+    "assetType": {
+      "@id": "ls:assetType",
+      "@type": "xsd:string"
+    },
+    "role": {
+      "@id": "schema:roleName",
+      "@type": "xsd:string"
+    },
+    "etag": {
+      "@id": "ls:etag",
+      "@type": "xsd:string"
+    },
+
+    "connectorType": {
+      "@id": "ls:connectorType",
+      "@type": "xsd:string"
+    },
+    "authType": {
+      "@id": "ls:authType",
+      "@type": "xsd:string"
+    },
+    "dataType": {
+      "@id": "ls:dataType",
+      "@type": "xsd:string"
+    },
+    "conceptType": {
+      "@id": "ls:conceptType",
+      "@type": "xsd:string"
+    },
+    "semanticType": {
+      "@id": "ls:semanticType",
+      "@type": "xsd:string"
+    },
+    "fields": {
+      "@id": "ls:fields",
+      "@container": "@list"
+    },
+
+    "pages": {
+      "@id": "schema:hasPart",
+      "@container": "@list"
+    },
+    "dataSources": {
+      "@id": "ls:dataSources",
+      "@container": "@list"
+    },
+    "components": {
+      "@id": "schema:hasPart",
+      "@container": "@list"
+    },
+    "configParams": {
+      "@id": "ls:configParams",
+      "@container": "@list"
+    },
+
+    "logoUrl": {
+      "@id": "schema:logo",
+      "@type": "@id"
+    },
+    "organization": {
+      "@id": "schema:publisher",
+      "@type": "xsd:string"
+    },
+    "company": {
+      "@id": "schema:publisher",
+      "@type": "xsd:string"
+    },
+    "companyUrl": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "supportUrl": {
+      "@id": "schema:mainEntityOfPage",
+      "@type": "@id"
+    },
+
+    "reportId": {
+      "@id": "ls:reportId",
+      "@type": "xsd:string"
+    },
+    "pageId": {
+      "@id": "ls:pageId",
+      "@type": "xsd:string"
+    },
+    "embedUrl": {
+      "@id": "schema:embedUrl",
+      "@type": "@id"
+    },
+
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    }
+  }
+}

@@ -1,0 +1,564 @@
+openapi: 3.1.0
+info:
+  title: Looker Studio Community Connector API
+  description: >-
+    Build custom data connectors to bring data from any source into Looker
+    Studio. Connectors are built using Google Apps Script and implement three
+    core functions: getConfig(), getSchema(), and getData(). This specification
+    documents the contract between Looker Studio and community connectors,
+    defining the request and response formats for each required function.
+  version: v1
+  contact:
+    name: Google
+    url: https://developers.google.com/looker-studio/connector
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+  termsOfService: https://developers.google.com/terms
+externalDocs:
+  description: Looker Studio Community Connector Documentation
+  url: https://developers.google.com/looker-studio/connector/reference
+servers:
+  - url: https://datastudio.google.com/datasources/create
+    description: Looker Studio data source creation endpoint
+tags:
+  - name: Configuration
+    description: >-
+      Operations related to connector configuration, including user-configurable
+      options and authentication setup.
+  - name: Schema
+    description: >-
+      Operations for defining the data structure and field definitions returned
+      by the connector.
+  - name: Data
+    description: >-
+      Operations for fetching data from the external source and returning it to
+      Looker Studio.
+  - name: Authentication
+    description: >-
+      Operations for managing third-party authentication including OAuth2, API
+      keys, and username/password credentials.
+paths:
+  /connector/getAuthType:
+    post:
+      operationId: getAuthType
+      summary: Get authentication type
+      description: >-
+        Returns the authentication type required by the connector. Looker Studio
+        calls this function to determine how to authenticate the user with the
+        third-party data source. The connector must return one of the supported
+        authentication types.
+      tags:
+        - Authentication
+      requestBody:
+        required: false
+        description: Empty request body. No parameters are needed.
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: The authentication type configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTypeResponse'
+  /connector/isAuthValid:
+    post:
+      operationId: isAuthValid
+      summary: Validate authentication credentials
+      description: >-
+        Validates the current third-party authentication credentials. Looker
+        Studio calls this function to check whether the user's stored
+        credentials are still valid before making data requests.
+      tags:
+        - Authentication
+      requestBody:
+        required: false
+        description: Empty request body. Credentials are accessed from the script's properties.
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Whether the credentials are valid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                    description: True if the stored credentials are valid.
+  /connector/setCredentials:
+    post:
+      operationId: setCredentials
+      summary: Store authentication credentials
+      description: >-
+        Stores the user's authentication credentials for the third-party data
+        source. Looker Studio calls this function after the user provides their
+        credentials through the authentication UI.
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        description: The credentials to store for the third-party service.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetCredentialsRequest'
+      responses:
+        '200':
+          description: Result of the credential storage operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetCredentialsResponse'
+  /connector/getConfig:
+    post:
+      operationId: getConfig
+      summary: Get connector configuration options
+      description: >-
+        Returns the user-configurable options for the connector. Looker Studio
+        displays these options to the user when setting up a data source. The
+        configuration can include text inputs, dropdowns, checkboxes, and
+        informational text. Supports stepped configuration where subsequent
+        config options depend on previous selections.
+      tags:
+        - Configuration
+      requestBody:
+        required: true
+        description: The request containing language preference and any previously set config parameters.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetConfigRequest'
+      responses:
+        '200':
+          description: The connector configuration definition.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetConfigResponse'
+  /connector/getSchema:
+    post:
+      operationId: getSchema
+      summary: Get data schema
+      description: >-
+        Returns the schema (field definitions) for the data that the connector
+        provides. Each field includes an ID, name, data type, semantic type, and
+        whether it is a dimension or metric. Looker Studio uses this schema to
+        understand the structure of the available data.
+      tags:
+        - Schema
+      requestBody:
+        required: true
+        description: The request containing configuration parameters set by the user.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetSchemaRequest'
+      responses:
+        '200':
+          description: The data schema with field definitions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSchemaResponse'
+  /connector/getData:
+    post:
+      operationId: getData
+      summary: Get data rows
+      description: >-
+        Fetches tabular data from the external source matching the request
+        criteria. Receives configuration parameters, optional date ranges,
+        requested field names, and dimension filters. Returns rows with values
+        in the schema-defined order. Limited to 1 million rows per request.
+      tags:
+        - Data
+      requestBody:
+        required: true
+        description: >-
+          The request specifying which fields to retrieve, optional date range,
+          and any filters to apply.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetDataRequest'
+      responses:
+        '200':
+          description: The data rows matching the request criteria.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDataResponse'
+components:
+  schemas:
+    AuthType:
+      type: string
+      description: The type of authentication used by the connector.
+      enum:
+        - NONE
+        - OAUTH2
+        - KEY
+        - USER_PASS
+        - USER_TOKEN
+        - PATH_USER_PASS
+        - PATH_KEY
+    AuthTypeResponse:
+      type: object
+      description: Response from getAuthType containing the authentication configuration.
+      properties:
+        type:
+          $ref: '#/components/schemas/AuthType'
+        helpUrl:
+          type: string
+          format: uri
+          description: Optional URL to help documentation for authentication setup.
+    SetCredentialsRequest:
+      type: object
+      description: Request to store credentials for the third-party service.
+      properties:
+        userPass:
+          type: object
+          description: Username and password credentials.
+          properties:
+            username:
+              type: string
+            password:
+              type: string
+        userToken:
+          type: object
+          description: Username and token credentials.
+          properties:
+            username:
+              type: string
+            token:
+              type: string
+        key:
+          type: string
+          description: API key credential.
+        pathUserPass:
+          type: object
+          description: Path, username, and password credentials.
+          properties:
+            path:
+              type: string
+            username:
+              type: string
+            password:
+              type: string
+        pathKey:
+          type: object
+          description: Path and API key credentials.
+          properties:
+            path:
+              type: string
+            key:
+              type: string
+    SetCredentialsResponse:
+      type: object
+      description: Response from setCredentials.
+      properties:
+        errorCode:
+          type: string
+          description: Error code if credentials are invalid. Returns NONE on success.
+          enum:
+            - NONE
+            - INVALID_CREDENTIALS
+    GetConfigRequest:
+      type: object
+      description: Request for connector configuration options.
+      properties:
+        languageCode:
+          type: string
+          description: The user's language preference (ISO 639 code).
+        configParams:
+          type: object
+          description: >-
+            Previously configured parameters. Present during stepped
+            configuration when the user has already filled in some options.
+          additionalProperties:
+            type: string
+    GetConfigResponse:
+      type: object
+      description: Response containing the connector's configurable options.
+      properties:
+        configParams:
+          type: array
+          description: The list of configuration elements to display to the user.
+          items:
+            $ref: '#/components/schemas/ConfigParam'
+        dateRangeRequired:
+          type: boolean
+          description: >-
+            Whether the connector requires a date range to be specified by the
+            user. Defaults to false.
+        isSteppedConfig:
+          type: boolean
+          description: >-
+            Whether the connector uses stepped configuration where subsequent
+            options depend on previous selections. Defaults to false.
+    ConfigParam:
+      type: object
+      description: A single configuration parameter definition.
+      properties:
+        type:
+          type: string
+          description: The type of UI element to render.
+          enum:
+            - TEXTINPUT
+            - TEXTAREA
+            - SELECT_SINGLE
+            - SELECT_MULTIPLE
+            - CHECKBOX
+            - INFO
+        name:
+          type: string
+          description: The unique identifier for this parameter.
+        displayName:
+          type: string
+          description: The label displayed to the user.
+        helpText:
+          type: string
+          description: Help text shown below the input element.
+        placeholder:
+          type: string
+          description: Placeholder text for text input elements.
+        isDynamic:
+          type: boolean
+          description: Whether this parameter triggers a re-fetch of config when changed.
+        options:
+          type: array
+          description: Available options for SELECT_SINGLE and SELECT_MULTIPLE types.
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+                description: Display label for the option.
+              value:
+                type: string
+                description: The value submitted when this option is selected.
+    GetSchemaRequest:
+      type: object
+      description: Request for the connector's data schema.
+      properties:
+        configParams:
+          type: object
+          description: The user-configured parameters.
+          additionalProperties:
+            type: string
+    GetSchemaResponse:
+      type: object
+      description: Response containing the data schema.
+      properties:
+        schema:
+          type: array
+          description: The list of field definitions.
+          items:
+            $ref: '#/components/schemas/Field'
+    Field:
+      type: object
+      description: Defines a single field in the connector's data schema.
+      properties:
+        name:
+          type: string
+          description: The unique identifier for the field.
+        label:
+          type: string
+          description: The display name for the field.
+        description:
+          type: string
+          description: A description of the field's contents.
+        dataType:
+          type: string
+          description: The data type of the field values.
+          enum:
+            - STRING
+            - NUMBER
+            - BOOLEAN
+        semantics:
+          $ref: '#/components/schemas/FieldSemantics'
+        group:
+          type: string
+          description: An optional group name for organizing related fields.
+        formula:
+          type: string
+          description: An optional calculated field formula.
+        isDefault:
+          type: boolean
+          description: Whether this field is included by default in new charts.
+        defaultAggregationType:
+          type: string
+          description: The default aggregation type for metric fields.
+          enum:
+            - AVG
+            - COUNT
+            - COUNT_DISTINCT
+            - MAX
+            - MIN
+            - SUM
+            - AUTO
+            - NONE
+        isHidden:
+          type: boolean
+          description: Whether the field is hidden from the user interface.
+    FieldSemantics:
+      type: object
+      description: Semantic information about a field.
+      properties:
+        conceptType:
+          type: string
+          description: Whether the field is a dimension or metric.
+          enum:
+            - DIMENSION
+            - METRIC
+        semanticType:
+          type: string
+          description: >-
+            The semantic type describing the meaning of the field values. Common
+            types include TEXT, NUMBER, BOOLEAN, YEAR, YEAR_MONTH_DAY, PERCENT,
+            CURRENCY_USD, COUNTRY, CITY, and LATITUDE_LONGITUDE among others.
+          enum:
+            - TEXT
+            - NUMBER
+            - BOOLEAN
+            - PERCENT
+            - CURRENCY_USD
+            - CURRENCY_EUR
+            - CURRENCY_GBP
+            - CURRENCY_JPY
+            - YEAR
+            - YEAR_QUARTER
+            - YEAR_MONTH
+            - YEAR_MONTH_DAY
+            - YEAR_MONTH_DAY_HOUR
+            - YEAR_MONTH_DAY_SECOND
+            - QUARTER
+            - MONTH
+            - WEEK
+            - DAY_OF_WEEK
+            - HOUR
+            - MINUTE
+            - DURATION
+            - COUNTRY
+            - COUNTRY_CODE
+            - CONTINENT
+            - CONTINENT_CODE
+            - SUB_CONTINENT
+            - SUB_CONTINENT_CODE
+            - REGION
+            - REGION_CODE
+            - CITY
+            - CITY_CODE
+            - METRO
+            - METRO_CODE
+            - LATITUDE_LONGITUDE
+            - URL
+        semanticGroup:
+          type: string
+          description: The semantic group for the field.
+        isReaggregatable:
+          type: boolean
+          description: Whether the metric can be re-aggregated.
+    GetDataRequest:
+      type: object
+      description: Request for fetching data rows from the connector.
+      properties:
+        configParams:
+          type: object
+          description: The user-configured parameters.
+          additionalProperties:
+            type: string
+        dateRange:
+          type: object
+          description: The date range for the data request if dateRangeRequired is true.
+          properties:
+            startDate:
+              type: string
+              format: date
+              description: Start date in YYYY-MM-DD format.
+            endDate:
+              type: string
+              format: date
+              description: End date in YYYY-MM-DD format.
+        fields:
+          type: array
+          description: The list of field names to include in the response.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The field name as defined in the schema.
+        dimensionFilters:
+          type: array
+          description: Filters to apply to dimension fields.
+          items:
+            $ref: '#/components/schemas/DimensionFilter'
+    DimensionFilter:
+      type: object
+      description: A filter applied to a dimension field.
+      properties:
+        fieldName:
+          type: string
+          description: The name of the dimension field to filter.
+        values:
+          type: array
+          description: The values to filter by.
+          items:
+            type: string
+        type:
+          type: string
+          description: The filter operator type.
+          enum:
+            - EQUALS
+            - CONTAINS
+            - REGEXP_PARTIAL_MATCH
+            - REGEXP_EXACT_MATCH
+            - IN_LIST
+            - IS_NULL
+            - BETWEEN
+            - NUMERIC_GREATER_THAN
+            - NUMERIC_GREATER_THAN_OR_EQUAL
+            - NUMERIC_LESS_THAN
+            - NUMERIC_LESS_THAN_OR_EQUAL
+        operator:
+          type: string
+          description: The logical operator for combining multiple filter conditions.
+          enum:
+            - AND
+            - OR
+    GetDataResponse:
+      type: object
+      description: Response containing the requested data rows.
+      properties:
+        schema:
+          type: array
+          description: >-
+            The field definitions for the returned data, in the order they
+            appear in each row.
+          items:
+            $ref: '#/components/schemas/Field'
+        rows:
+          type: array
+          description: The data rows. Each row contains values in schema-defined order.
+          items:
+            type: object
+            properties:
+              values:
+                type: array
+                description: >-
+                  The field values for this row in the same order as the schema
+                  fields.
+                items:
+                  oneOf:
+                    - type: string
+                    - type: number
+                    - type: boolean
+        filtersApplied:
+          type: boolean
+          description: Whether the connector applied the requested filters.
