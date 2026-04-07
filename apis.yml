@@ -16,10 +16,10 @@ specificationVersion: '0.18'
 tags:
   - Analytics
   - Business Intelligence
-  - Data Visualization
   - Dashboards
-  - Reports
+  - Data Visualization
   - Google
+  - Reports
 apis:
   - name: Looker Studio API
     description: >-
@@ -32,11 +32,11 @@ apis:
     humanURL: https://developers.google.com/looker-studio/integrate/api
     baseURL: https://datastudio.googleapis.com/v1
     tags:
-      - Reports
-      - Data Sources
-      - Permissions
       - Assets
       - Automation
+      - Data Sources
+      - Permissions
+      - Reports
     properties:
       - type: Documentation
         url: https://developers.google.com/looker-studio/integrate/api
@@ -73,11 +73,11 @@ apis:
     humanURL: https://developers.google.com/looker-studio/integrate/linking-api
     baseURL: https://lookerstudio.google.com
     tags:
+      - Data Sources
+      - Integration
       - Linking
       - Reports
       - URL Parameters
-      - Data Sources
-      - Integration
     properties:
       - type: Documentation
         url: https://developers.google.com/looker-studio/integrate/linking-api
@@ -115,10 +115,10 @@ apis:
     humanURL: https://developers.google.com/looker-studio/connector
     baseURL: https://datastudio.google.com/datasources/create
     tags:
-      - Connectors
-      - Data Sources
       - Apps Script
+      - Connectors
       - Custom Integration
+      - Data Sources
       - ETL
     properties:
       - type: Documentation
@@ -155,11 +155,11 @@ apis:
     humanURL: https://developers.google.com/looker-studio/visualization
     baseURL: https://lookerstudio.google.com/visualization
     tags:
-      - Visualizations
-      - Custom Charts
-      - JavaScript
-      - Data Visualization
       - Components
+      - Custom Charts
+      - Data Visualization
+      - JavaScript
+      - Visualizations
     properties:
       - type: Documentation
         url: https://developers.google.com/looker-studio/visualization

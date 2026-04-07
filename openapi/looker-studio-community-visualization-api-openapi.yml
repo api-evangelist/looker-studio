@@ -24,14 +24,14 @@ servers:
   - url: https://lookerstudio.google.com
     description: Looker Studio production server
 tags:
-  - name: Visualization
-    description: >-
-      Operations for loading and rendering community visualizations in Looker
-      Studio reports.
   - name: Manifest
     description: >-
       Operations related to the visualization manifest configuration that
       defines how a visualization is discovered and loaded.
+  - name: Visualization
+    description: >-
+      Operations for loading and rendering community visualizations in Looker
+      Studio reports.
 paths:
   /visualization:
     get:

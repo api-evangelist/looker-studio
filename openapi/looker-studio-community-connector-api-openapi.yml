@@ -22,22 +22,22 @@ servers:
   - url: https://datastudio.google.com/datasources/create
     description: Looker Studio data source creation endpoint
 tags:
-  - name: Configuration
-    description: >-
-      Operations related to connector configuration, including user-configurable
-      options and authentication setup.
-  - name: Schema
-    description: >-
-      Operations for defining the data structure and field definitions returned
-      by the connector.
-  - name: Data
-    description: >-
-      Operations for fetching data from the external source and returning it to
-      Looker Studio.
   - name: Authentication
     description: >-
       Operations for managing third-party authentication including OAuth2, API
       keys, and username/password credentials.
+  - name: Configuration
+    description: >-
+      Operations related to connector configuration, including user-configurable
+      options and authentication setup.
+  - name: Data
+    description: >-
+      Operations for fetching data from the external source and returning it to
+      Looker Studio.
+  - name: Schema
+    description: >-
+      Operations for defining the data structure and field definitions returned
+      by the connector.
 paths:
   /connector/getAuthType:
     post:
