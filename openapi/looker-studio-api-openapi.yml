@@ -119,7 +119,7 @@ paths:
   /assets/{assetId}/permissions:
     get:
       operationId: getAssetPermissions
-      summary: Get asset permissions
+      summary: Looker Studio Get asset permissions
       description: >-
         Retrieves the permissions for a specified Looker Studio asset. Returns
         the role-to-member mapping and an etag for concurrency control.
@@ -159,7 +159,7 @@ paths:
                 $ref: '#/components/schemas/Error'
     patch:
       operationId: updateAssetPermissions
-      summary: Update asset permissions
+      summary: Looker Studio Update asset permissions
       description: >-
         Modifies the permissions for a specified Looker Studio asset. Uses the
         etag for optimistic concurrency control to prevent conflicting updates.
@@ -219,7 +219,7 @@ paths:
   /assets/{assetId}/permissions:addMembers:
     post:
       operationId: addAssetMembers
-      summary: Add members to asset permissions
+      summary: Looker Studio Add members to asset permissions
       description: >-
         Adds one or more members to a Looker Studio asset's permissions with a
         specified role. Members can be users, groups, domains, or service
@@ -274,7 +274,7 @@ paths:
   /assets/{assetId}/permissions:revokeAllPermissions:
     post:
       operationId: revokeAllAssetPermissions
-      summary: Revoke all permissions for members
+      summary: Looker Studio Revoke all permissions for members
       description: >-
         Removes specified members from all roles on a Looker Studio asset,
         effectively revoking their access to the asset entirely.

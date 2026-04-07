@@ -36,7 +36,7 @@ paths:
   /visualization:
     get:
       operationId: listCommunityVisualizations
-      summary: List community visualizations
+      summary: Looker Studio List community visualizations
       description: >-
         Accesses the community visualization gallery where users can browse and
         discover published community visualizations for use in their Looker
@@ -55,7 +55,7 @@ paths:
   /visualization/load:
     post:
       operationId: loadVisualization
-      summary: Load a community visualization
+      summary: Looker Studio Load a community visualization
       description: >-
         Loads a community visualization into a Looker Studio report. The
         visualization is identified by its manifest URL hosted on Google Cloud
@@ -89,7 +89,7 @@ paths:
   /visualization/manifest:
     get:
       operationId: getVisualizationManifest
-      summary: Get visualization manifest schema
+      summary: Looker Studio Get visualization manifest schema
       description: >-
         Returns the JSON schema definition for community visualization
         manifests. The manifest defines the visualization's name, description,

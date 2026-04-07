@@ -42,7 +42,7 @@ paths:
   /connector/getAuthType:
     post:
       operationId: getAuthType
-      summary: Get authentication type
+      summary: Looker Studio Get authentication type
       description: >-
         Returns the authentication type required by the connector. Looker Studio
         calls this function to determine how to authenticate the user with the
@@ -67,7 +67,7 @@ paths:
   /connector/isAuthValid:
     post:
       operationId: isAuthValid
-      summary: Validate authentication credentials
+      summary: Looker Studio Validate authentication credentials
       description: >-
         Validates the current third-party authentication credentials. Looker
         Studio calls this function to check whether the user's stored
@@ -95,7 +95,7 @@ paths:
   /connector/setCredentials:
     post:
       operationId: setCredentials
-      summary: Store authentication credentials
+      summary: Looker Studio Store authentication credentials
       description: >-
         Stores the user's authentication credentials for the third-party data
         source. Looker Studio calls this function after the user provides their
@@ -119,7 +119,7 @@ paths:
   /connector/getConfig:
     post:
       operationId: getConfig
-      summary: Get connector configuration options
+      summary: Looker Studio Get connector configuration options
       description: >-
         Returns the user-configurable options for the connector. Looker Studio
         displays these options to the user when setting up a data source. The
@@ -145,7 +145,7 @@ paths:
   /connector/getSchema:
     post:
       operationId: getSchema
-      summary: Get data schema
+      summary: Looker Studio Get data schema
       description: >-
         Returns the schema (field definitions) for the data that the connector
         provides. Each field includes an ID, name, data type, semantic type, and
@@ -170,7 +170,7 @@ paths:
   /connector/getData:
     post:
       operationId: getData
-      summary: Get data rows
+      summary: Looker Studio Get data rows
       description: >-
         Fetches tabular data from the external source matching the request
         criteria. Receives configuration parameters, optional date ranges,

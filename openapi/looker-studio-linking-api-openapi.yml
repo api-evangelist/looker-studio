@@ -28,7 +28,7 @@ paths:
   /reporting/create:
     get:
       operationId: createLinkedReport
-      summary: Create a linked report
+      summary: Looker Studio Create a linked report
       description: >-
         Creates a dynamic URL that directs users to a pre-configured Looker
         Studio report. The URL can specify a template report, configure data
