@@ -8,7 +8,7 @@ description: >-
 image: https://www.gstatic.com/analytics-suite/header/suite/v2/ic_data_studio.svg
 url: https://lookerstudio.google.com
 created: '2024-01-15'
-modified: '2026-03-16'
+modified: '2026-04-28'
 jsonLd:
   - type: JSON-LD Context
     url: json-ld/looker-studio-context.jsonld
