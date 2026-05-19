@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Looker Studio Community Connector API — Data
+  description: 'Looker Studio Community Connector API — Data. 1 operations. Lead operation: Looker Studio Get data rows. Self-contained
+    Naftiko capability covering one Looker Studio business surface.'
+  tags:
+  - Looker Studio
+  - Data
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LOOKER_STUDIO_API_KEY: LOOKER_STUDIO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: community-connector-data
+    baseUri: https://datastudio.google.com/datasources/create
+    description: Looker Studio Community Connector API — Data business capability. Self-contained, no shared references.
+    resources:
+    - name: connector-getData
+      path: /connector/getData
+      operations:
+      - name: getdata
+        method: POST
+        description: Looker Studio Get data rows
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: community-connector-data-rest
+    port: 8080
+    description: REST adapter for Looker Studio Community Connector API — Data. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/connector/getdata
+      name: connector-getdata
+      description: REST surface for connector-getData.
+      operations:
+      - method: POST
+        name: getdata
+        description: Looker Studio Get data rows
+        call: community-connector-data.getdata
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: community-connector-data-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Looker Studio Community Connector API — Data. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: looker-studio-get-data-rows
+      description: Looker Studio Get data rows
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: community-connector-data.getdata
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

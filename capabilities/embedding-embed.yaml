@@ -1,0 +1,139 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Looker Studio Embedding API — Embed
+  description: 'Looker Studio Embedding API — Embed. 2 operations. Lead operation: Looker Studio Get an embedded report (default
+    page). Self-contained Naftiko capability covering one Looker Studio business surface.'
+  tags:
+  - Looker Studio
+  - Embed
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LOOKER_STUDIO_API_KEY: LOOKER_STUDIO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: embedding-embed
+    baseUri: https://lookerstudio.google.com
+    description: Looker Studio Embedding API — Embed business capability. Self-contained, no shared references.
+    resources:
+    - name: embed-reporting-reportId
+      path: /embed/reporting/{reportId}
+      operations:
+      - name: getembeddedreportdefault
+        method: GET
+        description: Looker Studio Get an embedded report (default page)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: reportId
+          in: path
+          type: string
+          description: The unique identifier of the Looker Studio report to embed.
+          required: true
+        - name: params
+          in: query
+          type: string
+          description: URL-encoded JSON string containing filter parameters to apply to the embedded report.
+    - name: embed-reporting-reportId-page-pageId
+      path: /embed/reporting/{reportId}/page/{pageId}
+      operations:
+      - name: getembeddedreport
+        method: GET
+        description: Looker Studio Get an embedded report page
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: reportId
+          in: path
+          type: string
+          description: The unique identifier of the Looker Studio report to embed.
+          required: true
+        - name: pageId
+          in: path
+          type: string
+          description: The identifier of the specific page within the report to display.
+          required: true
+        - name: params
+          in: query
+          type: string
+          description: URL-encoded JSON string containing filter parameters to apply to the embedded report. Filters restrict
+            the data displayed based on dimension values.
+  exposes:
+  - type: rest
+    namespace: embedding-embed-rest
+    port: 8080
+    description: REST adapter for Looker Studio Embedding API — Embed. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/embed/reporting/{reportid}
+      name: embed-reporting-reportid
+      description: REST surface for embed-reporting-reportId.
+      operations:
+      - method: GET
+        name: getembeddedreportdefault
+        description: Looker Studio Get an embedded report (default page)
+        call: embedding-embed.getembeddedreportdefault
+        with:
+          reportId: rest.reportId
+          params: rest.params
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/embed/reporting/{reportid}/page/{pageid}
+      name: embed-reporting-reportid-page-pageid
+      description: REST surface for embed-reporting-reportId-page-pageId.
+      operations:
+      - method: GET
+        name: getembeddedreport
+        description: Looker Studio Get an embedded report page
+        call: embedding-embed.getembeddedreport
+        with:
+          reportId: rest.reportId
+          pageId: rest.pageId
+          params: rest.params
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: embedding-embed-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Looker Studio Embedding API — Embed. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: looker-studio-get-embedded-report
+      description: Looker Studio Get an embedded report (default page)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: embedding-embed.getembeddedreportdefault
+      with:
+        reportId: tools.reportId
+        params: tools.params
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: looker-studio-get-embedded-report-2
+      description: Looker Studio Get an embedded report page
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: embedding-embed.getembeddedreport
+      with:
+        reportId: tools.reportId
+        pageId: tools.pageId
+        params: tools.params
+      outputParameters:
+      - type: object
+        mapping: $.
