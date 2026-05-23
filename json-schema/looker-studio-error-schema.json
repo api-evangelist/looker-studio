@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Error",
+  "title": "Error",
+  "type": "object",
+  "description": "Standard error response from the Looker Studio API.",
+  "properties": {
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "The HTTP status code."
+        },
+        "message": {
+          "type": "string",
+          "description": "A human-readable error message."
+        },
+        "status": {
+          "type": "string",
+          "description": "The error status string."
+        },
+        "details": {
+          "type": "array",
+          "description": "Additional error details.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "domain": {
+                "type": "string"
+              },
+              "metadata": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

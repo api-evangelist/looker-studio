@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Field",
+  "title": "Field",
+  "type": "object",
+  "description": "Defines a single field in the connector's data schema.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The unique identifier for the field."
+    },
+    "label": {
+      "type": "string",
+      "description": "The display name for the field."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the field's contents."
+    },
+    "dataType": {
+      "type": "string",
+      "description": "The data type of the field values.",
+      "enum": [
+        "STRING",
+        "NUMBER",
+        "BOOLEAN"
+      ]
+    },
+    "semantics": {
+      "$ref": "#/components/schemas/FieldSemantics"
+    },
+    "group": {
+      "type": "string",
+      "description": "An optional group name for organizing related fields."
+    },
+    "formula": {
+      "type": "string",
+      "description": "An optional calculated field formula."
+    },
+    "isDefault": {
+      "type": "boolean",
+      "description": "Whether this field is included by default in new charts."
+    },
+    "defaultAggregationType": {
+      "type": "string",
+      "description": "The default aggregation type for metric fields.",
+      "enum": [
+        "AVG",
+        "COUNT",
+        "COUNT_DISTINCT",
+        "MAX",
+        "MIN",
+        "SUM",
+        "AUTO",
+        "NONE"
+      ]
+    },
+    "isHidden": {
+      "type": "boolean",
+      "description": "Whether the field is hidden from the user interface."
+    }
+  }
+}

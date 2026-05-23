@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LoadVisualizationResponse",
+  "title": "LoadVisualizationResponse",
+  "type": "object",
+  "description": "Response after successfully loading a community visualization.",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "The status of the load operation.",
+      "enum": [
+        "SUCCESS",
+        "ERROR"
+      ]
+    },
+    "componentId": {
+      "type": "string",
+      "description": "The component ID where the visualization was loaded."
+    },
+    "error": {
+      "type": "object",
+      "description": "Error details if the load failed.",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

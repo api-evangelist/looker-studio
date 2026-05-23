@@ -1,0 +1,13 @@
+name: Looker Studio Domain Vocabulary
+provider: Looker Studio
+providerId: looker-studio
+description: Tag-derived vocabulary for the Looker Studio API surface; sourced from openapi/ tags.
+terms:
+- term: Authentication
+  description: Operations for managing third-party authentication including OAuth2, API keys, and username/password credentials.
+- term: Configuration
+  description: Operations related to connector configuration, including user-configurable options and authentication setup.
+- term: Data
+  description: Operations for fetching data from the external source and returning it to Looker Studio.
+- term: Schema
+  description: Operations for defining the data structure and field definitions returned by the connector.

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AddMembersRequest",
+  "title": "AddMembersRequest",
+  "type": "object",
+  "description": "Request body for adding members to an asset's permissions.",
+  "properties": {
+    "role": {
+      "$ref": "#/components/schemas/Role"
+    },
+    "members": {
+      "type": "array",
+      "description": "List of member identifiers to add. Members use prefixed format such as user:email@example.com, group:group@googlegroups.com, domain:example.com, or serviceAccount:sa@project.iam.gserviceaccount.com.",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "role",
+    "members"
+  ]
+}

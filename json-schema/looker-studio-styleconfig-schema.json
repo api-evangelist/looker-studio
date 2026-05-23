@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StyleConfig",
+  "title": "StyleConfig",
+  "type": "object",
+  "description": "Defines a group of style elements that appear in the Looker Studio property panel for the visualization.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this style group."
+    },
+    "label": {
+      "type": "string",
+      "description": "Display label for this style group."
+    },
+    "elements": {
+      "type": "array",
+      "description": "The individual style elements in this group.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for this style element."
+          },
+          "label": {
+            "type": "string",
+            "description": "Display label for this element."
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of style input to render.",
+            "enum": [
+              "FONT_COLOR",
+              "FONT_SIZE",
+              "FONT_FAMILY",
+              "FILL_COLOR",
+              "BORDER_COLOR",
+              "BORDER_WEIGHT",
+              "OPACITY",
+              "LINE_WEIGHT",
+              "LINE_STYLE",
+              "CHECKBOX",
+              "TEXTINPUT",
+              "SELECT_SINGLE",
+              "SELECT_RADIO"
+            ]
+          },
+          "defaultValue": {
+            "type": "string",
+            "description": "The default value for this style element."
+          }
+        }
+      }
+    }
+  }
+}

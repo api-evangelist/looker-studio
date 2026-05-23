@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ConfigParam",
+  "title": "ConfigParam",
+  "type": "object",
+  "description": "A single configuration parameter definition.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of UI element to render.",
+      "enum": [
+        "TEXTINPUT",
+        "TEXTAREA",
+        "SELECT_SINGLE",
+        "SELECT_MULTIPLE",
+        "CHECKBOX",
+        "INFO"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "The unique identifier for this parameter."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The label displayed to the user."
+    },
+    "helpText": {
+      "type": "string",
+      "description": "Help text shown below the input element."
+    },
+    "placeholder": {
+      "type": "string",
+      "description": "Placeholder text for text input elements."
+    },
+    "isDynamic": {
+      "type": "boolean",
+      "description": "Whether this parameter triggers a re-fetch of config when changed."
+    },
+    "options": {
+      "type": "array",
+      "description": "Available options for SELECT_SINGLE and SELECT_MULTIPLE types.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Display label for the option."
+          },
+          "value": {
+            "type": "string",
+            "description": "The value submitted when this option is selected."
+          }
+        }
+      }
+    }
+  }
+}

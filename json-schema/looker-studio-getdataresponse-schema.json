@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GetDataResponse",
+  "title": "GetDataResponse",
+  "type": "object",
+  "description": "Response containing the requested data rows.",
+  "properties": {
+    "schema": {
+      "type": "array",
+      "description": "The field definitions for the returned data, in the order they appear in each row.",
+      "items": {
+        "$ref": "#/components/schemas/Field"
+      }
+    },
+    "rows": {
+      "type": "array",
+      "description": "The data rows. Each row contains values in schema-defined order.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "description": "The field values for this row in the same order as the schema fields.",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "boolean"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "filtersApplied": {
+      "type": "boolean",
+      "description": "Whether the connector applied the requested filters."
+    }
+  }
+}

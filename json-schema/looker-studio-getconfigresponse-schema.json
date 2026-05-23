@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GetConfigResponse",
+  "title": "GetConfigResponse",
+  "type": "object",
+  "description": "Response containing the connector's configurable options.",
+  "properties": {
+    "configParams": {
+      "type": "array",
+      "description": "The list of configuration elements to display to the user.",
+      "items": {
+        "$ref": "#/components/schemas/ConfigParam"
+      }
+    },
+    "dateRangeRequired": {
+      "type": "boolean",
+      "description": "Whether the connector requires a date range to be specified by the user. Defaults to false."
+    },
+    "isSteppedConfig": {
+      "type": "boolean",
+      "description": "Whether the connector uses stepped configuration where subsequent options depend on previous selections. Defaults to false."
+    }
+  }
+}

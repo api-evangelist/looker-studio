@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VisualizationResource",
+  "title": "VisualizationResource",
+  "type": "object",
+  "description": "The JavaScript and CSS resources required to render the visualization.",
+  "properties": {
+    "js": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the visualization's JavaScript bundle."
+    },
+    "css": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the visualization's CSS stylesheet."
+    }
+  },
+  "required": [
+    "js"
+  ]
+}

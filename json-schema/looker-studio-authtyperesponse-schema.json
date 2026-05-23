@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AuthTypeResponse",
+  "title": "AuthTypeResponse",
+  "type": "object",
+  "description": "Response from getAuthType containing the authentication configuration.",
+  "properties": {
+    "type": {
+      "$ref": "#/components/schemas/AuthType"
+    },
+    "helpUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Optional URL to help documentation for authentication setup."
+    }
+  }
+}

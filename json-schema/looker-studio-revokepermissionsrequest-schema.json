@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RevokePermissionsRequest",
+  "title": "RevokePermissionsRequest",
+  "type": "object",
+  "description": "Request body for revoking all permissions for specified members.",
+  "properties": {
+    "members": {
+      "type": "array",
+      "description": "List of member identifiers whose permissions should be revoked. Members use prefixed format such as user:email@example.com.",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "members"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LoadVisualizationRequest",
+  "title": "LoadVisualizationRequest",
+  "type": "object",
+  "description": "Request to load a community visualization.",
+  "properties": {
+    "manifestUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL to the visualization's manifest.json file, typically hosted on Google Cloud Storage."
+    },
+    "componentId": {
+      "type": "string",
+      "description": "The unique identifier of the report component to render the visualization in."
+    }
+  },
+  "required": [
+    "manifestUrl"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VisualizationConfig",
+  "title": "VisualizationConfig",
+  "type": "object",
+  "description": "Configuration defining the visualization's data requirements and style options.",
+  "properties": {
+    "data": {
+      "type": "array",
+      "description": "Data configuration specifying what dimensions and metrics the visualization requires.",
+      "items": {
+        "$ref": "#/components/schemas/DataConfig"
+      }
+    },
+    "style": {
+      "type": "array",
+      "description": "Style configuration specifying the user-configurable style elements that appear in the Looker Studio property panel.",
+      "items": {
+        "$ref": "#/components/schemas/StyleConfig"
+      }
+    },
+    "interactions": {
+      "type": "array",
+      "description": "Interaction configurations defining how the visualization responds to user interactions like filtering.",
+      "items": {
+        "$ref": "#/components/schemas/InteractionConfig"
+      }
+    }
+  }
+}

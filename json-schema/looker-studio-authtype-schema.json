@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AuthType",
+  "title": "AuthType",
+  "type": "string",
+  "description": "The type of authentication used by the connector.",
+  "enum": [
+    "NONE",
+    "OAUTH2",
+    "KEY",
+    "USER_PASS",
+    "USER_TOKEN",
+    "PATH_USER_PASS",
+    "PATH_KEY"
+  ]
+}

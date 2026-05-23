@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GetConfigRequest",
+  "title": "GetConfigRequest",
+  "type": "object",
+  "description": "Request for connector configuration options.",
+  "properties": {
+    "languageCode": {
+      "type": "string",
+      "description": "The user's language preference (ISO 639 code)."
+    },
+    "configParams": {
+      "type": "object",
+      "description": "Previously configured parameters. Present during stepped configuration when the user has already filled in some options.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

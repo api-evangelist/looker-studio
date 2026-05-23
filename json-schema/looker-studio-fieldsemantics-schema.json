@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FieldSemantics",
+  "title": "FieldSemantics",
+  "type": "object",
+  "description": "Semantic information about a field.",
+  "properties": {
+    "conceptType": {
+      "type": "string",
+      "description": "Whether the field is a dimension or metric.",
+      "enum": [
+        "DIMENSION",
+        "METRIC"
+      ]
+    },
+    "semanticType": {
+      "type": "string",
+      "description": "The semantic type describing the meaning of the field values. Common types include TEXT, NUMBER, BOOLEAN, YEAR, YEAR_MONTH_DAY, PERCENT, CURRENCY_USD, COUNTRY, CITY, and LATITUDE_LONGITUDE among others.",
+      "enum": [
+        "TEXT",
+        "NUMBER",
+        "BOOLEAN",
+        "PERCENT",
+        "CURRENCY_USD",
+        "CURRENCY_EUR",
+        "CURRENCY_GBP",
+        "CURRENCY_JPY",
+        "YEAR",
+        "YEAR_QUARTER",
+        "YEAR_MONTH",
+        "YEAR_MONTH_DAY",
+        "YEAR_MONTH_DAY_HOUR",
+        "YEAR_MONTH_DAY_SECOND",
+        "QUARTER",
+        "MONTH",
+        "WEEK",
+        "DAY_OF_WEEK",
+        "HOUR",
+        "MINUTE",
+        "DURATION",
+        "COUNTRY",
+        "COUNTRY_CODE",
+        "CONTINENT",
+        "CONTINENT_CODE",
+        "SUB_CONTINENT",
+        "SUB_CONTINENT_CODE",
+        "REGION",
+        "REGION_CODE",
+        "CITY",
+        "CITY_CODE",
+        "METRO",
+        "METRO_CODE",
+        "LATITUDE_LONGITUDE",
+        "URL"
+      ]
+    },
+    "semanticGroup": {
+      "type": "string",
+      "description": "The semantic group for the field."
+    },
+    "isReaggregatable": {
+      "type": "boolean",
+      "description": "Whether the metric can be re-aggregated."
+    }
+  }
+}

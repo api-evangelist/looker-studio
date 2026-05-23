@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InteractionConfig",
+  "title": "InteractionConfig",
+  "type": "object",
+  "description": "Defines an interaction type that the visualization supports, such as filter interactions.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this interaction."
+    },
+    "supportedActions": {
+      "type": "array",
+      "description": "The types of actions this interaction supports.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "FILTER"
+        ]
+      }
+    }
+  }
+}

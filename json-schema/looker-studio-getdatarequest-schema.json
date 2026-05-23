@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GetDataRequest",
+  "title": "GetDataRequest",
+  "type": "object",
+  "description": "Request for fetching data rows from the connector.",
+  "properties": {
+    "configParams": {
+      "type": "object",
+      "description": "The user-configured parameters.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "dateRange": {
+      "type": "object",
+      "description": "The date range for the data request if dateRangeRequired is true.",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Start date in YYYY-MM-DD format."
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date",
+          "description": "End date in YYYY-MM-DD format."
+        }
+      }
+    },
+    "fields": {
+      "type": "array",
+      "description": "The list of field names to include in the response.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The field name as defined in the schema."
+          }
+        }
+      }
+    },
+    "dimensionFilters": {
+      "type": "array",
+      "description": "Filters to apply to dimension fields.",
+      "items": {
+        "$ref": "#/components/schemas/DimensionFilter"
+      }
+    }
+  }
+}

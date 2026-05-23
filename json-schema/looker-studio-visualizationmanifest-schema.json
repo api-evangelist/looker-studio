@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VisualizationManifest",
+  "title": "VisualizationManifest",
+  "type": "object",
+  "description": "The manifest file that defines a community visualization's metadata, resources, data requirements, and style configuration.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The display name of the visualization."
+    },
+    "organization": {
+      "type": "string",
+      "description": "The organization or developer that created the visualization."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of what the visualization does."
+    },
+    "logoUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the visualization's logo image."
+    },
+    "devMode": {
+      "type": "boolean",
+      "description": "Whether the visualization is in development mode. Development mode disables caching."
+    },
+    "components": {
+      "type": "array",
+      "description": "The list of visualization components defined in this manifest.",
+      "items": {
+        "$ref": "#/components/schemas/VisualizationComponent"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "components"
+  ]
+}

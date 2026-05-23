@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GetSchemaRequest",
+  "title": "GetSchemaRequest",
+  "type": "object",
+  "description": "Request for the connector's data schema.",
+  "properties": {
+    "configParams": {
+      "type": "object",
+      "description": "The user-configured parameters.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

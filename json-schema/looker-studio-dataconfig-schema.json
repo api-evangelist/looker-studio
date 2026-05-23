@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataConfig",
+  "title": "DataConfig",
+  "type": "object",
+  "description": "Defines a data source slot that the visualization requires, specifying the number and type of dimensions and metrics.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this data configuration."
+    },
+    "label": {
+      "type": "string",
+      "description": "Display label for this data source in the property panel."
+    },
+    "elements": {
+      "type": "array",
+      "description": "The dimension and metric slots for this data source.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for this element."
+          },
+          "label": {
+            "type": "string",
+            "description": "Display label for this element."
+          },
+          "type": {
+            "type": "string",
+            "description": "Whether this element accepts dimensions or metrics.",
+            "enum": [
+              "DIMENSION",
+              "METRIC"
+            ]
+          },
+          "options": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "type": "integer",
+                "description": "Minimum number of fields required."
+              },
+              "max": {
+                "type": "integer",
+                "description": "Maximum number of fields allowed."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

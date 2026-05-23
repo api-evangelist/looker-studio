@@ -1,0 +1,150 @@
+{
+  "provider": "Looker Studio",
+  "providerId": "looker-studio",
+  "kind": "json-structure",
+  "description": "Structural overview of the Looker Studio API surface; extracted from openapi/.",
+  "schemaCount": 14,
+  "operationCount": 6,
+  "schemas": [
+    {
+      "name": "AuthType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "AuthTypeResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "SetCredentialsRequest",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "SetCredentialsResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "GetConfigRequest",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GetConfigResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ConfigParam",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "GetSchemaRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "GetSchemaResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Field",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "FieldSemantics",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "GetDataRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DimensionFilter",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "GetDataResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/connector/getAuthType",
+      "operationId": "getAuthType",
+      "summary": "Looker Studio Get authentication type",
+      "tags": [
+        "Authentication"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/connector/isAuthValid",
+      "operationId": "isAuthValid",
+      "summary": "Looker Studio Validate authentication credentials",
+      "tags": [
+        "Authentication"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/connector/setCredentials",
+      "operationId": "setCredentials",
+      "summary": "Looker Studio Store authentication credentials",
+      "tags": [
+        "Authentication"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/connector/getConfig",
+      "operationId": "getConfig",
+      "summary": "Looker Studio Get connector configuration options",
+      "tags": [
+        "Configuration"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/connector/getSchema",
+      "operationId": "getSchema",
+      "summary": "Looker Studio Get data schema",
+      "tags": [
+        "Schema"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/connector/getData",
+      "operationId": "getData",
+      "summary": "Looker Studio Get data rows",
+      "tags": [
+        "Data"
+      ]
+    }
+  ]
+}

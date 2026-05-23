@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Role",
+  "title": "Role",
+  "type": "string",
+  "description": "The access role for a member on a Looker Studio asset.",
+  "enum": [
+    "VIEWER",
+    "EDITOR",
+    "OWNER",
+    "LINK_VIEWER",
+    "LINK_EDITOR"
+  ]
+}

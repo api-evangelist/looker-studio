@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchAssetsResponse",
+  "title": "SearchAssetsResponse",
+  "type": "object",
+  "description": "Response from the asset search endpoint.",
+  "properties": {
+    "assets": {
+      "type": "array",
+      "description": "The list of matching assets.",
+      "items": {
+        "$ref": "#/components/schemas/Asset"
+      }
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "Token to retrieve the next page of results. Empty if there are no more results."
+    }
+  }
+}
