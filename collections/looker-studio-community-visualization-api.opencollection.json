@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Looker Studio Community Visualization API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visualization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio List community visualizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lookerstudio.google.com/visualization"
+          },
+          "docs": "Accesses the community visualization gallery where users can browse and discover published community visualizations for use in their Looker Studio reports."
+        },
+        {
+          "info": {
+            "name": "Looker Studio Load a community visualization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://lookerstudio.google.com/visualization/load",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Loads a community visualization into a Looker Studio report. The visualization is identified by its manifest URL hosted on Google Cloud Storage. Looker Studio fetches the manifest, resolves the JavaScript and CSS resources, and renders the visualization with the report's data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Manifest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio Get visualization manifest schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lookerstudio.google.com/visualization/manifest"
+          },
+          "docs": "Returns the JSON schema definition for community visualization manifests. The manifest defines the visualization's name, description, resource locations, data configuration, and style elements."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

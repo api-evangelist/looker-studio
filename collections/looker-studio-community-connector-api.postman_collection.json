@@ -1,0 +1,623 @@
+{
+  "item": [
+    {
+      "id": "80b3e133-1d28-416c-9286-90d89ae25b99",
+      "name": "Authentication",
+      "description": {
+        "content": "Operations for managing third-party authentication including OAuth2, API keys, and username/password credentials.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c04c1acd-c81e-4388-bc6e-da8c4a8097fc",
+          "name": "Looker Studio Get authentication type",
+          "request": {
+            "name": "Looker Studio Get authentication type",
+            "description": {
+              "content": "Returns the authentication type required by the connector. Looker Studio calls this function to determine how to authenticate the user with the third-party data source. The connector must return one of the supported authentication types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connector",
+                "getAuthType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e76fbf01-2d00-4596-93d9-c80ec2888508",
+              "name": "The authentication type configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connector",
+                    "getAuthType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"USER_PASS\",\n  \"helpUrl\": \"https://POucO.lafI7MXhY+KPV\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfd45a48-a6f7-44b3-9b09-152e92cf0881",
+          "name": "Looker Studio Validate authentication credentials",
+          "request": {
+            "name": "Looker Studio Validate authentication credentials",
+            "description": {
+              "content": "Validates the current third-party authentication credentials. Looker Studio calls this function to check whether the user's stored credentials are still valid before making data requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connector",
+                "isAuthValid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "898f2015-8138-4780-9f25-dbf40dc2a9f4",
+              "name": "Whether the credentials are valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connector",
+                    "isAuthValid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1c71a23-63a8-4f18-845d-76da4642b8ef",
+          "name": "Looker Studio Store authentication credentials",
+          "request": {
+            "name": "Looker Studio Store authentication credentials",
+            "description": {
+              "content": "Stores the user's authentication credentials for the third-party data source. Looker Studio calls this function after the user provides their credentials through the authentication UI.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connector",
+                "setCredentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userPass\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"userToken\": {\n    \"username\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"key\": \"<string>\",\n  \"pathUserPass\": {\n    \"path\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"pathKey\": {\n    \"path\": \"<string>\",\n    \"key\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "658735d9-96fd-43e5-b19c-304d31be7045",
+              "name": "Result of the credential storage operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connector",
+                    "setCredentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userPass\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"userToken\": {\n    \"username\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"key\": \"<string>\",\n  \"pathUserPass\": {\n    \"path\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"pathKey\": {\n    \"path\": \"<string>\",\n    \"key\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"INVALID_CREDENTIALS\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "79e571e3-21ff-4cf7-b0de-5659f060382e",
+      "name": "Configuration",
+      "description": {
+        "content": "Operations related to connector configuration, including user-configurable options and authentication setup.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e5ad4b2a-59f6-4993-a495-2f909e185ef0",
+          "name": "Looker Studio Get connector configuration options",
+          "request": {
+            "name": "Looker Studio Get connector configuration options",
+            "description": {
+              "content": "Returns the user-configurable options for the connector. Looker Studio displays these options to the user when setting up a data source. The configuration can include text inputs, dropdowns, checkboxes, and informational text. Supports stepped configuration where subsequent config options depend on previous selections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connector",
+                "getConfig"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"languageCode\": \"<string>\",\n  \"configParams\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2ff7181c-e8b1-4eb1-be43-26f331cc3b9b",
+              "name": "The connector configuration definition.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connector",
+                    "getConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"languageCode\": \"<string>\",\n  \"configParams\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"configParams\": [\n    {\n      \"type\": \"SELECT_MULTIPLE\",\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"helpText\": \"string\",\n      \"placeholder\": \"string\",\n      \"isDynamic\": true,\n      \"options\": [\n        {\n          \"label\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"label\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    },\n    {\n      \"type\": \"SELECT_SINGLE\",\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"helpText\": \"string\",\n      \"placeholder\": \"string\",\n      \"isDynamic\": false,\n      \"options\": [\n        {\n          \"label\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"label\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"dateRangeRequired\": false,\n  \"isSteppedConfig\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e32dd8fd-7190-463a-8134-d98c3c01e5f1",
+      "name": "Data",
+      "description": {
+        "content": "Operations for fetching data from the external source and returning it to Looker Studio.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7783eaa5-2981-47dc-beb1-0b965e31b3c3",
+          "name": "Looker Studio Get data rows",
+          "request": {
+            "name": "Looker Studio Get data rows",
+            "description": {
+              "content": "Fetches tabular data from the external source matching the request criteria. Receives configuration parameters, optional date ranges, requested field names, and dimension filters. Returns rows with values in the schema-defined order. Limited to 1 million rows per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connector",
+                "getData"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"configParams\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"dateRange\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\"\n  },\n  \"fields\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"dimensionFilters\": [\n    {\n      \"fieldName\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\",\n      \"operator\": \"<string>\"\n    },\n    {\n      \"fieldName\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\",\n      \"operator\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00abc55a-051a-4f41-82ff-6f13e9b9cb87",
+              "name": "The data rows matching the request criteria.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connector",
+                    "getData"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configParams\": {\n    \"key_0\": \"<string>\"\n  },\n  \"dateRange\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\"\n  },\n  \"fields\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"dimensionFilters\": [\n    {\n      \"fieldName\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"type\": \"NUMERIC_GREATER_THAN\",\n      \"operator\": \"AND\"\n    },\n    {\n      \"fieldName\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"type\": \"NUMERIC_GREATER_THAN\",\n      \"operator\": \"OR\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schema\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"dataType\": \"NUMBER\",\n      \"semantics\": {\n        \"conceptType\": \"METRIC\",\n        \"semanticType\": \"YEAR_QUARTER\",\n        \"semanticGroup\": \"string\",\n        \"isReaggregatable\": false\n      },\n      \"group\": \"string\",\n      \"formula\": \"string\",\n      \"isDefault\": false,\n      \"defaultAggregationType\": \"MIN\",\n      \"isHidden\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"dataType\": \"NUMBER\",\n      \"semantics\": {\n        \"conceptType\": \"METRIC\",\n        \"semanticType\": \"SUB_CONTINENT\",\n        \"semanticGroup\": \"string\",\n        \"isReaggregatable\": false\n      },\n      \"group\": \"string\",\n      \"formula\": \"string\",\n      \"isDefault\": false,\n      \"defaultAggregationType\": \"COUNT\",\n      \"isHidden\": false\n    }\n  ],\n  \"rows\": [\n    {\n      \"values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"values\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"filtersApplied\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1650eac3-536c-4d0d-9698-557eef6f0f96",
+      "name": "Schema",
+      "description": {
+        "content": "Operations for defining the data structure and field definitions returned by the connector.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "32432233-ad14-4500-83a6-6c184904e0cd",
+          "name": "Looker Studio Get data schema",
+          "request": {
+            "name": "Looker Studio Get data schema",
+            "description": {
+              "content": "Returns the schema (field definitions) for the data that the connector provides. Each field includes an ID, name, data type, semantic type, and whether it is a dimension or metric. Looker Studio uses this schema to understand the structure of the available data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connector",
+                "getSchema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"configParams\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e2bda55d-21c6-417c-8259-cbcd58f1d51d",
+              "name": "The data schema with field definitions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connector",
+                    "getSchema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configParams\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schema\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"dataType\": \"BOOLEAN\",\n      \"semantics\": {\n        \"conceptType\": \"DIMENSION\",\n        \"semanticType\": \"DURATION\",\n        \"semanticGroup\": \"string\",\n        \"isReaggregatable\": true\n      },\n      \"group\": \"string\",\n      \"formula\": \"string\",\n      \"isDefault\": true,\n      \"defaultAggregationType\": \"MIN\",\n      \"isHidden\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"dataType\": \"STRING\",\n      \"semantics\": {\n        \"conceptType\": \"METRIC\",\n        \"semanticType\": \"CITY\",\n        \"semanticGroup\": \"string\",\n        \"isReaggregatable\": true\n      },\n      \"group\": \"string\",\n      \"formula\": \"string\",\n      \"isDefault\": true,\n      \"defaultAggregationType\": \"AUTO\",\n      \"isHidden\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datastudio.google.com/datasources/create",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "217f5432-2f99-423a-8bac-7e27d4e6bd92",
+    "name": "Looker Studio Community Connector API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Build custom data connectors to bring data from any source into Looker Studio. Connectors are built using Google Apps Script and implement three core functions: getConfig(), getSchema(), and getData(). This specification documents the contract between Looker Studio and community connectors, defining the request and response formats for each required function.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

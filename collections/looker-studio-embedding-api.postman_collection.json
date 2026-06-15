@@ -1,0 +1,585 @@
+{
+  "item": [
+    {
+      "id": "607f0716-556c-439d-90a2-c85b32cfc59f",
+      "name": "Embed",
+      "description": {
+        "content": "Operations for embedding Looker Studio reports in external applications and websites.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "87e95dc7-4669-4515-ab29-17034bb30c81",
+          "name": "Looker Studio Get an embedded report page",
+          "request": {
+            "name": "Looker Studio Get an embedded report page",
+            "description": {
+              "content": "Returns an embeddable version of a Looker Studio report page designed for use within an HTML iframe. The embedded report renders the specified page of the report with optional filter parameters. Users must have at least view access to the report to see the embedded content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "embed",
+                "reporting",
+                ":reportId",
+                "page",
+                ":pageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "params",
+                  "value": "<string>",
+                  "description": "URL-encoded JSON string containing filter parameters to apply to the embedded report. Filters restrict the data displayed based on dimension values."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reportId",
+                  "description": "(Required) The unique identifier of the Looker Studio report to embed."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pageId",
+                  "description": "(Required) The identifier of the specific page within the report to display."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "957e8382-4651-420b-bbd9-3ba22a63d30a",
+              "name": "Returns the HTML content for the embedded report page, suitable for rendering in an iframe.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embed",
+                    "reporting",
+                    ":reportId",
+                    "page",
+                    ":pageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "params",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportId",
+                      "description": "(Required) The unique identifier of the Looker Studio report to embed."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageId",
+                      "description": "(Required) The identifier of the specific page within the report to display."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2cb2e2af-b5df-447c-a2ba-078249455142",
+              "name": "The user does not have permission to view this report or the report does not allow embedding.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embed",
+                    "reporting",
+                    ":reportId",
+                    "page",
+                    ":pageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "params",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportId",
+                      "description": "(Required) The unique identifier of the Looker Studio report to embed."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageId",
+                      "description": "(Required) The identifier of the specific page within the report to display."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f845c6fa-3192-4615-9b6e-7a36dfc4ace6",
+              "name": "The specified report or page was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embed",
+                    "reporting",
+                    ":reportId",
+                    "page",
+                    ":pageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "params",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportId",
+                      "description": "(Required) The unique identifier of the Looker Studio report to embed."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageId",
+                      "description": "(Required) The identifier of the specific page within the report to display."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6414393-d447-4e51-b587-ad109ec7f690",
+          "name": "Looker Studio Get an embedded report (default page)",
+          "request": {
+            "name": "Looker Studio Get an embedded report (default page)",
+            "description": {
+              "content": "Returns an embeddable version of a Looker Studio report starting from the default (first) page. This endpoint is used when no specific page ID is required.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "embed",
+                "reporting",
+                ":reportId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "params",
+                  "value": "<string>",
+                  "description": "URL-encoded JSON string containing filter parameters to apply to the embedded report."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reportId",
+                  "description": "(Required) The unique identifier of the Looker Studio report to embed."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b86a5d2-89e1-499b-b690-e6cb15c8743b",
+              "name": "Returns the HTML content for the embedded report, suitable for rendering in an iframe.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embed",
+                    "reporting",
+                    ":reportId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "params",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportId",
+                      "description": "(Required) The unique identifier of the Looker Studio report to embed."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96d003d5-2c8c-42d9-93ee-052d57bee859",
+              "name": "The user does not have permission to view this report or the report does not allow embedding.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embed",
+                    "reporting",
+                    ":reportId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "params",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportId",
+                      "description": "(Required) The unique identifier of the Looker Studio report to embed."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "753b27fb-79d2-491b-a95d-82709dbfc724",
+              "name": "The specified report was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embed",
+                    "reporting",
+                    ":reportId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "params",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportId",
+                      "description": "(Required) The unique identifier of the Looker Studio report to embed."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d7205dc4-1223-4fff-af90-e2a4ffc25fe3",
+      "name": "oEmbed",
+      "description": {
+        "content": "oEmbed-compatible endpoint for platforms that support the oEmbed standard.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "50bbb0d5-7fc5-46dd-8347-d6d9889f1b35",
+          "name": "Looker Studio Get report via short link",
+          "request": {
+            "name": "Looker Studio Get report via short link",
+            "description": {
+              "content": "Access a Looker Studio report using a shortened sharing URL. These URLs are generated by the Looker Studio sharing interface and can be used for oEmbed-compatible embedding on platforms such as Medium and Reddit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "s",
+                ":shortId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shortId",
+                  "description": "(Required) The short link identifier for the shared report."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a109a5d-676e-472b-bd9d-ebb292a09cea",
+              "name": "Returns the report page. When used on oEmbed-compatible platforms, the URL is automatically expanded to a rich embed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s",
+                    ":shortId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortId",
+                      "description": "(Required) The short link identifier for the shared report."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6e6f6df3-3b20-46ac-9678-68b6dca7f422",
+              "name": "The specified short link was not found or has expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s",
+                    ":shortId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortId",
+                      "description": "(Required) The short link identifier for the shared report."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://lookerstudio.google.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dd9eccd4-af8a-42e6-8d6d-c421abb32f7e",
+    "name": "Looker Studio Embedding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Embed Looker Studio reports in your applications using HTML iframe tags, oEmbed, and Open Graph Tags with customizable parameters and filtering options. Supports embedding on platforms like Medium and Reddit. Reports are embedded via URL-based configuration specifying the report ID, page, and optional filter parameters.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

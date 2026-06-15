@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Looker Studio Community Connector API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio Get authentication type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.google.com/datasources/create/connector/getAuthType",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the authentication type required by the connector. Looker Studio calls this function to determine how to authenticate the user with the third-party data source. The connector must return one of the supported authentication types."
+        },
+        {
+          "info": {
+            "name": "Looker Studio Validate authentication credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.google.com/datasources/create/connector/isAuthValid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates the current third-party authentication credentials. Looker Studio calls this function to check whether the user's stored credentials are still valid before making data requests."
+        },
+        {
+          "info": {
+            "name": "Looker Studio Store authentication credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.google.com/datasources/create/connector/setCredentials",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stores the user's authentication credentials for the third-party data source. Looker Studio calls this function after the user provides their credentials through the authentication UI."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio Get connector configuration options",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.google.com/datasources/create/connector/getConfig",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the user-configurable options for the connector. Looker Studio displays these options to the user when setting up a data source. The configuration can include text inputs, dropdowns, checkboxes, and informational text. Supports stepped configuration where subsequent config options depend on previous selections."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Schema",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio Get data schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.google.com/datasources/create/connector/getSchema",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the schema (field definitions) for the data that the connector provides. Each field includes an ID, name, data type, semantic type, and whether it is a dimension or metric. Looker Studio uses this schema to understand the structure of the available data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio Get data rows",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.google.com/datasources/create/connector/getData",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetches tabular data from the external source matching the request criteria. Receives configuration parameters, optional date ranges, requested field names, and dimension filters. Returns rows with values in the schema-defined order. Limited to 1 million rows per request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

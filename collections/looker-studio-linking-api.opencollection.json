@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Looker Studio Linking API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio Create a linked report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lookerstudio.google.com/reporting/create",
+            "params": [
+              {
+                "name": "c.reportId",
+                "value": "",
+                "type": "query",
+                "description": "The template report ID. If omitted, a blank report is used as the template."
+              },
+              {
+                "name": "c.pageId",
+                "value": "",
+                "type": "query",
+                "description": "The page ID to display when the report loads. If omitted, the first page is shown."
+              },
+              {
+                "name": "c.mode",
+                "value": "",
+                "type": "query",
+                "description": "The initial mode for the report. Use 'view' for view mode or 'edit' for edit mode."
+              },
+              {
+                "name": "c.explain",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, enables a debug dialog that shows how the Linking API parameters are being interpreted."
+              },
+              {
+                "name": "r.reportName",
+                "value": "",
+                "type": "query",
+                "description": "Sets the name for the new report."
+              },
+              {
+                "name": "r.measurementId",
+                "value": "",
+                "type": "query",
+                "description": "Configures Google Analytics measurement IDs for the report."
+              },
+              {
+                "name": "r.keepMeasurementId",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, preserves the template report's measurement IDs."
+              },
+              {
+                "name": "ds.ds0.connector",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the connector type for data source ds0. When set, the template data source configuration is completely replaced and all required connector parameters must be specified. Supported connectors include bigQuery, cloudSpanner, communityConnector, googleAnalytics, googleCloudStorage, googleSheets, looker, and searchConsole."
+              },
+              {
+                "name": "ds.ds0.datasourceName",
+                "value": "",
+                "type": "query",
+                "description": "Sets a custom name for data source ds0."
+              },
+              {
+                "name": "ds.ds0.refreshFields",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, refreshes the field definitions for data source ds0 after configuration."
+              },
+              {
+                "name": "ds.ds0.projectId",
+                "value": "",
+                "type": "query",
+                "description": "The Google Cloud project ID for data source ds0. Used with BigQuery, Cloud Spanner, and Google Cloud Storage connectors."
+              },
+              {
+                "name": "ds.ds0.datasetId",
+                "value": "",
+                "type": "query",
+                "description": "The BigQuery dataset ID for data source ds0. Used with the BigQuery connector."
+              },
+              {
+                "name": "ds.ds0.tableId",
+                "value": "",
+                "type": "query",
+                "description": "The BigQuery table ID for data source ds0. Used with the BigQuery TABLE connector type."
+              },
+              {
+                "name": "ds.ds0.type",
+                "value": "",
+                "type": "query",
+                "description": "The BigQuery query type. Use TABLE for standard table access or CUSTOM_QUERY for SQL queries."
+              },
+              {
+                "name": "ds.ds0.sql",
+                "value": "",
+                "type": "query",
+                "description": "The SQL query for BigQuery CUSTOM_QUERY type data sources."
+              },
+              {
+                "name": "ds.ds0.spreadsheetId",
+                "value": "",
+                "type": "query",
+                "description": "The Google Sheets spreadsheet ID for data source ds0."
+              },
+              {
+                "name": "ds.ds0.worksheetId",
+                "value": "",
+                "type": "query",
+                "description": "The worksheet ID within a Google Sheets spreadsheet."
+              },
+              {
+                "name": "ds.ds0.hasHeader",
+                "value": "",
+                "type": "query",
+                "description": "Whether the Google Sheets data source has a header row."
+              },
+              {
+                "name": "ds.ds0.includeHiddenCells",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include hidden and filtered cells from Google Sheets."
+              },
+              {
+                "name": "ds.ds0.accountId",
+                "value": "",
+                "type": "query",
+                "description": "The Google Analytics account ID for data source ds0."
+              },
+              {
+                "name": "ds.ds0.propertyId",
+                "value": "",
+                "type": "query",
+                "description": "The Google Analytics property ID for data source ds0."
+              },
+              {
+                "name": "ds.ds0.viewId",
+                "value": "",
+                "type": "query",
+                "description": "The Google Analytics view ID for data source ds0."
+              }
+            ]
+          },
+          "docs": "Creates a dynamic URL that directs users to a pre-configured Looker Studio report. The URL can specify a template report, configure data sources, set the initial mode (view or edit), and customize report behavior. Users who follow the link see the pre-configured report and can click \"Edit and share\" to save a personal copy."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

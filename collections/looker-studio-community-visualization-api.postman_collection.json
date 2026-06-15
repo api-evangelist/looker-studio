@@ -1,0 +1,354 @@
+{
+  "item": [
+    {
+      "id": "a7ed5794-b53d-4bc2-bb7d-bb15302bae85",
+      "name": "Manifest",
+      "description": {
+        "content": "Operations related to the visualization manifest configuration that defines how a visualization is discovered and loaded.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ae50ff49-12a5-4b3c-8698-c6a66ffa105d",
+          "name": "Looker Studio Get visualization manifest schema",
+          "request": {
+            "name": "Looker Studio Get visualization manifest schema",
+            "description": {
+              "content": "Returns the JSON schema definition for community visualization manifests. The manifest defines the visualization's name, description, resource locations, data configuration, and style elements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visualization",
+                "manifest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ad1c477-e869-454f-a1cb-509f8ee14362",
+              "name": "The manifest schema definition.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visualization",
+                    "manifest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"components\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"resource\": {\n        \"js\": \"http://sxIasuuMNcSbLorZDhTdB.grtwuyhOKpKjtpo3fPsBg.uEiC.QfE-n1sFlQiT,OUNAOJ\",\n        \"css\": \"http://rStqmgNtduqvgFbifUbfrDS.ueegelF8-pJSBvd3hiOdh13XnWgZRmWc,erRQHfFmjKet-8XW,H,VJtSpY,cITm3LYY,nR\"\n      },\n      \"description\": \"string\",\n      \"iconUrl\": \"https://gThmvTJysfzTUsyg.lxaipKdA7OgYzN+0NqEaPuj7,mRGWP6fiMic4CdvXjgVDAn\",\n      \"config\": {\n        \"data\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"style\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"interactions\": [\n          {\n            \"id\": \"string\",\n            \"supportedActions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"supportedActions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"resource\": {\n        \"js\": \"https://cEjPuSqpaBOYCjxVVgICVxHjpAcqizKLQ.tjjhJwI+YMaX4ZbzEEnN.YtE5h-2uTv2YTjGu.bWuHu9XyKk2wyY+swQjtS2fWwKl\",\n        \"css\": \"https://LYhGaO.bmcu2gQrBSidy8lZnUTjcspawtV7uWMf8Ezmd.0dnapz3PFN-dAX9H2lcU,gKcJLI\"\n      },\n      \"description\": \"string\",\n      \"iconUrl\": \"https://wjftPQTfONUBRmvWSuyrlHmP.resbw6HdQXLJl8ZJRqkKebWlBXm,4R2DVoDzyp11v9ab6OGqz2PPI6EaqTZHNt\",\n      \"config\": {\n        \"data\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"style\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"interactions\": [\n          {\n            \"id\": \"string\",\n            \"supportedActions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"supportedActions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  ],\n  \"organization\": \"string\",\n  \"description\": \"string\",\n  \"logoUrl\": \"https://cJCrerREQmSalXBuEDNUoNOWYKq.fiioc7bizqOej0yh3GzbKagMYzPIww3\",\n  \"devMode\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "af5f8ff1-3be9-4165-a9c1-eff64532aeff",
+      "name": "Visualization",
+      "description": {
+        "content": "Operations for loading and rendering community visualizations in Looker Studio reports.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e98a18ee-43a6-42b5-a49a-aae579e89d63",
+          "name": "Looker Studio List community visualizations",
+          "request": {
+            "name": "Looker Studio List community visualizations",
+            "description": {
+              "content": "Accesses the community visualization gallery where users can browse and discover published community visualizations for use in their Looker Studio reports.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visualization"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29967ff6-9238-4daa-a549-2933a80c6c93",
+              "name": "Returns the visualization gallery page with available community visualizations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visualization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb1abc7b-6aab-436d-87bb-14b7025ea36d",
+          "name": "Looker Studio Load a community visualization",
+          "request": {
+            "name": "Looker Studio Load a community visualization",
+            "description": {
+              "content": "Loads a community visualization into a Looker Studio report. The visualization is identified by its manifest URL hosted on Google Cloud Storage. Looker Studio fetches the manifest, resolves the JavaScript and CSS resources, and renders the visualization with the report's data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visualization",
+                "load"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"manifestUrl\": \"<uri>\",\n  \"componentId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6f3474f-305b-4db7-b57f-1c0c74c0bd49",
+              "name": "The visualization was loaded successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visualization",
+                    "load"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"manifestUrl\": \"<uri>\",\n  \"componentId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"componentId\": \"string\",\n  \"error\": {\n    \"message\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50ca51bc-d437-4d1e-a73b-08f2debeb390",
+              "name": "Invalid manifest URL or the manifest does not conform to the required schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visualization",
+                    "load"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"manifestUrl\": \"<uri>\",\n  \"componentId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b8591f9-e16e-4250-800b-4cfe8fdd4a03",
+              "name": "The visualization manifest could not be found at the specified URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visualization",
+                    "load"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"manifestUrl\": \"<uri>\",\n  \"componentId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://lookerstudio.google.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9bafa3bd-4f44-4b2f-b51f-6d58fc500e02",
+    "name": "Looker Studio Community Visualization API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Build and deploy custom visualizations for Looker Studio using any JavaScript visualization library. The dscc (Data Studio Community Component) helper library simplifies development by providing functions for data subscriptions, component dimensions, and user interactions. Visualizations are event-driven, receiving data and style information as users interact with the report. This specification documents the hosting and deployment contract for community visualizations.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}
