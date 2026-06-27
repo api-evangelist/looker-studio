@@ -8,7 +8,7 @@ url: https://lookerstudio.google.com
 created: '2024-01-15'
 modified: '2026-05-19'
 jsonLd:
-  - type: JSON-LD Context
+  - type: JSONLDContext
     url: json-ld/looker-studio-context.jsonld
 specificationVersion: '0.18'
 tags:
@@ -50,15 +50,15 @@ apis:
         url: https://developers.google.com/looker-studio/api/client-libraries
       - type: RateLimits
         url: https://developers.google.com/looker-studio/api/quotas
-      - type: Errors
+      - type: ErrorCodes
         url: https://developers.google.com/looker-studio/api/errors
-      - type: JSON Schema
+      - type: JSONSchema
         url: json-schema/looker-studio-asset-schema.json
-      - type: JSON Schema
+      - type: JSONSchema
         url: json-schema/looker-studio-permissions-schema.json
-      - type: JSON Schema
+      - type: JSONSchema
         url: json-schema/looker-studio-report-schema.json
-      - type: JSON Schema
+      - type: JSONSchema
         url: json-schema/looker-studio-data-source-schema.json
   - name: Looker Studio Linking API
     description: >-
@@ -133,7 +133,7 @@ apis:
         url: https://developers.google.com/looker-studio/connector/direct-links
       - type: Codelabs
         url: https://codelabs.developers.google.com/codelabs/community-connectors
-      - type: JSON Schema
+      - type: JSONSchema
         url: json-schema/looker-studio-connector-schema.json
   - name: Looker Studio Community Visualization API
     description: >-
@@ -169,7 +169,7 @@ apis:
         url: https://developers.google.com/looker-studio/visualization/support
       - type: Codelabs
         url: https://codelabs.developers.google.com/codelabs/community-visualization
-      - type: JSON Schema
+      - type: JSONSchema
         url: json-schema/looker-studio-visualization-schema.json
 maintainers:
   - FN: Kin Lane
@@ -201,13 +201,13 @@ common:
     url: https://lookerstudio.google.com
   - type: Login
     url: https://lookerstudio.google.com/?requirelogin=1
-  - type: SignUp
+  - type: Signup
     url: https://lookerstudio.google.com
   - type: Pricing
     url: https://support.google.com/looker-studio/answer/9171315
   - type: ReleaseNotes
     url: https://docs.cloud.google.com/looker-studio/docs/release-notes
-  - type: Errors
+  - type: ErrorCodes
     url: https://developers.google.com/looker-studio/api/errors
   - type: Developer Forum
     url: https://discuss.google.dev/c/looker/looker-q-a/looker-studio/214
