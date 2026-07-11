@@ -175,6 +175,12 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: VulnerabilityDisclosure
+    url: security/looker-studio-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/looker-studio-domain-security.yml
+  - type: Authentication
+    url: authentication/looker-studio-authentication.yml
   - type: OAuthScopes
     url: scopes/looker-studio-scopes.yml
   - type: Portal
