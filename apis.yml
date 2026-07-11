@@ -175,6 +175,8 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: OAuthScopes
+    url: scopes/looker-studio-scopes.yml
   - type: Portal
     url: https://console.cloud.google.com
   - type: Documentation
