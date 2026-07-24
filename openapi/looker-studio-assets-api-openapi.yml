@@ -1,0 +1,209 @@
+openapi: 3.1.0
+info:
+  title: Looker Studio Assets API
+  description: The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.
+  version: v1
+  contact:
+    name: Google
+    url: https://developers.google.com/looker-studio/integrate/api
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://datastudio.googleapis.com/v1
+  description: Looker Studio API production server
+security:
+- oauth2: []
+tags:
+- name: Assets
+  description: Operations for searching and managing Looker Studio assets (reports and data sources).
+paths:
+  /assets:search:
+    get:
+      operationId: searchAssets
+      summary: Search Looker Studio assets
+      description: Searches the authenticated user's Looker Studio assets including reports and data sources. Results can be filtered by asset type. Requires the datastudio or datastudio.readonly OAuth scope.
+      tags:
+      - Assets
+      parameters:
+      - name: assetTypes
+        in: query
+        required: true
+        description: The types of assets to search for. Valid values are REPORT and DATA_SOURCE.
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetType'
+        style: form
+        explode: true
+      - name: title
+        in: query
+        required: false
+        description: Filter assets by title (partial match).
+        schema:
+          type: string
+      - name: includeTrash
+        in: query
+        required: false
+        description: Whether to include trashed assets in the results.
+        schema:
+          type: boolean
+          default: false
+      - name: orderBy
+        in: query
+        required: false
+        description: Field to order results by, such as title, createTime, or updateTime.
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        required: false
+        description: Maximum number of assets to return per page.
+        schema:
+          type: integer
+          format: int32
+      - name: pageToken
+        in: query
+        required: false
+        description: Token for retrieving the next page of results.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response containing matching assets.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchAssetsResponse'
+        '400':
+          description: Invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or invalid credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Insufficient permissions to access the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Rate limit exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Asset:
+      type: object
+      description: Represents a Looker Studio asset such as a report or data source.
+      properties:
+        name:
+          type: string
+          description: The resource name of the asset. Format depends on asset type.
+        assetType:
+          $ref: '#/components/schemas/AssetType'
+        title:
+          type: string
+          description: The display title of the asset.
+        description:
+          type: string
+          description: A description of the asset. Available for reports only.
+        owner:
+          type: string
+          description: The email address of the asset owner.
+        creator:
+          type: string
+          description: The email address of the asset creator.
+        createTime:
+          type: string
+          format: date-time
+          description: The timestamp when the asset was created (RFC 3339 format).
+        updateTime:
+          type: string
+          format: date-time
+          description: The timestamp when the asset was last modified (RFC 3339 format).
+        updateByMeTime:
+          type: string
+          format: date-time
+          description: The timestamp when the authenticated user last modified the asset.
+        lastViewByMeTime:
+          type: string
+          format: date-time
+          description: The timestamp when the authenticated user last viewed the asset.
+        trashed:
+          type: boolean
+          description: Whether the asset is in the trash.
+    Error:
+      type: object
+      description: Standard error response from the Looker Studio API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable error message.
+            status:
+              type: string
+              description: The error status string.
+            details:
+              type: array
+              description: Additional error details.
+              items:
+                type: object
+                properties:
+                  '@type':
+                    type: string
+                  reason:
+                    type: string
+                  domain:
+                    type: string
+                  metadata:
+                    type: object
+                    additionalProperties:
+                      type: string
+    AssetType:
+      type: string
+      description: The type of Looker Studio asset.
+      enum:
+      - REPORT
+      - DATA_SOURCE
+    SearchAssetsResponse:
+      type: object
+      description: Response from the asset search endpoint.
+      properties:
+        assets:
+          type: array
+          description: The list of matching assets.
+          items:
+            $ref: '#/components/schemas/Asset'
+        nextPageToken:
+          type: string
+          description: Token to retrieve the next page of results. Empty if there are no more results.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication with domain-wide delegation. Requires Google Workspace or Cloud Identity organization.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/datastudio: Full access to manage Looker Studio assets and permissions.
+            https://www.googleapis.com/auth/datastudio.readonly: Read-only access to Looker Studio assets.
+            https://www.googleapis.com/auth/userinfo.profile: Access to user profile information.
+externalDocs:
+  description: Looker Studio API Reference
+  url: https://developers.google.com/looker-studio/integrate/api/reference

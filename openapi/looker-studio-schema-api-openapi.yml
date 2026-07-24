@@ -1,0 +1,178 @@
+openapi: 3.1.0
+info:
+  title: Looker Studio Assets Schema API
+  description: The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.
+  version: v1
+  contact:
+    name: Google
+    url: https://developers.google.com/looker-studio/integrate/api
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://datastudio.googleapis.com/v1
+  description: Looker Studio API production server
+security:
+- oauth2: []
+tags:
+- name: Schema
+  description: Operations for defining the data structure and field definitions returned by the connector.
+paths:
+  /connector/getSchema:
+    post:
+      operationId: getSchema
+      summary: Looker Studio Get data schema
+      description: Returns the schema (field definitions) for the data that the connector provides. Each field includes an ID, name, data type, semantic type, and whether it is a dimension or metric. Looker Studio uses this schema to understand the structure of the available data.
+      tags:
+      - Schema
+      requestBody:
+        required: true
+        description: The request containing configuration parameters set by the user.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetSchemaRequest'
+      responses:
+        '200':
+          description: The data schema with field definitions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSchemaResponse'
+components:
+  schemas:
+    GetSchemaRequest:
+      type: object
+      description: Request for the connector's data schema.
+      properties:
+        configParams:
+          type: object
+          description: The user-configured parameters.
+          additionalProperties:
+            type: string
+    Field:
+      type: object
+      description: Defines a single field in the connector's data schema.
+      properties:
+        name:
+          type: string
+          description: The unique identifier for the field.
+        label:
+          type: string
+          description: The display name for the field.
+        description:
+          type: string
+          description: A description of the field's contents.
+        dataType:
+          type: string
+          description: The data type of the field values.
+          enum:
+          - STRING
+          - NUMBER
+          - BOOLEAN
+        semantics:
+          $ref: '#/components/schemas/FieldSemantics'
+        group:
+          type: string
+          description: An optional group name for organizing related fields.
+        formula:
+          type: string
+          description: An optional calculated field formula.
+        isDefault:
+          type: boolean
+          description: Whether this field is included by default in new charts.
+        defaultAggregationType:
+          type: string
+          description: The default aggregation type for metric fields.
+          enum:
+          - AVG
+          - COUNT
+          - COUNT_DISTINCT
+          - MAX
+          - MIN
+          - SUM
+          - AUTO
+          - NONE
+        isHidden:
+          type: boolean
+          description: Whether the field is hidden from the user interface.
+    GetSchemaResponse:
+      type: object
+      description: Response containing the data schema.
+      properties:
+        schema:
+          type: array
+          description: The list of field definitions.
+          items:
+            $ref: '#/components/schemas/Field'
+    FieldSemantics:
+      type: object
+      description: Semantic information about a field.
+      properties:
+        conceptType:
+          type: string
+          description: Whether the field is a dimension or metric.
+          enum:
+          - DIMENSION
+          - METRIC
+        semanticType:
+          type: string
+          description: The semantic type describing the meaning of the field values. Common types include TEXT, NUMBER, BOOLEAN, YEAR, YEAR_MONTH_DAY, PERCENT, CURRENCY_USD, COUNTRY, CITY, and LATITUDE_LONGITUDE among others.
+          enum:
+          - TEXT
+          - NUMBER
+          - BOOLEAN
+          - PERCENT
+          - CURRENCY_USD
+          - CURRENCY_EUR
+          - CURRENCY_GBP
+          - CURRENCY_JPY
+          - YEAR
+          - YEAR_QUARTER
+          - YEAR_MONTH
+          - YEAR_MONTH_DAY
+          - YEAR_MONTH_DAY_HOUR
+          - YEAR_MONTH_DAY_SECOND
+          - QUARTER
+          - MONTH
+          - WEEK
+          - DAY_OF_WEEK
+          - HOUR
+          - MINUTE
+          - DURATION
+          - COUNTRY
+          - COUNTRY_CODE
+          - CONTINENT
+          - CONTINENT_CODE
+          - SUB_CONTINENT
+          - SUB_CONTINENT_CODE
+          - REGION
+          - REGION_CODE
+          - CITY
+          - CITY_CODE
+          - METRO
+          - METRO_CODE
+          - LATITUDE_LONGITUDE
+          - URL
+        semanticGroup:
+          type: string
+          description: The semantic group for the field.
+        isReaggregatable:
+          type: boolean
+          description: Whether the metric can be re-aggregated.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication with domain-wide delegation. Requires Google Workspace or Cloud Identity organization.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/datastudio: Full access to manage Looker Studio assets and permissions.
+            https://www.googleapis.com/auth/datastudio.readonly: Read-only access to Looker Studio assets.
+            https://www.googleapis.com/auth/userinfo.profile: Access to user profile information.
+externalDocs:
+  description: Looker Studio API Reference
+  url: https://developers.google.com/looker-studio/integrate/api/reference

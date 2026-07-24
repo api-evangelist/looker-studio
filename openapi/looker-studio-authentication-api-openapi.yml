@@ -1,0 +1,177 @@
+openapi: 3.1.0
+info:
+  title: Looker Studio Assets Authentication API
+  description: The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.
+  version: v1
+  contact:
+    name: Google
+    url: https://developers.google.com/looker-studio/integrate/api
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://datastudio.googleapis.com/v1
+  description: Looker Studio API production server
+security:
+- oauth2: []
+tags:
+- name: Authentication
+  description: Operations for managing third-party authentication including OAuth2, API keys, and username/password credentials.
+paths:
+  /connector/getAuthType:
+    post:
+      operationId: getAuthType
+      summary: Looker Studio Get authentication type
+      description: Returns the authentication type required by the connector. Looker Studio calls this function to determine how to authenticate the user with the third-party data source. The connector must return one of the supported authentication types.
+      tags:
+      - Authentication
+      requestBody:
+        required: false
+        description: Empty request body. No parameters are needed.
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: The authentication type configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTypeResponse'
+  /connector/isAuthValid:
+    post:
+      operationId: isAuthValid
+      summary: Looker Studio Validate authentication credentials
+      description: Validates the current third-party authentication credentials. Looker Studio calls this function to check whether the user's stored credentials are still valid before making data requests.
+      tags:
+      - Authentication
+      requestBody:
+        required: false
+        description: Empty request body. Credentials are accessed from the script's properties.
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Whether the credentials are valid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                    description: True if the stored credentials are valid.
+  /connector/setCredentials:
+    post:
+      operationId: setCredentials
+      summary: Looker Studio Store authentication credentials
+      description: Stores the user's authentication credentials for the third-party data source. Looker Studio calls this function after the user provides their credentials through the authentication UI.
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        description: The credentials to store for the third-party service.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetCredentialsRequest'
+      responses:
+        '200':
+          description: Result of the credential storage operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetCredentialsResponse'
+components:
+  schemas:
+    AuthTypeResponse:
+      type: object
+      description: Response from getAuthType containing the authentication configuration.
+      properties:
+        type:
+          $ref: '#/components/schemas/AuthType'
+        helpUrl:
+          type: string
+          format: uri
+          description: Optional URL to help documentation for authentication setup.
+    SetCredentialsRequest:
+      type: object
+      description: Request to store credentials for the third-party service.
+      properties:
+        userPass:
+          type: object
+          description: Username and password credentials.
+          properties:
+            username:
+              type: string
+            password:
+              type: string
+        userToken:
+          type: object
+          description: Username and token credentials.
+          properties:
+            username:
+              type: string
+            token:
+              type: string
+        key:
+          type: string
+          description: API key credential.
+        pathUserPass:
+          type: object
+          description: Path, username, and password credentials.
+          properties:
+            path:
+              type: string
+            username:
+              type: string
+            password:
+              type: string
+        pathKey:
+          type: object
+          description: Path and API key credentials.
+          properties:
+            path:
+              type: string
+            key:
+              type: string
+    AuthType:
+      type: string
+      description: The type of authentication used by the connector.
+      enum:
+      - NONE
+      - OAUTH2
+      - KEY
+      - USER_PASS
+      - USER_TOKEN
+      - PATH_USER_PASS
+      - PATH_KEY
+    SetCredentialsResponse:
+      type: object
+      description: Response from setCredentials.
+      properties:
+        errorCode:
+          type: string
+          description: Error code if credentials are invalid. Returns NONE on success.
+          enum:
+          - NONE
+          - INVALID_CREDENTIALS
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication with domain-wide delegation. Requires Google Workspace or Cloud Identity organization.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/datastudio: Full access to manage Looker Studio assets and permissions.
+            https://www.googleapis.com/auth/datastudio.readonly: Read-only access to Looker Studio assets.
+            https://www.googleapis.com/auth/userinfo.profile: Access to user profile information.
+externalDocs:
+  description: Looker Studio API Reference
+  url: https://developers.google.com/looker-studio/integrate/api/reference

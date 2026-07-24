@@ -1,0 +1,111 @@
+openapi: 3.1.0
+info:
+  title: Looker Studio Assets Visualization API
+  description: The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.
+  version: v1
+  contact:
+    name: Google
+    url: https://developers.google.com/looker-studio/integrate/api
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://datastudio.googleapis.com/v1
+  description: Looker Studio API production server
+security:
+- oauth2: []
+tags:
+- name: Visualization
+  description: Operations for loading and rendering community visualizations in Looker Studio reports.
+paths:
+  /visualization:
+    get:
+      operationId: listCommunityVisualizations
+      summary: Looker Studio List community visualizations
+      description: Accesses the community visualization gallery where users can browse and discover published community visualizations for use in their Looker Studio reports.
+      tags:
+      - Visualization
+      responses:
+        '200':
+          description: Returns the visualization gallery page with available community visualizations.
+          content:
+            text/html:
+              schema:
+                type: string
+  /visualization/load:
+    post:
+      operationId: loadVisualization
+      summary: Looker Studio Load a community visualization
+      description: Loads a community visualization into a Looker Studio report. The visualization is identified by its manifest URL hosted on Google Cloud Storage. Looker Studio fetches the manifest, resolves the JavaScript and CSS resources, and renders the visualization with the report's data.
+      tags:
+      - Visualization
+      requestBody:
+        required: true
+        description: The configuration for loading a community visualization into a report component.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoadVisualizationRequest'
+      responses:
+        '200':
+          description: The visualization was loaded successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoadVisualizationResponse'
+        '400':
+          description: Invalid manifest URL or the manifest does not conform to the required schema.
+        '404':
+          description: The visualization manifest could not be found at the specified URL.
+components:
+  schemas:
+    LoadVisualizationResponse:
+      type: object
+      description: Response after successfully loading a community visualization.
+      properties:
+        status:
+          type: string
+          description: The status of the load operation.
+          enum:
+          - SUCCESS
+          - ERROR
+        componentId:
+          type: string
+          description: The component ID where the visualization was loaded.
+        error:
+          type: object
+          description: Error details if the load failed.
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+    LoadVisualizationRequest:
+      type: object
+      description: Request to load a community visualization.
+      properties:
+        manifestUrl:
+          type: string
+          format: uri
+          description: The URL to the visualization's manifest.json file, typically hosted on Google Cloud Storage.
+        componentId:
+          type: string
+          description: The unique identifier of the report component to render the visualization in.
+      required:
+      - manifestUrl
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication with domain-wide delegation. Requires Google Workspace or Cloud Identity organization.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/datastudio: Full access to manage Looker Studio assets and permissions.
+            https://www.googleapis.com/auth/datastudio.readonly: Read-only access to Looker Studio assets.
+            https://www.googleapis.com/auth/userinfo.profile: Access to user profile information.
+externalDocs:
+  description: Looker Studio API Reference
+  url: https://developers.google.com/looker-studio/integrate/api/reference

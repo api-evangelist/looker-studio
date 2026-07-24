@@ -1,0 +1,127 @@
+openapi: 3.1.0
+info:
+  title: Looker Studio Assets Configuration API
+  description: The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.
+  version: v1
+  contact:
+    name: Google
+    url: https://developers.google.com/looker-studio/integrate/api
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://datastudio.googleapis.com/v1
+  description: Looker Studio API production server
+security:
+- oauth2: []
+tags:
+- name: Configuration
+  description: Operations related to connector configuration, including user-configurable options and authentication setup.
+paths:
+  /connector/getConfig:
+    post:
+      operationId: getConfig
+      summary: Looker Studio Get connector configuration options
+      description: Returns the user-configurable options for the connector. Looker Studio displays these options to the user when setting up a data source. The configuration can include text inputs, dropdowns, checkboxes, and informational text. Supports stepped configuration where subsequent config options depend on previous selections.
+      tags:
+      - Configuration
+      requestBody:
+        required: true
+        description: The request containing language preference and any previously set config parameters.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetConfigRequest'
+      responses:
+        '200':
+          description: The connector configuration definition.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetConfigResponse'
+components:
+  schemas:
+    ConfigParam:
+      type: object
+      description: A single configuration parameter definition.
+      properties:
+        type:
+          type: string
+          description: The type of UI element to render.
+          enum:
+          - TEXTINPUT
+          - TEXTAREA
+          - SELECT_SINGLE
+          - SELECT_MULTIPLE
+          - CHECKBOX
+          - INFO
+        name:
+          type: string
+          description: The unique identifier for this parameter.
+        displayName:
+          type: string
+          description: The label displayed to the user.
+        helpText:
+          type: string
+          description: Help text shown below the input element.
+        placeholder:
+          type: string
+          description: Placeholder text for text input elements.
+        isDynamic:
+          type: boolean
+          description: Whether this parameter triggers a re-fetch of config when changed.
+        options:
+          type: array
+          description: Available options for SELECT_SINGLE and SELECT_MULTIPLE types.
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+                description: Display label for the option.
+              value:
+                type: string
+                description: The value submitted when this option is selected.
+    GetConfigRequest:
+      type: object
+      description: Request for connector configuration options.
+      properties:
+        languageCode:
+          type: string
+          description: The user's language preference (ISO 639 code).
+        configParams:
+          type: object
+          description: Previously configured parameters. Present during stepped configuration when the user has already filled in some options.
+          additionalProperties:
+            type: string
+    GetConfigResponse:
+      type: object
+      description: Response containing the connector's configurable options.
+      properties:
+        configParams:
+          type: array
+          description: The list of configuration elements to display to the user.
+          items:
+            $ref: '#/components/schemas/ConfigParam'
+        dateRangeRequired:
+          type: boolean
+          description: Whether the connector requires a date range to be specified by the user. Defaults to false.
+        isSteppedConfig:
+          type: boolean
+          description: Whether the connector uses stepped configuration where subsequent options depend on previous selections. Defaults to false.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication with domain-wide delegation. Requires Google Workspace or Cloud Identity organization.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/datastudio: Full access to manage Looker Studio assets and permissions.
+            https://www.googleapis.com/auth/datastudio.readonly: Read-only access to Looker Studio assets.
+            https://www.googleapis.com/auth/userinfo.profile: Access to user profile information.
+externalDocs:
+  description: Looker Studio API Reference
+  url: https://developers.google.com/looker-studio/integrate/api/reference

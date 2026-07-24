@@ -1,0 +1,107 @@
+openapi: 3.1.0
+info:
+  title: Looker Studio Assets Embed API
+  description: The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.
+  version: v1
+  contact:
+    name: Google
+    url: https://developers.google.com/looker-studio/integrate/api
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://datastudio.googleapis.com/v1
+  description: Looker Studio API production server
+security:
+- oauth2: []
+tags:
+- name: Embed
+  description: Operations for embedding Looker Studio reports in external applications and websites.
+paths:
+  /embed/reporting/{reportId}/page/{pageId}:
+    get:
+      operationId: getEmbeddedReport
+      summary: Looker Studio Get an embedded report page
+      description: Returns an embeddable version of a Looker Studio report page designed for use within an HTML iframe. The embedded report renders the specified page of the report with optional filter parameters. Users must have at least view access to the report to see the embedded content.
+      tags:
+      - Embed
+      parameters:
+      - name: reportId
+        in: path
+        required: true
+        description: The unique identifier of the Looker Studio report to embed.
+        schema:
+          type: string
+      - name: pageId
+        in: path
+        required: true
+        description: The identifier of the specific page within the report to display.
+        schema:
+          type: string
+      - name: params
+        in: query
+        required: false
+        description: URL-encoded JSON string containing filter parameters to apply to the embedded report. Filters restrict the data displayed based on dimension values.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns the HTML content for the embedded report page, suitable for rendering in an iframe.
+          content:
+            text/html:
+              schema:
+                type: string
+                description: HTML content of the embedded report page.
+        '403':
+          description: The user does not have permission to view this report or the report does not allow embedding.
+        '404':
+          description: The specified report or page was not found.
+  /embed/reporting/{reportId}:
+    get:
+      operationId: getEmbeddedReportDefault
+      summary: Looker Studio Get an embedded report (default page)
+      description: Returns an embeddable version of a Looker Studio report starting from the default (first) page. This endpoint is used when no specific page ID is required.
+      tags:
+      - Embed
+      parameters:
+      - name: reportId
+        in: path
+        required: true
+        description: The unique identifier of the Looker Studio report to embed.
+        schema:
+          type: string
+      - name: params
+        in: query
+        required: false
+        description: URL-encoded JSON string containing filter parameters to apply to the embedded report.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns the HTML content for the embedded report, suitable for rendering in an iframe.
+          content:
+            text/html:
+              schema:
+                type: string
+                description: HTML content of the embedded report.
+        '403':
+          description: The user does not have permission to view this report or the report does not allow embedding.
+        '404':
+          description: The specified report was not found.
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication with domain-wide delegation. Requires Google Workspace or Cloud Identity organization.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/datastudio: Full access to manage Looker Studio assets and permissions.
+            https://www.googleapis.com/auth/datastudio.readonly: Read-only access to Looker Studio assets.
+            https://www.googleapis.com/auth/userinfo.profile: Access to user profile information.
+externalDocs:
+  description: Looker Studio API Reference
+  url: https://developers.google.com/looker-studio/integrate/api/reference
