@@ -3,6 +3,19 @@ description: >-
   Looker Studio (formerly Google Data Studio) is a free tool that turns your data into informative, easy to read, easy
   to share, and fully customizable dashboards and reports. The API allows developers to programmatically manage assets,
   build custom connectors and visualizations, embed reports, and automate workflows.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.gstatic.com/analytics-suite/header/suite/v2/ic_data_studio.svg
 url: https://lookerstudio.google.com
 created: '2024-01-15'
@@ -19,162 +32,923 @@ tags:
   - Google
   - Reports
 apis:
-  - name: Looker Studio API
-    description: >-
-      The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It
-      provides methods for searching assets and managing asset permissions including getting, updating, adding, and
-      removing members.
-    image: https://www.gstatic.com/analytics-suite/header/suite/v2/ic_data_studio.svg
-    humanURL: https://developers.google.com/looker-studio/integrate/api
-    baseURL: https://datastudio.googleapis.com/v1
-    tags:
-      - Assets
-      - Automation
-      - Data Sources
-      - Permissions
-      - Reports
-    properties:
-      - type: Documentation
-        url: https://developers.google.com/looker-studio/integrate/api
-      - type: Reference
-        url: https://developers.google.com/looker-studio/integrate/api/reference
-      - type: OpenAPI
-        url: openapi/looker-studio-api-openapi.yml
-      - type: OpenAPI
-        url: https://lookerstudio.googleapis.com/$discovery/rest?version=v1
-      - type: Authentication
-        url: https://developers.google.com/looker-studio/api/authentication
-      - type: GettingStarted
-        url: https://developers.google.com/looker-studio/api/quickstart
-      - type: SDKs
-        url: https://developers.google.com/looker-studio/api/client-libraries
-      - type: RateLimits
-        url: https://developers.google.com/looker-studio/api/quotas
-      - type: ErrorCodes
-        url: https://developers.google.com/looker-studio/api/errors
-      - type: JSONSchema
-        url: json-schema/looker-studio-asset-schema.json
-      - type: JSONSchema
-        url: json-schema/looker-studio-permissions-schema.json
-      - type: JSONSchema
-        url: json-schema/looker-studio-report-schema.json
-      - type: JSONSchema
-        url: json-schema/looker-studio-data-source-schema.json
-  - name: Looker Studio Linking API
-    description: >-
-      The Looker Studio Linking API enables the creation of dynamic URLs that link to pre-configured reports. It allows
-      developers to define data sources, control report behavior, and customize settings through URL parameters.
-    humanURL: https://developers.google.com/looker-studio/integrate/linking-api
-    baseURL: https://lookerstudio.google.com
-    tags:
-      - Data Sources
-      - Integration
-      - Linking
-      - Reports
-      - URL Parameters
-    properties:
-      - type: Documentation
-        url: https://developers.google.com/looker-studio/integrate/linking-api
-      - type: OpenAPI
-        url: openapi/looker-studio-linking-api-openapi.yml
-  - name: Looker Studio Embedding API
-    description: >-
-      Embed Looker Studio reports in your applications using HTML iframe tags, oEmbed, and Open Graph Tags with
-      customizable parameters and filtering options. Supports embedding on platforms like Medium and Reddit.
-    humanURL: https://developers.google.com/looker-studio/integrate/embed
-    baseURL: https://lookerstudio.google.com/embed
-    tags:
-      - Embedding
-      - Iframe
-      - Integration
-      - Reports
-      - Sharing
-    properties:
-      - type: Documentation
-        url: https://developers.google.com/looker-studio/integrate/embed
-      - type: OpenAPI
-        url: openapi/looker-studio-embedding-api-openapi.yml
-      - type: GettingStarted
-        url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
-      - type: Security
-        url: https://developers.google.com/looker-studio/connector/embed-row-level-security
-  - name: Looker Studio Community Connector API
-    description: >-
-      Build custom data connectors to bring data from any source into Looker Studio. Connectors are built using Google
-      Apps Script and implement three core functions: getConfig(), getSchema(), and getData().
-    humanURL: https://developers.google.com/looker-studio/connector
-    baseURL: https://datastudio.google.com/datasources/create
-    tags:
-      - Apps Script
-      - Connectors
-      - Custom Integration
-      - Data Sources
-      - ETL
-    properties:
-      - type: Documentation
-        url: https://developers.google.com/looker-studio/connector
-      - type: Reference
-        url: https://developers.google.com/looker-studio/connector/reference
-      - type: OpenAPI
-        url: openapi/looker-studio-community-connector-api-openapi.yml
-      - type: GettingStarted
-        url: https://developers.google.com/looker-studio/connector/build
-      - type: Examples
-        url: https://developers.google.com/looker-studio/connector/examples
-      - type: Gallery
-        url: https://lookerstudio.google.com/data
-      - type: ChangeLog
-        url: https://developers.google.com/looker-studio/connector/changelog
-      - type: Publishing
-        url: https://developers.google.com/looker-studio/connector/publish-connector
-      - type: Sharing
-        url: https://developers.google.com/looker-studio/connector/share
-      - type: Direct Links
-        url: https://developers.google.com/looker-studio/connector/direct-links
-      - type: Codelabs
-        url: https://codelabs.developers.google.com/codelabs/community-connectors
-      - type: JSONSchema
-        url: json-schema/looker-studio-connector-schema.json
-  - name: Looker Studio Community Visualization API
-    description: >-
-      Build and deploy custom visualizations for Looker Studio using any JavaScript visualization library. The dscc
-      helper library simplifies development by providing functions for data subscriptions, component dimensions, and
-      user interactions.
-    humanURL: https://developers.google.com/looker-studio/visualization
-    baseURL: https://lookerstudio.google.com/visualization
-    tags:
-      - Components
-      - Custom Charts
-      - Data Visualization
-      - JavaScript
-      - Visualizations
-    properties:
-      - type: Documentation
-        url: https://developers.google.com/looker-studio/visualization
-      - type: Reference
-        url: https://developers.google.com/looker-studio/visualization/library-reference
-      - type: OpenAPI
-        url: openapi/looker-studio-community-visualization-api-openapi.yml
-      - type: GettingStarted
-        url: https://developers.google.com/looker-studio/visualization/write-viz
-      - type: SDKs
-        url: https://developers.google.com/looker-studio/visualization/library
-      - type: Local Development
-        url: https://developers.google.com/looker-studio/visualization/local-dev
-      - type: Open Source
-        url: https://developers.google.com/looker-studio/visualization/open-source
-      - type: Interactions
-        url: https://developers.google.com/looker-studio/visualization/interactions-guide
-      - type: Support
-        url: https://developers.google.com/looker-studio/visualization/support
-      - type: Codelabs
-        url: https://codelabs.developers.google.com/codelabs/community-visualization
-      - type: JSONSchema
-        url: json-schema/looker-studio-visualization-schema.json
+- aid: looker-studio:looker-studio-assets-api
+  name: Looker Studio Assets API
+  description: Operations for searching and managing Looker Studio assets (reports and data sources).
+  humanURL: https://developers.google.com/looker-studio/integrate/api
+  baseURL: https://datastudio.googleapis.com/v1
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/looker-studio-assets-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/api
+  - type: Reference
+    url: https://developers.google.com/looker-studio/integrate/api/reference
+  - type: Authentication
+    url: https://developers.google.com/looker-studio/api/authentication
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/api/quickstart
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/api/client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/looker-studio/api/quotas
+  - type: ErrorCodes
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: JSONSchema
+    url: json-schema/looker-studio-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-permissions-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-report-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-data-source-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/linking-api
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/embed
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+  - type: Security
+    url: https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/connector
+  - type: Reference
+    url: https://developers.google.com/looker-studio/connector/reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/connector/build
+  - type: Examples
+    url: https://developers.google.com/looker-studio/connector/examples
+  - type: Gallery
+    url: https://lookerstudio.google.com/data
+  - type: ChangeLog
+    url: https://developers.google.com/looker-studio/connector/changelog
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/connector/publish-connector
+  - type: Sharing
+    url: https://developers.google.com/looker-studio/connector/share
+  - type: Direct Links
+    url: https://developers.google.com/looker-studio/connector/direct-links
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-connectors
+  - type: JSONSchema
+    url: json-schema/looker-studio-connector-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/visualization
+  - type: Reference
+    url: https://developers.google.com/looker-studio/visualization/library-reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/visualization/write-viz
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/visualization/library
+  - type: Local Development
+    url: https://developers.google.com/looker-studio/visualization/local-dev
+  - type: Open Source
+    url: https://developers.google.com/looker-studio/visualization/open-source
+  - type: Interactions
+    url: https://developers.google.com/looker-studio/visualization/interactions-guide
+  - type: Support
+    url: https://developers.google.com/looker-studio/visualization/support
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-visualization
+  - type: JSONSchema
+    url: json-schema/looker-studio-visualization-schema.json
+- aid: looker-studio:looker-studio-authentication-api
+  name: Looker Studio Authentication API
+  description: >-
+    Operations for managing third-party authentication including OAuth2, API keys, and username/password
+    credentials.
+  humanURL: https://developers.google.com/looker-studio/integrate/api
+  baseURL: https://datastudio.googleapis.com/v1
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/looker-studio-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/api
+  - type: Reference
+    url: https://developers.google.com/looker-studio/integrate/api/reference
+  - type: Authentication
+    url: https://developers.google.com/looker-studio/api/authentication
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/api/quickstart
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/api/client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/looker-studio/api/quotas
+  - type: ErrorCodes
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: JSONSchema
+    url: json-schema/looker-studio-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-permissions-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-report-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-data-source-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/linking-api
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/embed
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+  - type: Security
+    url: https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/connector
+  - type: Reference
+    url: https://developers.google.com/looker-studio/connector/reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/connector/build
+  - type: Examples
+    url: https://developers.google.com/looker-studio/connector/examples
+  - type: Gallery
+    url: https://lookerstudio.google.com/data
+  - type: ChangeLog
+    url: https://developers.google.com/looker-studio/connector/changelog
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/connector/publish-connector
+  - type: Sharing
+    url: https://developers.google.com/looker-studio/connector/share
+  - type: Direct Links
+    url: https://developers.google.com/looker-studio/connector/direct-links
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-connectors
+  - type: JSONSchema
+    url: json-schema/looker-studio-connector-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/visualization
+  - type: Reference
+    url: https://developers.google.com/looker-studio/visualization/library-reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/visualization/write-viz
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/visualization/library
+  - type: Local Development
+    url: https://developers.google.com/looker-studio/visualization/local-dev
+  - type: Open Source
+    url: https://developers.google.com/looker-studio/visualization/open-source
+  - type: Interactions
+    url: https://developers.google.com/looker-studio/visualization/interactions-guide
+  - type: Support
+    url: https://developers.google.com/looker-studio/visualization/support
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-visualization
+  - type: JSONSchema
+    url: json-schema/looker-studio-visualization-schema.json
+- aid: looker-studio:looker-studio-configuration-api
+  name: Looker Studio Configuration API
+  description: >-
+    Operations related to connector configuration, including user-configurable options and authentication
+    setup.
+  humanURL: https://developers.google.com/looker-studio/integrate/api
+  baseURL: https://datastudio.googleapis.com/v1
+  tags:
+  - Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/looker-studio-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/api
+  - type: Reference
+    url: https://developers.google.com/looker-studio/integrate/api/reference
+  - type: Authentication
+    url: https://developers.google.com/looker-studio/api/authentication
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/api/quickstart
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/api/client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/looker-studio/api/quotas
+  - type: ErrorCodes
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: JSONSchema
+    url: json-schema/looker-studio-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-permissions-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-report-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-data-source-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/linking-api
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/embed
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+  - type: Security
+    url: https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/connector
+  - type: Reference
+    url: https://developers.google.com/looker-studio/connector/reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/connector/build
+  - type: Examples
+    url: https://developers.google.com/looker-studio/connector/examples
+  - type: Gallery
+    url: https://lookerstudio.google.com/data
+  - type: ChangeLog
+    url: https://developers.google.com/looker-studio/connector/changelog
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/connector/publish-connector
+  - type: Sharing
+    url: https://developers.google.com/looker-studio/connector/share
+  - type: Direct Links
+    url: https://developers.google.com/looker-studio/connector/direct-links
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-connectors
+  - type: JSONSchema
+    url: json-schema/looker-studio-connector-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/visualization
+  - type: Reference
+    url: https://developers.google.com/looker-studio/visualization/library-reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/visualization/write-viz
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/visualization/library
+  - type: Local Development
+    url: https://developers.google.com/looker-studio/visualization/local-dev
+  - type: Open Source
+    url: https://developers.google.com/looker-studio/visualization/open-source
+  - type: Interactions
+    url: https://developers.google.com/looker-studio/visualization/interactions-guide
+  - type: Support
+    url: https://developers.google.com/looker-studio/visualization/support
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-visualization
+  - type: JSONSchema
+    url: json-schema/looker-studio-visualization-schema.json
+- aid: looker-studio:looker-studio-data-api
+  name: Looker Studio Data API
+  description: Operations for fetching data from the external source and returning it to Looker Studio.
+  humanURL: https://developers.google.com/looker-studio/integrate/api
+  baseURL: https://datastudio.googleapis.com/v1
+  tags:
+  - Data
+  properties:
+  - type: OpenAPI
+    url: openapi/looker-studio-data-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/api
+  - type: Reference
+    url: https://developers.google.com/looker-studio/integrate/api/reference
+  - type: Authentication
+    url: https://developers.google.com/looker-studio/api/authentication
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/api/quickstart
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/api/client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/looker-studio/api/quotas
+  - type: ErrorCodes
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: JSONSchema
+    url: json-schema/looker-studio-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-permissions-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-report-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-data-source-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/linking-api
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/embed
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+  - type: Security
+    url: https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/connector
+  - type: Reference
+    url: https://developers.google.com/looker-studio/connector/reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/connector/build
+  - type: Examples
+    url: https://developers.google.com/looker-studio/connector/examples
+  - type: Gallery
+    url: https://lookerstudio.google.com/data
+  - type: ChangeLog
+    url: https://developers.google.com/looker-studio/connector/changelog
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/connector/publish-connector
+  - type: Sharing
+    url: https://developers.google.com/looker-studio/connector/share
+  - type: Direct Links
+    url: https://developers.google.com/looker-studio/connector/direct-links
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-connectors
+  - type: JSONSchema
+    url: json-schema/looker-studio-connector-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/visualization
+  - type: Reference
+    url: https://developers.google.com/looker-studio/visualization/library-reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/visualization/write-viz
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/visualization/library
+  - type: Local Development
+    url: https://developers.google.com/looker-studio/visualization/local-dev
+  - type: Open Source
+    url: https://developers.google.com/looker-studio/visualization/open-source
+  - type: Interactions
+    url: https://developers.google.com/looker-studio/visualization/interactions-guide
+  - type: Support
+    url: https://developers.google.com/looker-studio/visualization/support
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-visualization
+  - type: JSONSchema
+    url: json-schema/looker-studio-visualization-schema.json
+- aid: looker-studio:looker-studio-embed-api
+  name: Looker Studio Embed API
+  description: Operations for embedding Looker Studio reports in external applications and websites.
+  humanURL: https://developers.google.com/looker-studio/integrate/api
+  baseURL: https://datastudio.googleapis.com/v1
+  tags:
+  - Embed
+  properties:
+  - type: OpenAPI
+    url: openapi/looker-studio-embed-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/api
+  - type: Reference
+    url: https://developers.google.com/looker-studio/integrate/api/reference
+  - type: Authentication
+    url: https://developers.google.com/looker-studio/api/authentication
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/api/quickstart
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/api/client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/looker-studio/api/quotas
+  - type: ErrorCodes
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: JSONSchema
+    url: json-schema/looker-studio-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-permissions-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-report-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-data-source-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/linking-api
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/embed
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+  - type: Security
+    url: https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/connector
+  - type: Reference
+    url: https://developers.google.com/looker-studio/connector/reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/connector/build
+  - type: Examples
+    url: https://developers.google.com/looker-studio/connector/examples
+  - type: Gallery
+    url: https://lookerstudio.google.com/data
+  - type: ChangeLog
+    url: https://developers.google.com/looker-studio/connector/changelog
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/connector/publish-connector
+  - type: Sharing
+    url: https://developers.google.com/looker-studio/connector/share
+  - type: Direct Links
+    url: https://developers.google.com/looker-studio/connector/direct-links
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-connectors
+  - type: JSONSchema
+    url: json-schema/looker-studio-connector-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/visualization
+  - type: Reference
+    url: https://developers.google.com/looker-studio/visualization/library-reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/visualization/write-viz
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/visualization/library
+  - type: Local Development
+    url: https://developers.google.com/looker-studio/visualization/local-dev
+  - type: Open Source
+    url: https://developers.google.com/looker-studio/visualization/open-source
+  - type: Interactions
+    url: https://developers.google.com/looker-studio/visualization/interactions-guide
+  - type: Support
+    url: https://developers.google.com/looker-studio/visualization/support
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-visualization
+  - type: JSONSchema
+    url: json-schema/looker-studio-visualization-schema.json
+- aid: looker-studio:looker-studio-manifest-api
+  name: Looker Studio Manifest API
+  description: >-
+    Operations related to the visualization manifest configuration that defines how a visualization is
+    discovered and loaded.
+  humanURL: https://developers.google.com/looker-studio/integrate/api
+  baseURL: https://datastudio.googleapis.com/v1
+  tags:
+  - Manifest
+  properties:
+  - type: OpenAPI
+    url: openapi/looker-studio-manifest-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/api
+  - type: Reference
+    url: https://developers.google.com/looker-studio/integrate/api/reference
+  - type: Authentication
+    url: https://developers.google.com/looker-studio/api/authentication
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/api/quickstart
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/api/client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/looker-studio/api/quotas
+  - type: ErrorCodes
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: JSONSchema
+    url: json-schema/looker-studio-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-permissions-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-report-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-data-source-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/linking-api
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/embed
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+  - type: Security
+    url: https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/connector
+  - type: Reference
+    url: https://developers.google.com/looker-studio/connector/reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/connector/build
+  - type: Examples
+    url: https://developers.google.com/looker-studio/connector/examples
+  - type: Gallery
+    url: https://lookerstudio.google.com/data
+  - type: ChangeLog
+    url: https://developers.google.com/looker-studio/connector/changelog
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/connector/publish-connector
+  - type: Sharing
+    url: https://developers.google.com/looker-studio/connector/share
+  - type: Direct Links
+    url: https://developers.google.com/looker-studio/connector/direct-links
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-connectors
+  - type: JSONSchema
+    url: json-schema/looker-studio-connector-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/visualization
+  - type: Reference
+    url: https://developers.google.com/looker-studio/visualization/library-reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/visualization/write-viz
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/visualization/library
+  - type: Local Development
+    url: https://developers.google.com/looker-studio/visualization/local-dev
+  - type: Open Source
+    url: https://developers.google.com/looker-studio/visualization/open-source
+  - type: Interactions
+    url: https://developers.google.com/looker-studio/visualization/interactions-guide
+  - type: Support
+    url: https://developers.google.com/looker-studio/visualization/support
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-visualization
+  - type: JSONSchema
+    url: json-schema/looker-studio-visualization-schema.json
+- aid: looker-studio:looker-studio-oembed-api
+  name: Looker Studio oEmbed API
+  description: oEmbed-compatible endpoint for platforms that support the oEmbed standard.
+  humanURL: https://developers.google.com/looker-studio/integrate/api
+  baseURL: https://datastudio.googleapis.com/v1
+  tags:
+  - oEmbed
+  properties:
+  - type: OpenAPI
+    url: openapi/looker-studio-oembed-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/api
+  - type: Reference
+    url: https://developers.google.com/looker-studio/integrate/api/reference
+  - type: Authentication
+    url: https://developers.google.com/looker-studio/api/authentication
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/api/quickstart
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/api/client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/looker-studio/api/quotas
+  - type: ErrorCodes
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: JSONSchema
+    url: json-schema/looker-studio-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-permissions-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-report-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-data-source-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/linking-api
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/embed
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+  - type: Security
+    url: https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/connector
+  - type: Reference
+    url: https://developers.google.com/looker-studio/connector/reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/connector/build
+  - type: Examples
+    url: https://developers.google.com/looker-studio/connector/examples
+  - type: Gallery
+    url: https://lookerstudio.google.com/data
+  - type: ChangeLog
+    url: https://developers.google.com/looker-studio/connector/changelog
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/connector/publish-connector
+  - type: Sharing
+    url: https://developers.google.com/looker-studio/connector/share
+  - type: Direct Links
+    url: https://developers.google.com/looker-studio/connector/direct-links
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-connectors
+  - type: JSONSchema
+    url: json-schema/looker-studio-connector-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/visualization
+  - type: Reference
+    url: https://developers.google.com/looker-studio/visualization/library-reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/visualization/write-viz
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/visualization/library
+  - type: Local Development
+    url: https://developers.google.com/looker-studio/visualization/local-dev
+  - type: Open Source
+    url: https://developers.google.com/looker-studio/visualization/open-source
+  - type: Interactions
+    url: https://developers.google.com/looker-studio/visualization/interactions-guide
+  - type: Support
+    url: https://developers.google.com/looker-studio/visualization/support
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-visualization
+  - type: JSONSchema
+    url: json-schema/looker-studio-visualization-schema.json
+- aid: looker-studio:looker-studio-permissions-api
+  name: Looker Studio Permissions API
+  description: >-
+    Operations for managing asset permissions including getting, updating, adding, and revoking member
+    access.
+  humanURL: https://developers.google.com/looker-studio/integrate/api
+  baseURL: https://datastudio.googleapis.com/v1
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/looker-studio-permissions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/api
+  - type: Reference
+    url: https://developers.google.com/looker-studio/integrate/api/reference
+  - type: Authentication
+    url: https://developers.google.com/looker-studio/api/authentication
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/api/quickstart
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/api/client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/looker-studio/api/quotas
+  - type: ErrorCodes
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: JSONSchema
+    url: json-schema/looker-studio-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-permissions-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-report-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-data-source-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/linking-api
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/embed
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+  - type: Security
+    url: https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/connector
+  - type: Reference
+    url: https://developers.google.com/looker-studio/connector/reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/connector/build
+  - type: Examples
+    url: https://developers.google.com/looker-studio/connector/examples
+  - type: Gallery
+    url: https://lookerstudio.google.com/data
+  - type: ChangeLog
+    url: https://developers.google.com/looker-studio/connector/changelog
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/connector/publish-connector
+  - type: Sharing
+    url: https://developers.google.com/looker-studio/connector/share
+  - type: Direct Links
+    url: https://developers.google.com/looker-studio/connector/direct-links
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-connectors
+  - type: JSONSchema
+    url: json-schema/looker-studio-connector-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/visualization
+  - type: Reference
+    url: https://developers.google.com/looker-studio/visualization/library-reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/visualization/write-viz
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/visualization/library
+  - type: Local Development
+    url: https://developers.google.com/looker-studio/visualization/local-dev
+  - type: Open Source
+    url: https://developers.google.com/looker-studio/visualization/open-source
+  - type: Interactions
+    url: https://developers.google.com/looker-studio/visualization/interactions-guide
+  - type: Support
+    url: https://developers.google.com/looker-studio/visualization/support
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-visualization
+  - type: JSONSchema
+    url: json-schema/looker-studio-visualization-schema.json
+- aid: looker-studio:looker-studio-reports-api
+  name: Looker Studio Reports API
+  description: Operations for creating and configuring linked Looker Studio reports.
+  humanURL: https://developers.google.com/looker-studio/integrate/api
+  baseURL: https://datastudio.googleapis.com/v1
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/looker-studio-reports-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/api
+  - type: Reference
+    url: https://developers.google.com/looker-studio/integrate/api/reference
+  - type: Authentication
+    url: https://developers.google.com/looker-studio/api/authentication
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/api/quickstart
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/api/client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/looker-studio/api/quotas
+  - type: ErrorCodes
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: JSONSchema
+    url: json-schema/looker-studio-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-permissions-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-report-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-data-source-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/linking-api
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/embed
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+  - type: Security
+    url: https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/connector
+  - type: Reference
+    url: https://developers.google.com/looker-studio/connector/reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/connector/build
+  - type: Examples
+    url: https://developers.google.com/looker-studio/connector/examples
+  - type: Gallery
+    url: https://lookerstudio.google.com/data
+  - type: ChangeLog
+    url: https://developers.google.com/looker-studio/connector/changelog
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/connector/publish-connector
+  - type: Sharing
+    url: https://developers.google.com/looker-studio/connector/share
+  - type: Direct Links
+    url: https://developers.google.com/looker-studio/connector/direct-links
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-connectors
+  - type: JSONSchema
+    url: json-schema/looker-studio-connector-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/visualization
+  - type: Reference
+    url: https://developers.google.com/looker-studio/visualization/library-reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/visualization/write-viz
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/visualization/library
+  - type: Local Development
+    url: https://developers.google.com/looker-studio/visualization/local-dev
+  - type: Open Source
+    url: https://developers.google.com/looker-studio/visualization/open-source
+  - type: Interactions
+    url: https://developers.google.com/looker-studio/visualization/interactions-guide
+  - type: Support
+    url: https://developers.google.com/looker-studio/visualization/support
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-visualization
+  - type: JSONSchema
+    url: json-schema/looker-studio-visualization-schema.json
+- aid: looker-studio:looker-studio-schema-api
+  name: Looker Studio Schema API
+  description: >-
+    Operations for defining the data structure and field definitions returned by the connector.
+  humanURL: https://developers.google.com/looker-studio/integrate/api
+  baseURL: https://datastudio.googleapis.com/v1
+  tags:
+  - Schema
+  properties:
+  - type: OpenAPI
+    url: openapi/looker-studio-schema-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/api
+  - type: Reference
+    url: https://developers.google.com/looker-studio/integrate/api/reference
+  - type: Authentication
+    url: https://developers.google.com/looker-studio/api/authentication
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/api/quickstart
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/api/client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/looker-studio/api/quotas
+  - type: ErrorCodes
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: JSONSchema
+    url: json-schema/looker-studio-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-permissions-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-report-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-data-source-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/linking-api
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/embed
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+  - type: Security
+    url: https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/connector
+  - type: Reference
+    url: https://developers.google.com/looker-studio/connector/reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/connector/build
+  - type: Examples
+    url: https://developers.google.com/looker-studio/connector/examples
+  - type: Gallery
+    url: https://lookerstudio.google.com/data
+  - type: ChangeLog
+    url: https://developers.google.com/looker-studio/connector/changelog
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/connector/publish-connector
+  - type: Sharing
+    url: https://developers.google.com/looker-studio/connector/share
+  - type: Direct Links
+    url: https://developers.google.com/looker-studio/connector/direct-links
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-connectors
+  - type: JSONSchema
+    url: json-schema/looker-studio-connector-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/visualization
+  - type: Reference
+    url: https://developers.google.com/looker-studio/visualization/library-reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/visualization/write-viz
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/visualization/library
+  - type: Local Development
+    url: https://developers.google.com/looker-studio/visualization/local-dev
+  - type: Open Source
+    url: https://developers.google.com/looker-studio/visualization/open-source
+  - type: Interactions
+    url: https://developers.google.com/looker-studio/visualization/interactions-guide
+  - type: Support
+    url: https://developers.google.com/looker-studio/visualization/support
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-visualization
+  - type: JSONSchema
+    url: json-schema/looker-studio-visualization-schema.json
+- aid: looker-studio:looker-studio-visualization-api
+  name: Looker Studio Visualization API
+  description: Operations for loading and rendering community visualizations in Looker Studio reports.
+  humanURL: https://developers.google.com/looker-studio/integrate/api
+  baseURL: https://datastudio.googleapis.com/v1
+  tags:
+  - Visualization
+  properties:
+  - type: OpenAPI
+    url: openapi/looker-studio-visualization-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/api
+  - type: Reference
+    url: https://developers.google.com/looker-studio/integrate/api/reference
+  - type: Authentication
+    url: https://developers.google.com/looker-studio/api/authentication
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/api/quickstart
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/api/client-libraries
+  - type: RateLimits
+    url: https://developers.google.com/looker-studio/api/quotas
+  - type: ErrorCodes
+    url: https://developers.google.com/looker-studio/api/errors
+  - type: JSONSchema
+    url: json-schema/looker-studio-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-permissions-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-report-schema.json
+  - type: JSONSchema
+    url: json-schema/looker-studio-data-source-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/linking-api
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/integrate/embed
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/integrate/embedding-api/get-started
+  - type: Security
+    url: https://developers.google.com/looker-studio/connector/embed-row-level-security
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/connector
+  - type: Reference
+    url: https://developers.google.com/looker-studio/connector/reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/connector/build
+  - type: Examples
+    url: https://developers.google.com/looker-studio/connector/examples
+  - type: Gallery
+    url: https://lookerstudio.google.com/data
+  - type: ChangeLog
+    url: https://developers.google.com/looker-studio/connector/changelog
+  - type: Publishing
+    url: https://developers.google.com/looker-studio/connector/publish-connector
+  - type: Sharing
+    url: https://developers.google.com/looker-studio/connector/share
+  - type: Direct Links
+    url: https://developers.google.com/looker-studio/connector/direct-links
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-connectors
+  - type: JSONSchema
+    url: json-schema/looker-studio-connector-schema.json
+  - type: Documentation
+    url: https://developers.google.com/looker-studio/visualization
+  - type: Reference
+    url: https://developers.google.com/looker-studio/visualization/library-reference
+  - type: GettingStarted
+    url: https://developers.google.com/looker-studio/visualization/write-viz
+  - type: SDKs
+    url: https://developers.google.com/looker-studio/visualization/library
+  - type: Local Development
+    url: https://developers.google.com/looker-studio/visualization/local-dev
+  - type: Open Source
+    url: https://developers.google.com/looker-studio/visualization/open-source
+  - type: Interactions
+    url: https://developers.google.com/looker-studio/visualization/interactions-guide
+  - type: Support
+    url: https://developers.google.com/looker-studio/visualization/support
+  - type: Codelabs
+    url: https://codelabs.developers.google.com/codelabs/community-visualization
+  - type: JSONSchema
+    url: json-schema/looker-studio-visualization-schema.json
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/looker-studio/overview
   - type: AgenticAccess
     url: agentic-access/looker-studio-agentic-access.yml
   - type: VulnerabilityDisclosure
