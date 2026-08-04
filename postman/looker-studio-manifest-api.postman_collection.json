@@ -1,0 +1,138 @@
+{
+  "info": {
+    "_postman_id": "52c5f4fa-5bf2-421e-a6a4-7a2a2105ef5d",
+    "name": "Looker Studio Assets Manifest API",
+    "description": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:07:42.000Z",
+    "updatedAt": "2026-07-28T02:07:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-52c5f4fa-5bf2-421e-a6a4-7a2a2105ef5d"
+  },
+  "item": [
+    {
+      "name": "visualization",
+      "item": [
+        {
+          "name": "manifest",
+          "item": [
+            {
+              "name": "Looker Studio Get visualization manifest schema",
+              "id": "3d8f1631-8fad-4758-b432-d780a8a15545",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/visualization/manifest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "visualization",
+                    "manifest"
+                  ]
+                },
+                "description": "Returns the JSON schema definition for community visualization manifests. The manifest defines the visualization's name, description, resource locations, data configuration, and style elements."
+              },
+              "response": [
+                {
+                  "id": "72457555-8708-4cad-ae25-d762b8d6bc30",
+                  "name": "The manifest schema definition.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/visualization/manifest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "visualization",
+                        "manifest"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"components\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"resource\": {\n        \"js\": \"<uri>\",\n        \"css\": \"<uri>\"\n      },\n      \"description\": \"<string>\",\n      \"iconUrl\": \"<uri>\",\n      \"config\": {\n        \"data\": [\n          {\n            \"id\": \"<string>\",\n            \"label\": \"<string>\",\n            \"elements\": [\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"METRIC\",\n                \"options\": {\n                  \"min\": \"<integer>\",\n                  \"max\": \"<integer>\"\n                }\n              },\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"METRIC\",\n                \"options\": {\n                  \"min\": \"<integer>\",\n                  \"max\": \"<integer>\"\n                }\n              }\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"label\": \"<string>\",\n            \"elements\": [\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"METRIC\",\n                \"options\": {\n                  \"min\": \"<integer>\",\n                  \"max\": \"<integer>\"\n                }\n              },\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"DIMENSION\",\n                \"options\": {\n                  \"min\": \"<integer>\",\n                  \"max\": \"<integer>\"\n                }\n              }\n            ]\n          }\n        ],\n        \"style\": [\n          {\n            \"id\": \"<string>\",\n            \"label\": \"<string>\",\n            \"elements\": [\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"CHECKBOX\",\n                \"defaultValue\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"BORDER_WEIGHT\",\n                \"defaultValue\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"label\": \"<string>\",\n            \"elements\": [\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"BORDER_WEIGHT\",\n                \"defaultValue\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"TEXTINPUT\",\n                \"defaultValue\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"interactions\": [\n          {\n            \"id\": \"<string>\",\n            \"supportedActions\": [\n              \"FILTER\",\n              \"FILTER\"\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"supportedActions\": [\n              \"FILTER\",\n              \"FILTER\"\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"resource\": {\n        \"js\": \"<uri>\",\n        \"css\": \"<uri>\"\n      },\n      \"description\": \"<string>\",\n      \"iconUrl\": \"<uri>\",\n      \"config\": {\n        \"data\": [\n          {\n            \"id\": \"<string>\",\n            \"label\": \"<string>\",\n            \"elements\": [\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"METRIC\",\n                \"options\": {\n                  \"min\": \"<integer>\",\n                  \"max\": \"<integer>\"\n                }\n              },\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"DIMENSION\",\n                \"options\": {\n                  \"min\": \"<integer>\",\n                  \"max\": \"<integer>\"\n                }\n              }\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"label\": \"<string>\",\n            \"elements\": [\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"METRIC\",\n                \"options\": {\n                  \"min\": \"<integer>\",\n                  \"max\": \"<integer>\"\n                }\n              },\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"DIMENSION\",\n                \"options\": {\n                  \"min\": \"<integer>\",\n                  \"max\": \"<integer>\"\n                }\n              }\n            ]\n          }\n        ],\n        \"style\": [\n          {\n            \"id\": \"<string>\",\n            \"label\": \"<string>\",\n            \"elements\": [\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"SELECT_RADIO\",\n                \"defaultValue\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"SELECT_SINGLE\",\n                \"defaultValue\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"label\": \"<string>\",\n            \"elements\": [\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"FONT_SIZE\",\n                \"defaultValue\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"label\": \"<string>\",\n                \"type\": \"OPACITY\",\n                \"defaultValue\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"interactions\": [\n          {\n            \"id\": \"<string>\",\n            \"supportedActions\": [\n              \"FILTER\",\n              \"FILTER\"\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"supportedActions\": [\n              \"FILTER\",\n              \"FILTER\"\n            ]\n          }\n        ]\n      }\n    }\n  ],\n  \"organization\": \"<string>\",\n  \"description\": \"<string>\",\n  \"logoUrl\": \"<uri>\",\n  \"devMode\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:07:43.000Z",
+                  "updatedAt": "2026-07-28T02:07:43.000Z",
+                  "uid": "35240-72457555-8708-4cad-ae25-d762b8d6bc30"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:43.000Z",
+              "updatedAt": "2026-07-28T02:07:43.000Z",
+              "uid": "35240-3d8f1631-8fad-4758-b432-d780a8a15545"
+            }
+          ],
+          "id": "5d3afc33-ddac-46df-8baf-8b918af358e7",
+          "createdAt": "2026-07-28T02:07:43.000Z",
+          "updatedAt": "2026-07-28T02:07:43.000Z",
+          "uid": "35240-5d3afc33-ddac-46df-8baf-8b918af358e7"
+        }
+      ],
+      "id": "11e3aef7-5b58-4ce9-be8d-646c5144c6da",
+      "createdAt": "2026-07-28T02:07:43.000Z",
+      "updatedAt": "2026-07-28T02:07:43.000Z",
+      "uid": "35240-11e3aef7-5b58-4ce9-be8d-646c5144c6da"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://datastudio.googleapis.com/v1"
+    }
+  ]
+}

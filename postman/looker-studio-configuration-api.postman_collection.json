@@ -1,0 +1,166 @@
+{
+  "info": {
+    "_postman_id": "a255b365-b1fe-4416-9d8a-cbb1be523404",
+    "name": "Looker Studio Assets Configuration API",
+    "description": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:07:37.000Z",
+    "updatedAt": "2026-07-28T02:07:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a255b365-b1fe-4416-9d8a-cbb1be523404"
+  },
+  "item": [
+    {
+      "name": "connector",
+      "item": [
+        {
+          "name": "getConfig",
+          "item": [
+            {
+              "name": "Looker Studio Get connector configuration options",
+              "id": "49451c42-20af-4f0b-a60e-8f38f2492aaa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"languageCode\": \"<string>\",\n  \"configParams\": {\n    \"sed_095\": \"<string>\",\n    \"ex_8\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connector/getConfig",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connector",
+                    "getConfig"
+                  ]
+                },
+                "description": "Returns the user-configurable options for the connector. Looker Studio displays these options to the user when setting up a data source. The configuration can include text inputs, dropdowns, checkboxes, and informational text. Supports stepped configuration where subsequent config options depend on previous selections."
+              },
+              "response": [
+                {
+                  "id": "3e44626f-05fd-4de0-8e51-77339d0c0121",
+                  "name": "The connector configuration definition.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"languageCode\": \"<string>\",\n  \"configParams\": {\n    \"sed_095\": \"<string>\",\n    \"ex_8\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/connector/getConfig",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "connector",
+                        "getConfig"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"configParams\": [\n    {\n      \"type\": \"INFO\",\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"helpText\": \"<string>\",\n      \"placeholder\": \"<string>\",\n      \"isDynamic\": \"<boolean>\",\n      \"options\": [\n        {\n          \"label\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"type\": \"TEXTAREA\",\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"helpText\": \"<string>\",\n      \"placeholder\": \"<string>\",\n      \"isDynamic\": \"<boolean>\",\n      \"options\": [\n        {\n          \"label\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"dateRangeRequired\": \"<boolean>\",\n  \"isSteppedConfig\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:07:38.000Z",
+                  "updatedAt": "2026-07-28T02:07:38.000Z",
+                  "uid": "35240-3e44626f-05fd-4de0-8e51-77339d0c0121"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:38.000Z",
+              "updatedAt": "2026-07-28T02:07:38.000Z",
+              "uid": "35240-49451c42-20af-4f0b-a60e-8f38f2492aaa"
+            }
+          ],
+          "id": "6160fe2f-ffaf-40d4-b6d7-7157bd40aa64",
+          "createdAt": "2026-07-28T02:07:38.000Z",
+          "updatedAt": "2026-07-28T02:07:38.000Z",
+          "uid": "35240-6160fe2f-ffaf-40d4-b6d7-7157bd40aa64"
+        }
+      ],
+      "id": "be4a1574-4d55-416f-8e12-4a0fcab7dd50",
+      "createdAt": "2026-07-28T02:07:38.000Z",
+      "updatedAt": "2026-07-28T02:07:38.000Z",
+      "uid": "35240-be4a1574-4d55-416f-8e12-4a0fcab7dd50"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://datastudio.googleapis.com/v1"
+    }
+  ]
+}

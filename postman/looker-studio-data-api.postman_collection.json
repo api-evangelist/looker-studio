@@ -1,0 +1,166 @@
+{
+  "info": {
+    "_postman_id": "2b65e5c6-2b9d-4811-adae-05c13b211762",
+    "name": "Looker Studio Assets Data API",
+    "description": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:07:38.000Z",
+    "updatedAt": "2026-07-28T02:07:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2b65e5c6-2b9d-4811-adae-05c13b211762"
+  },
+  "item": [
+    {
+      "name": "connector",
+      "item": [
+        {
+          "name": "getData",
+          "item": [
+            {
+              "name": "Looker Studio Get data rows",
+              "id": "c09242c6-ca99-4cd2-9184-021b8b3bd52a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configParams\": {\n    \"elit2\": \"<string>\",\n    \"in_a\": \"<string>\"\n  },\n  \"dateRange\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\"\n  },\n  \"fields\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"dimensionFilters\": [\n    {\n      \"fieldName\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"CONTAINS\",\n      \"operator\": \"OR\"\n    },\n    {\n      \"fieldName\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"BETWEEN\",\n      \"operator\": \"OR\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connector/getData",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connector",
+                    "getData"
+                  ]
+                },
+                "description": "Fetches tabular data from the external source matching the request criteria. Receives configuration parameters, optional date ranges, requested field names, and dimension filters. Returns rows with values in the schema-defined order. Limited to 1 million rows per request."
+              },
+              "response": [
+                {
+                  "id": "135f6e51-65a7-4a59-9ca9-96382a483101",
+                  "name": "The data rows matching the request criteria.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"configParams\": {\n    \"elit2\": \"<string>\",\n    \"in_a\": \"<string>\"\n  },\n  \"dateRange\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\"\n  },\n  \"fields\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"dimensionFilters\": [\n    {\n      \"fieldName\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"CONTAINS\",\n      \"operator\": \"OR\"\n    },\n    {\n      \"fieldName\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"BETWEEN\",\n      \"operator\": \"OR\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/connector/getData",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "connector",
+                        "getData"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"schema\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dataType\": \"BOOLEAN\",\n      \"semantics\": {\n        \"conceptType\": \"DIMENSION\",\n        \"semanticType\": \"QUARTER\",\n        \"semanticGroup\": \"<string>\",\n        \"isReaggregatable\": \"<boolean>\"\n      },\n      \"group\": \"<string>\",\n      \"formula\": \"<string>\",\n      \"isDefault\": \"<boolean>\",\n      \"defaultAggregationType\": \"SUM\",\n      \"isHidden\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dataType\": \"BOOLEAN\",\n      \"semantics\": {\n        \"conceptType\": \"METRIC\",\n        \"semanticType\": \"URL\",\n        \"semanticGroup\": \"<string>\",\n        \"isReaggregatable\": \"<boolean>\"\n      },\n      \"group\": \"<string>\",\n      \"formula\": \"<string>\",\n      \"isDefault\": \"<boolean>\",\n      \"defaultAggregationType\": \"AVG\",\n      \"isHidden\": \"<boolean>\"\n    }\n  ],\n  \"rows\": [\n    {\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"filtersApplied\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:07:39.000Z",
+                  "updatedAt": "2026-07-28T02:07:39.000Z",
+                  "uid": "35240-135f6e51-65a7-4a59-9ca9-96382a483101"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:39.000Z",
+              "updatedAt": "2026-07-28T02:07:39.000Z",
+              "uid": "35240-c09242c6-ca99-4cd2-9184-021b8b3bd52a"
+            }
+          ],
+          "id": "a355d485-d500-45a2-be9a-4f8863f8c9e2",
+          "createdAt": "2026-07-28T02:07:39.000Z",
+          "updatedAt": "2026-07-28T02:07:39.000Z",
+          "uid": "35240-a355d485-d500-45a2-be9a-4f8863f8c9e2"
+        }
+      ],
+      "id": "6d9cf379-a99e-4a93-9021-4d9e0c5ab37b",
+      "createdAt": "2026-07-28T02:07:39.000Z",
+      "updatedAt": "2026-07-28T02:07:39.000Z",
+      "uid": "35240-6d9cf379-a99e-4a93-9021-4d9e0c5ab37b"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://datastudio.googleapis.com/v1"
+    }
+  ]
+}

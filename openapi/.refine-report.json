@@ -1,0 +1,34 @@
+{
+  "provider": "looker-studio",
+  "sources": [
+    "looker-studio-assets-api-openapi.yml",
+    "looker-studio-authentication-api-openapi.yml",
+    "looker-studio-configuration-api-openapi.yml",
+    "looker-studio-data-api-openapi.yml",
+    "looker-studio-embed-api-openapi.yml",
+    "looker-studio-manifest-api-openapi.yml",
+    "looker-studio-oembed-api-openapi.yml",
+    "looker-studio-permissions-api-openapi.yml",
+    "looker-studio-reports-api-openapi.yml",
+    "looker-studio-schema-api-openapi.yml",
+    "looker-studio-visualization-api-openapi.yml"
+  ],
+  "outputs": [
+    "looker-studio-assets-api-openapi.yml",
+    "looker-studio-authentication-api-openapi.yml",
+    "looker-studio-configuration-api-openapi.yml",
+    "looker-studio-data-api-openapi.yml",
+    "looker-studio-embed-api-openapi.yml",
+    "looker-studio-manifest-api-openapi.yml",
+    "looker-studio-oembed-api-openapi.yml",
+    "looker-studio-permissions-api-openapi.yml",
+    "looker-studio-reports-api-openapi.yml",
+    "looker-studio-schema-api-openapi.yml",
+    "looker-studio-visualization-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

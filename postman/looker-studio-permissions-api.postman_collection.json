@@ -1,0 +1,1500 @@
+{
+  "info": {
+    "_postman_id": "f54f5333-9f79-471f-8abf-a359b92da15e",
+    "name": "Looker Studio Assets Permissions API",
+    "description": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:07:46.000Z",
+    "updatedAt": "2026-07-28T02:07:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f54f5333-9f79-471f-8abf-a359b92da15e"
+  },
+  "item": [
+    {
+      "name": "assets",
+      "item": [
+        {
+          "name": "{assetId}",
+          "item": [
+            {
+              "name": "permissions",
+              "item": [
+                {
+                  "name": "Looker Studio Get asset permissions",
+                  "id": "dea4d96e-17d5-4b6c-8251-dc38f150f1a4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":assetId",
+                        "permissions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "26f5da10-c12e-4d79-b796-a9c5c0d47472",
+                          "key": "assetId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Looker Studio asset."
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the permissions for a specified Looker Studio asset. Returns the role-to-member mapping and an etag for concurrency control."
+                  },
+                  "response": [
+                    {
+                      "id": "697d3aca-54b9-4423-ac1c-91dac2a5dab2",
+                      "name": "Successful response containing the asset permissions.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"permissions\": {\n    \"velit_c7\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dolore_1b\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"anim2f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-697d3aca-54b9-4423-ac1c-91dac2a5dab2"
+                    },
+                    {
+                      "id": "cd64ea70-76c7-417d-b6ea-f057c746b52f",
+                      "name": "Authentication required or invalid credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-cd64ea70-76c7-417d-b6ea-f057c746b52f"
+                    },
+                    {
+                      "id": "9a844383-6802-4841-87ac-06a0708af552",
+                      "name": "Insufficient permissions to view this asset's permissions.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-9a844383-6802-4841-87ac-06a0708af552"
+                    },
+                    {
+                      "id": "84134f2f-e1f5-4ca5-b9e9-f12aad1665e9",
+                      "name": "Asset not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-84134f2f-e1f5-4ca5-b9e9-f12aad1665e9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:07:46.000Z",
+                  "updatedAt": "2026-07-28T02:07:46.000Z",
+                  "uid": "35240-dea4d96e-17d5-4b6c-8251-dc38f150f1a4"
+                },
+                {
+                  "name": "Looker Studio Update asset permissions",
+                  "id": "6a8fdd32-e6dc-419f-824b-6d97e619cd1b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"permissions\": {\n    \"velit_c7\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dolore_1b\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"anim2f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":assetId",
+                        "permissions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6358db30-fcad-44ab-b749-816123610d31",
+                          "key": "assetId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Looker Studio asset."
+                        }
+                      ]
+                    },
+                    "description": "Modifies the permissions for a specified Looker Studio asset. Uses the etag for optimistic concurrency control to prevent conflicting updates."
+                  },
+                  "response": [
+                    {
+                      "id": "cae5539f-8ec6-4d08-b1fa-2fb950d195d2",
+                      "name": "Successful response with the updated permissions.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"permissions\": {\n    \"velit_c7\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dolore_1b\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"anim2f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"permissions\": {\n    \"velit_c7\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dolore_1b\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"anim2f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-cae5539f-8ec6-4d08-b1fa-2fb950d195d2"
+                    },
+                    {
+                      "id": "00512f68-b671-4da4-9769-60cb84382a5f",
+                      "name": "Invalid request body or parameters.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"permissions\": {\n    \"velit_c7\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dolore_1b\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"anim2f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-00512f68-b671-4da4-9769-60cb84382a5f"
+                    },
+                    {
+                      "id": "070aafea-344f-4d1a-8200-0035b12c21e5",
+                      "name": "Authentication required or invalid credentials.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"permissions\": {\n    \"velit_c7\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dolore_1b\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"anim2f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-070aafea-344f-4d1a-8200-0035b12c21e5"
+                    },
+                    {
+                      "id": "2ac83f1f-622c-4706-aa79-7345c5cf03a9",
+                      "name": "Insufficient permissions to modify this asset's permissions.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"permissions\": {\n    \"velit_c7\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dolore_1b\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"anim2f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-2ac83f1f-622c-4706-aa79-7345c5cf03a9"
+                    },
+                    {
+                      "id": "b38f88a4-9ecb-4c75-b821-8284b61c31e2",
+                      "name": "Asset not found.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"permissions\": {\n    \"velit_c7\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dolore_1b\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"anim2f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-b38f88a4-9ecb-4c75-b821-8284b61c31e2"
+                    },
+                    {
+                      "id": "eba00553-f473-4395-8758-6f9a64b3e13c",
+                      "name": "Etag mismatch indicating a conflicting concurrent update.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"permissions\": {\n    \"velit_c7\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dolore_1b\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"anim2f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-eba00553-f473-4395-8758-6f9a64b3e13c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:07:46.000Z",
+                  "updatedAt": "2026-07-28T02:07:46.000Z",
+                  "uid": "35240-6a8fdd32-e6dc-419f-824b-6d97e619cd1b"
+                }
+              ],
+              "id": "73c3dbb7-b0b6-40de-a173-cce0665869d1",
+              "createdAt": "2026-07-28T02:07:46.000Z",
+              "updatedAt": "2026-07-28T02:07:46.000Z",
+              "uid": "35240-73c3dbb7-b0b6-40de-a173-cce0665869d1"
+            },
+            {
+              "name": "permissions:addMembers",
+              "item": [
+                {
+                  "name": "Looker Studio Add members to asset permissions",
+                  "id": "6d8ec53b-641f-4eed-9300-8baf5ff81aaa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"role\": \"LINK_VIEWER\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:assetId/permissions:addMembers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":assetId",
+                        "permissions:addMembers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "35bfaf0d-fd03-48a1-94a5-6b6a189da6b5",
+                          "key": "assetId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Looker Studio asset."
+                        }
+                      ]
+                    },
+                    "description": "Adds one or more members to a Looker Studio asset's permissions with a specified role. Members can be users, groups, domains, or service accounts."
+                  },
+                  "response": [
+                    {
+                      "id": "11c22d89-49ee-423f-96f7-f2e42b405d1b",
+                      "name": "Successful response after adding the members.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"LINK_VIEWER\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions:addMembers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions:addMembers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"permissions\": {\n    \"velit_c7\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dolore_1b\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"anim2f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-11c22d89-49ee-423f-96f7-f2e42b405d1b"
+                    },
+                    {
+                      "id": "fcd0be7f-e82b-4c43-87da-4253f6270218",
+                      "name": "Invalid request body or member format.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"LINK_VIEWER\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions:addMembers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions:addMembers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-fcd0be7f-e82b-4c43-87da-4253f6270218"
+                    },
+                    {
+                      "id": "0ca6def5-d1a4-490e-b267-8e2833810538",
+                      "name": "Authentication required or invalid credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"LINK_VIEWER\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions:addMembers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions:addMembers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-0ca6def5-d1a4-490e-b267-8e2833810538"
+                    },
+                    {
+                      "id": "73c26674-76a9-4c74-b4a5-d9f8173b457b",
+                      "name": "Insufficient permissions to add members to this asset.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"LINK_VIEWER\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions:addMembers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions:addMembers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-73c26674-76a9-4c74-b4a5-d9f8173b457b"
+                    },
+                    {
+                      "id": "bb601660-2802-4ee5-abb7-6abbbda80a00",
+                      "name": "Asset not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"LINK_VIEWER\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions:addMembers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions:addMembers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-bb601660-2802-4ee5-abb7-6abbbda80a00"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:07:46.000Z",
+                  "updatedAt": "2026-07-28T02:07:46.000Z",
+                  "uid": "35240-6d8ec53b-641f-4eed-9300-8baf5ff81aaa"
+                }
+              ],
+              "id": "60eb2bec-4d2a-4405-a571-356ec8c25963",
+              "createdAt": "2026-07-28T02:07:46.000Z",
+              "updatedAt": "2026-07-28T02:07:46.000Z",
+              "uid": "35240-60eb2bec-4d2a-4405-a571-356ec8c25963"
+            },
+            {
+              "name": "permissions:revokeAllPermissions",
+              "item": [
+                {
+                  "name": "Looker Studio Revoke all permissions for members",
+                  "id": "4591e9f0-d236-4877-a4a6-54b9abf4596d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/:assetId/permissions:revokeAllPermissions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        ":assetId",
+                        "permissions:revokeAllPermissions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f0d7a891-75ed-41e3-a60b-910b3c0d9f9d",
+                          "key": "assetId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Looker Studio asset."
+                        }
+                      ]
+                    },
+                    "description": "Removes specified members from all roles on a Looker Studio asset, effectively revoking their access to the asset entirely."
+                  },
+                  "response": [
+                    {
+                      "id": "1fda4fd4-f785-47c0-9565-bfd16a8e5515",
+                      "name": "Successful response after revoking the permissions.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions:revokeAllPermissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions:revokeAllPermissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"permissions\": {\n    \"velit_c7\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dolore_1b\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"anim2f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-1fda4fd4-f785-47c0-9565-bfd16a8e5515"
+                    },
+                    {
+                      "id": "231d322e-c1e5-4e7c-ba78-126408b6b10f",
+                      "name": "Invalid request body or member format.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions:revokeAllPermissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions:revokeAllPermissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-231d322e-c1e5-4e7c-ba78-126408b6b10f"
+                    },
+                    {
+                      "id": "cbbacdd7-88a2-4462-aca8-22324d69326d",
+                      "name": "Authentication required or invalid credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions:revokeAllPermissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions:revokeAllPermissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-cbbacdd7-88a2-4462-aca8-22324d69326d"
+                    },
+                    {
+                      "id": "6448dda4-9cdb-4666-bb4f-15fe96dd2e05",
+                      "name": "Insufficient permissions to revoke access on this asset.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions:revokeAllPermissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions:revokeAllPermissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-6448dda4-9cdb-4666-bb4f-15fe96dd2e05"
+                    },
+                    {
+                      "id": "72d49730-0546-43e4-a764-85d283749d1d",
+                      "name": "Asset not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/:assetId/permissions:revokeAllPermissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            ":assetId",
+                            "permissions:revokeAllPermissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "assetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"nulla_7\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"do5\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:07:46.000Z",
+                      "updatedAt": "2026-07-28T02:07:46.000Z",
+                      "uid": "35240-72d49730-0546-43e4-a764-85d283749d1d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:07:46.000Z",
+                  "updatedAt": "2026-07-28T02:07:46.000Z",
+                  "uid": "35240-4591e9f0-d236-4877-a4a6-54b9abf4596d"
+                }
+              ],
+              "id": "d89fc319-50a8-4f72-8b27-ca0ecec0b7f2",
+              "createdAt": "2026-07-28T02:07:46.000Z",
+              "updatedAt": "2026-07-28T02:07:46.000Z",
+              "uid": "35240-d89fc319-50a8-4f72-8b27-ca0ecec0b7f2"
+            }
+          ],
+          "id": "b6208ad7-231c-48b1-ba5d-ea2316870c31",
+          "createdAt": "2026-07-28T02:07:46.000Z",
+          "updatedAt": "2026-07-28T02:07:46.000Z",
+          "uid": "35240-b6208ad7-231c-48b1-ba5d-ea2316870c31"
+        }
+      ],
+      "id": "681594d6-8592-4229-9e64-6a406308ea10",
+      "createdAt": "2026-07-28T02:07:46.000Z",
+      "updatedAt": "2026-07-28T02:07:46.000Z",
+      "uid": "35240-681594d6-8592-4229-9e64-6a406308ea10"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://datastudio.googleapis.com/v1"
+    }
+  ]
+}

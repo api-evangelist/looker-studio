@@ -1,0 +1,509 @@
+{
+  "info": {
+    "_postman_id": "7d0109ac-1e7b-4bed-b9ed-2e321a6fb50e",
+    "name": "Looker Studio Assets Embed API",
+    "description": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:07:41.000Z",
+    "updatedAt": "2026-07-28T02:07:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7d0109ac-1e7b-4bed-b9ed-2e321a6fb50e"
+  },
+  "item": [
+    {
+      "name": "embed",
+      "item": [
+        {
+          "name": "reporting",
+          "item": [
+            {
+              "name": "{reportId}",
+              "item": [
+                {
+                  "name": "page",
+                  "item": [
+                    {
+                      "name": "{pageId}",
+                      "item": [
+                        {
+                          "name": "Looker Studio Get an embedded report page",
+                          "id": "3dcff87e-c4f8-40a2-90a1-13cb48e4b7d4",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/html"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/embed/reporting/:reportId/page/:pageId?params=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embed",
+                                "reporting",
+                                ":reportId",
+                                "page",
+                                ":pageId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "URL-encoded JSON string containing filter parameters to apply to the embedded report. Filters restrict the data displayed based on dimension values.",
+                                  "key": "params",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a1ed373b-60e5-4fed-95c8-fc2611832f6d",
+                                  "key": "reportId",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of the Looker Studio report to embed."
+                                },
+                                {
+                                  "id": "f2599fef-49f8-44f3-8a2f-5a77f16b7b8d",
+                                  "key": "pageId",
+                                  "value": "<string>",
+                                  "description": "(Required) The identifier of the specific page within the report to display."
+                                }
+                              ]
+                            },
+                            "description": "Returns an embeddable version of a Looker Studio report page designed for use within an HTML iframe. The embedded report renders the specified page of the report with optional filter parameters. Users must have at least view access to the report to see the embedded content."
+                          },
+                          "response": [
+                            {
+                              "id": "aca83947-6b19-46e0-a70e-e3eccda86625",
+                              "name": "Returns the HTML content for the embedded report page, suitable for rendering in an iframe.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "text/html"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/embed/reporting/:reportId/page/:pageId?params=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "embed",
+                                    "reporting",
+                                    ":reportId",
+                                    "page",
+                                    ":pageId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "URL-encoded JSON string containing filter parameters to apply to the embedded report. Filters restrict the data displayed based on dimension values.",
+                                      "key": "params",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "reportId"
+                                    },
+                                    {
+                                      "key": "pageId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "text/html"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T02:07:42.000Z",
+                              "updatedAt": "2026-07-28T02:07:42.000Z",
+                              "uid": "35240-aca83947-6b19-46e0-a70e-e3eccda86625"
+                            },
+                            {
+                              "id": "e486f0d3-27e4-4282-8d8c-957704358c14",
+                              "name": "The user does not have permission to view this report or the report does not allow embedding.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/embed/reporting/:reportId/page/:pageId?params=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "embed",
+                                    "reporting",
+                                    ":reportId",
+                                    "page",
+                                    ":pageId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "URL-encoded JSON string containing filter parameters to apply to the embedded report. Filters restrict the data displayed based on dimension values.",
+                                      "key": "params",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "reportId"
+                                    },
+                                    {
+                                      "key": "pageId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:07:42.000Z",
+                              "updatedAt": "2026-07-28T02:07:42.000Z",
+                              "uid": "35240-e486f0d3-27e4-4282-8d8c-957704358c14"
+                            },
+                            {
+                              "id": "a3e69135-b550-446e-a12e-91e5285e0c91",
+                              "name": "The specified report or page was not found.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/embed/reporting/:reportId/page/:pageId?params=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "embed",
+                                    "reporting",
+                                    ":reportId",
+                                    "page",
+                                    ":pageId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "URL-encoded JSON string containing filter parameters to apply to the embedded report. Filters restrict the data displayed based on dimension values.",
+                                      "key": "params",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "reportId"
+                                    },
+                                    {
+                                      "key": "pageId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:07:42.000Z",
+                              "updatedAt": "2026-07-28T02:07:42.000Z",
+                              "uid": "35240-a3e69135-b550-446e-a12e-91e5285e0c91"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:07:42.000Z",
+                          "updatedAt": "2026-07-28T02:07:42.000Z",
+                          "uid": "35240-3dcff87e-c4f8-40a2-90a1-13cb48e4b7d4"
+                        }
+                      ],
+                      "id": "5bc0f791-074c-4d5f-9d28-a52968c102c4",
+                      "createdAt": "2026-07-28T02:07:42.000Z",
+                      "updatedAt": "2026-07-28T02:07:42.000Z",
+                      "uid": "35240-5bc0f791-074c-4d5f-9d28-a52968c102c4"
+                    }
+                  ],
+                  "id": "ef4948ba-fcf1-4448-a834-f170c98c590f",
+                  "createdAt": "2026-07-28T02:07:42.000Z",
+                  "updatedAt": "2026-07-28T02:07:42.000Z",
+                  "uid": "35240-ef4948ba-fcf1-4448-a834-f170c98c590f"
+                },
+                {
+                  "name": "Looker Studio Get an embedded report (default page)",
+                  "id": "1e8bab4c-df16-4246-a9e5-98581c3e9705",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/html"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/embed/reporting/:reportId?params=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "embed",
+                        "reporting",
+                        ":reportId"
+                      ],
+                      "query": [
+                        {
+                          "description": "URL-encoded JSON string containing filter parameters to apply to the embedded report.",
+                          "key": "params",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "071c15c4-c4e9-40e3-af4d-370c0a6e0060",
+                          "key": "reportId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Looker Studio report to embed."
+                        }
+                      ]
+                    },
+                    "description": "Returns an embeddable version of a Looker Studio report starting from the default (first) page. This endpoint is used when no specific page ID is required."
+                  },
+                  "response": [
+                    {
+                      "id": "f054b99c-0c13-4f96-bc91-481d3968c528",
+                      "name": "Returns the HTML content for the embedded report, suitable for rendering in an iframe.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/html"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/embed/reporting/:reportId?params=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "embed",
+                            "reporting",
+                            ":reportId"
+                          ],
+                          "query": [
+                            {
+                              "description": "URL-encoded JSON string containing filter parameters to apply to the embedded report.",
+                              "key": "params",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/html"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T02:07:42.000Z",
+                      "updatedAt": "2026-07-28T02:07:42.000Z",
+                      "uid": "35240-f054b99c-0c13-4f96-bc91-481d3968c528"
+                    },
+                    {
+                      "id": "d748b00e-a3ce-4035-9cda-1dd314f52e76",
+                      "name": "The user does not have permission to view this report or the report does not allow embedding.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/embed/reporting/:reportId?params=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "embed",
+                            "reporting",
+                            ":reportId"
+                          ],
+                          "query": [
+                            {
+                              "description": "URL-encoded JSON string containing filter parameters to apply to the embedded report.",
+                              "key": "params",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:07:42.000Z",
+                      "updatedAt": "2026-07-28T02:07:42.000Z",
+                      "uid": "35240-d748b00e-a3ce-4035-9cda-1dd314f52e76"
+                    },
+                    {
+                      "id": "52eb24f7-8faf-439d-a4fd-021d0a8cbade",
+                      "name": "The specified report was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/embed/reporting/:reportId?params=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "embed",
+                            "reporting",
+                            ":reportId"
+                          ],
+                          "query": [
+                            {
+                              "description": "URL-encoded JSON string containing filter parameters to apply to the embedded report.",
+                              "key": "params",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:07:42.000Z",
+                      "updatedAt": "2026-07-28T02:07:42.000Z",
+                      "uid": "35240-52eb24f7-8faf-439d-a4fd-021d0a8cbade"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:07:42.000Z",
+                  "updatedAt": "2026-07-28T02:07:42.000Z",
+                  "uid": "35240-1e8bab4c-df16-4246-a9e5-98581c3e9705"
+                }
+              ],
+              "id": "338a8299-93dc-4b7e-8f67-9c2d6e154bab",
+              "createdAt": "2026-07-28T02:07:42.000Z",
+              "updatedAt": "2026-07-28T02:07:42.000Z",
+              "uid": "35240-338a8299-93dc-4b7e-8f67-9c2d6e154bab"
+            }
+          ],
+          "id": "a87d6308-a170-4b1b-b2ca-c88dc0567625",
+          "createdAt": "2026-07-28T02:07:42.000Z",
+          "updatedAt": "2026-07-28T02:07:42.000Z",
+          "uid": "35240-a87d6308-a170-4b1b-b2ca-c88dc0567625"
+        }
+      ],
+      "id": "b738db29-cef3-4949-a392-0dff31399b76",
+      "createdAt": "2026-07-28T02:07:42.000Z",
+      "updatedAt": "2026-07-28T02:07:42.000Z",
+      "uid": "35240-b738db29-cef3-4949-a392-0dff31399b76"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://datastudio.googleapis.com/v1"
+    }
+  ]
+}

@@ -1,0 +1,492 @@
+{
+  "info": {
+    "_postman_id": "cd058cca-ab50-44db-8fb2-8f73e4461f71",
+    "name": "Looker Studio Assets API",
+    "description": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:07:34.000Z",
+    "updatedAt": "2026-07-28T02:07:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cd058cca-ab50-44db-8fb2-8f73e4461f71"
+  },
+  "item": [
+    {
+      "name": "assets:search",
+      "item": [
+        {
+          "name": "Search Looker Studio assets",
+          "id": "96d48e80-af2e-4a1a-ac18-b78fedc7e8fb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/assets:search?assetTypes=REPORT&assetTypes=REPORT&title=<string>&includeTrash=false&orderBy=<string>&pageSize=<integer>&pageToken=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assets:search"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The types of assets to search for. Valid values are REPORT and DATA_SOURCE.",
+                  "key": "assetTypes",
+                  "value": "REPORT"
+                },
+                {
+                  "description": "(Required) The types of assets to search for. Valid values are REPORT and DATA_SOURCE.",
+                  "key": "assetTypes",
+                  "value": "REPORT"
+                },
+                {
+                  "description": "Filter assets by title (partial match).",
+                  "key": "title",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Whether to include trashed assets in the results.",
+                  "key": "includeTrash",
+                  "value": "false"
+                },
+                {
+                  "description": "Field to order results by, such as title, createTime, or updateTime.",
+                  "key": "orderBy",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of assets to return per page.",
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Token for retrieving the next page of results.",
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Searches the authenticated user's Looker Studio assets including reports and data sources. Results can be filtered by asset type. Requires the datastudio or datastudio.readonly OAuth scope."
+          },
+          "response": [
+            {
+              "id": "e017c0ad-8338-4f15-aa29-08a3e1ea2a5b",
+              "name": "Successful response containing matching assets.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assets:search?assetTypes=REPORT&title=<string>&includeTrash=false&orderBy=<string>&pageSize=<integer>&pageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assets:search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The types of assets to search for. Valid values are REPORT and DATA_SOURCE.",
+                      "key": "assetTypes",
+                      "value": "REPORT"
+                    },
+                    {
+                      "description": "Filter assets by title (partial match).",
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to include trashed assets in the results.",
+                      "key": "includeTrash",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Field to order results by, such as title, createTime, or updateTime.",
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of assets to return per page.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Token for retrieving the next page of results.",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"assets\": [\n    {\n      \"name\": \"<string>\",\n      \"assetType\": \"DATA_SOURCE\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"owner\": \"<string>\",\n      \"creator\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"updateByMeTime\": \"<dateTime>\",\n      \"lastViewByMeTime\": \"<dateTime>\",\n      \"trashed\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"assetType\": \"DATA_SOURCE\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"owner\": \"<string>\",\n      \"creator\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"updateByMeTime\": \"<dateTime>\",\n      \"lastViewByMeTime\": \"<dateTime>\",\n      \"trashed\": \"<boolean>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:07:35.000Z",
+              "updatedAt": "2026-07-28T02:07:35.000Z",
+              "uid": "35240-e017c0ad-8338-4f15-aa29-08a3e1ea2a5b"
+            },
+            {
+              "id": "0940be38-6954-4ab1-a6d9-182f7a788dd4",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assets:search?assetTypes=REPORT&title=<string>&includeTrash=false&orderBy=<string>&pageSize=<integer>&pageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assets:search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The types of assets to search for. Valid values are REPORT and DATA_SOURCE.",
+                      "key": "assetTypes",
+                      "value": "REPORT"
+                    },
+                    {
+                      "description": "Filter assets by title (partial match).",
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to include trashed assets in the results.",
+                      "key": "includeTrash",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Field to order results by, such as title, createTime, or updateTime.",
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of assets to return per page.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Token for retrieving the next page of results.",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"irure_4\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"sit44\": \"<string>\",\n          \"esse_23\": \"<string>\",\n          \"in_0\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:07:35.000Z",
+              "updatedAt": "2026-07-28T02:07:35.000Z",
+              "uid": "35240-0940be38-6954-4ab1-a6d9-182f7a788dd4"
+            },
+            {
+              "id": "866bbd7c-dbfc-4cf6-a78c-2337967e2ae3",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assets:search?assetTypes=REPORT&title=<string>&includeTrash=false&orderBy=<string>&pageSize=<integer>&pageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assets:search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The types of assets to search for. Valid values are REPORT and DATA_SOURCE.",
+                      "key": "assetTypes",
+                      "value": "REPORT"
+                    },
+                    {
+                      "description": "Filter assets by title (partial match).",
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to include trashed assets in the results.",
+                      "key": "includeTrash",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Field to order results by, such as title, createTime, or updateTime.",
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of assets to return per page.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Token for retrieving the next page of results.",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"irure_4\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"sit44\": \"<string>\",\n          \"esse_23\": \"<string>\",\n          \"in_0\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:07:35.000Z",
+              "updatedAt": "2026-07-28T02:07:35.000Z",
+              "uid": "35240-866bbd7c-dbfc-4cf6-a78c-2337967e2ae3"
+            },
+            {
+              "id": "f69cc2f6-bc73-46e9-9b6f-4d0e7c1de181",
+              "name": "Insufficient permissions to access the requested resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assets:search?assetTypes=REPORT&title=<string>&includeTrash=false&orderBy=<string>&pageSize=<integer>&pageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assets:search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The types of assets to search for. Valid values are REPORT and DATA_SOURCE.",
+                      "key": "assetTypes",
+                      "value": "REPORT"
+                    },
+                    {
+                      "description": "Filter assets by title (partial match).",
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to include trashed assets in the results.",
+                      "key": "includeTrash",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Field to order results by, such as title, createTime, or updateTime.",
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of assets to return per page.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Token for retrieving the next page of results.",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"irure_4\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"sit44\": \"<string>\",\n          \"esse_23\": \"<string>\",\n          \"in_0\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:07:35.000Z",
+              "updatedAt": "2026-07-28T02:07:35.000Z",
+              "uid": "35240-f69cc2f6-bc73-46e9-9b6f-4d0e7c1de181"
+            },
+            {
+              "id": "95ccf594-c31c-4a33-b091-6af6891294f3",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assets:search?assetTypes=REPORT&title=<string>&includeTrash=false&orderBy=<string>&pageSize=<integer>&pageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assets:search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The types of assets to search for. Valid values are REPORT and DATA_SOURCE.",
+                      "key": "assetTypes",
+                      "value": "REPORT"
+                    },
+                    {
+                      "description": "Filter assets by title (partial match).",
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to include trashed assets in the results.",
+                      "key": "includeTrash",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Field to order results by, such as title, createTime, or updateTime.",
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of assets to return per page.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Token for retrieving the next page of results.",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"irure_4\": \"<string>\"\n        }\n      },\n      {\n        \"@type\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"metadata\": {\n          \"sit44\": \"<string>\",\n          \"esse_23\": \"<string>\",\n          \"in_0\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:07:35.000Z",
+              "updatedAt": "2026-07-28T02:07:35.000Z",
+              "uid": "35240-95ccf594-c31c-4a33-b091-6af6891294f3"
+            }
+          ],
+          "createdAt": "2026-07-28T02:07:35.000Z",
+          "updatedAt": "2026-07-28T02:07:35.000Z",
+          "uid": "35240-96d48e80-af2e-4a1a-ac18-b78fedc7e8fb"
+        }
+      ],
+      "id": "eeb7b1fe-85f1-4af7-abcc-fe00d392dcad",
+      "createdAt": "2026-07-28T02:07:35.000Z",
+      "updatedAt": "2026-07-28T02:07:35.000Z",
+      "uid": "35240-eeb7b1fe-85f1-4af7-abcc-fe00d392dcad"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://datastudio.googleapis.com/v1"
+    }
+  ]
+}

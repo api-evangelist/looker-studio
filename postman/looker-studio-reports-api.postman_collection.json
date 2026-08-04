@@ -1,0 +1,796 @@
+{
+  "info": {
+    "_postman_id": "37faf2b8-1ef2-48a0-abb2-68be6eb157ca",
+    "name": "Looker Studio Assets Reports API",
+    "description": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:07:47.000Z",
+    "updatedAt": "2026-07-28T02:07:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-37faf2b8-1ef2-48a0-abb2-68be6eb157ca"
+  },
+  "item": [
+    {
+      "name": "reporting",
+      "item": [
+        {
+          "name": "create",
+          "item": [
+            {
+              "name": "Looker Studio Create a linked report",
+              "id": "9a5b3a33-7636-4236-aed0-6e142e799ee7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/reporting/create?c.reportId=<string>&c.pageId=<string>&c.mode=view&c.explain=<boolean>&r.reportName=<string>&r.measurementId=<string>&r.keepMeasurementId=<boolean>&ds.ds0.connector=cloudSpanner&ds.ds0.datasourceName=<string>&ds.ds0.refreshFields=<boolean>&ds.ds0.projectId=<string>&ds.ds0.datasetId=<string>&ds.ds0.tableId=<string>&ds.ds0.type=TABLE&ds.ds0.sql=<string>&ds.ds0.spreadsheetId=<string>&ds.ds0.worksheetId=<string>&ds.ds0.hasHeader=<boolean>&ds.ds0.includeHiddenCells=<boolean>&ds.ds0.accountId=<string>&ds.ds0.propertyId=<string>&ds.ds0.viewId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reporting",
+                    "create"
+                  ],
+                  "query": [
+                    {
+                      "description": "The template report ID. If omitted, a blank report is used as the template.",
+                      "key": "c.reportId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The page ID to display when the report loads. If omitted, the first page is shown.",
+                      "key": "c.pageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The initial mode for the report. Use 'view' for view mode or 'edit' for edit mode.",
+                      "key": "c.mode",
+                      "value": "view"
+                    },
+                    {
+                      "description": "When set to true, enables a debug dialog that shows how the Linking API parameters are being interpreted.",
+                      "key": "c.explain",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Sets the name for the new report.",
+                      "key": "r.reportName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Configures Google Analytics measurement IDs for the report.",
+                      "key": "r.measurementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "When set to true, preserves the template report's measurement IDs.",
+                      "key": "r.keepMeasurementId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Specifies the connector type for data source ds0. When set, the template data source configuration is completely replaced and all required connector parameters must be specified. Supported connectors include bigQuery, cloudSpanner, communityConnector, googleAnalytics, googleCloudStorage, googleSheets, looker, and searchConsole.",
+                      "key": "ds.ds0.connector",
+                      "value": "cloudSpanner"
+                    },
+                    {
+                      "description": "Sets a custom name for data source ds0.",
+                      "key": "ds.ds0.datasourceName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "When set to true, refreshes the field definitions for data source ds0 after configuration.",
+                      "key": "ds.ds0.refreshFields",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The Google Cloud project ID for data source ds0. Used with BigQuery, Cloud Spanner, and Google Cloud Storage connectors.",
+                      "key": "ds.ds0.projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The BigQuery dataset ID for data source ds0. Used with the BigQuery connector.",
+                      "key": "ds.ds0.datasetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The BigQuery table ID for data source ds0. Used with the BigQuery TABLE connector type.",
+                      "key": "ds.ds0.tableId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The BigQuery query type. Use TABLE for standard table access or CUSTOM_QUERY for SQL queries.",
+                      "key": "ds.ds0.type",
+                      "value": "TABLE"
+                    },
+                    {
+                      "description": "The SQL query for BigQuery CUSTOM_QUERY type data sources.",
+                      "key": "ds.ds0.sql",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Google Sheets spreadsheet ID for data source ds0.",
+                      "key": "ds.ds0.spreadsheetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The worksheet ID within a Google Sheets spreadsheet.",
+                      "key": "ds.ds0.worksheetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the Google Sheets data source has a header row.",
+                      "key": "ds.ds0.hasHeader",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Whether to include hidden and filtered cells from Google Sheets.",
+                      "key": "ds.ds0.includeHiddenCells",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The Google Analytics account ID for data source ds0.",
+                      "key": "ds.ds0.accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Google Analytics property ID for data source ds0.",
+                      "key": "ds.ds0.propertyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The Google Analytics view ID for data source ds0.",
+                      "key": "ds.ds0.viewId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Creates a dynamic URL that directs users to a pre-configured Looker Studio report. The URL can specify a template report, configure data sources, set the initial mode (view or edit), and customize report behavior. Users who follow the link see the pre-configured report and can click \"Edit and share\" to save a personal copy."
+              },
+              "response": [
+                {
+                  "id": "58d2f170-2c09-4334-bac2-aec5290e1f56",
+                  "name": "Redirects the user to the configured Looker Studio report. The report is pre-populated with the specified data sources and settings.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/create?c.reportId=<string>&c.pageId=<string>&c.mode=view&c.explain=<boolean>&r.reportName=<string>&r.measurementId=<string>&r.keepMeasurementId=<boolean>&ds.ds0.connector=cloudSpanner&ds.ds0.datasourceName=<string>&ds.ds0.refreshFields=<boolean>&ds.ds0.projectId=<string>&ds.ds0.datasetId=<string>&ds.ds0.tableId=<string>&ds.ds0.type=TABLE&ds.ds0.sql=<string>&ds.ds0.spreadsheetId=<string>&ds.ds0.worksheetId=<string>&ds.ds0.hasHeader=<boolean>&ds.ds0.includeHiddenCells=<boolean>&ds.ds0.accountId=<string>&ds.ds0.propertyId=<string>&ds.ds0.viewId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "create"
+                      ],
+                      "query": [
+                        {
+                          "description": "The template report ID. If omitted, a blank report is used as the template.",
+                          "key": "c.reportId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The page ID to display when the report loads. If omitted, the first page is shown.",
+                          "key": "c.pageId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The initial mode for the report. Use 'view' for view mode or 'edit' for edit mode.",
+                          "key": "c.mode",
+                          "value": "view"
+                        },
+                        {
+                          "description": "When set to true, enables a debug dialog that shows how the Linking API parameters are being interpreted.",
+                          "key": "c.explain",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Sets the name for the new report.",
+                          "key": "r.reportName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Configures Google Analytics measurement IDs for the report.",
+                          "key": "r.measurementId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "When set to true, preserves the template report's measurement IDs.",
+                          "key": "r.keepMeasurementId",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Specifies the connector type for data source ds0. When set, the template data source configuration is completely replaced and all required connector parameters must be specified. Supported connectors include bigQuery, cloudSpanner, communityConnector, googleAnalytics, googleCloudStorage, googleSheets, looker, and searchConsole.",
+                          "key": "ds.ds0.connector",
+                          "value": "cloudSpanner"
+                        },
+                        {
+                          "description": "Sets a custom name for data source ds0.",
+                          "key": "ds.ds0.datasourceName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "When set to true, refreshes the field definitions for data source ds0 after configuration.",
+                          "key": "ds.ds0.refreshFields",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "The Google Cloud project ID for data source ds0. Used with BigQuery, Cloud Spanner, and Google Cloud Storage connectors.",
+                          "key": "ds.ds0.projectId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery dataset ID for data source ds0. Used with the BigQuery connector.",
+                          "key": "ds.ds0.datasetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery table ID for data source ds0. Used with the BigQuery TABLE connector type.",
+                          "key": "ds.ds0.tableId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery query type. Use TABLE for standard table access or CUSTOM_QUERY for SQL queries.",
+                          "key": "ds.ds0.type",
+                          "value": "TABLE"
+                        },
+                        {
+                          "description": "The SQL query for BigQuery CUSTOM_QUERY type data sources.",
+                          "key": "ds.ds0.sql",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Sheets spreadsheet ID for data source ds0.",
+                          "key": "ds.ds0.spreadsheetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The worksheet ID within a Google Sheets spreadsheet.",
+                          "key": "ds.ds0.worksheetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether the Google Sheets data source has a header row.",
+                          "key": "ds.ds0.hasHeader",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to include hidden and filtered cells from Google Sheets.",
+                          "key": "ds.ds0.includeHiddenCells",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "The Google Analytics account ID for data source ds0.",
+                          "key": "ds.ds0.accountId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Analytics property ID for data source ds0.",
+                          "key": "ds.ds0.propertyId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Analytics view ID for data source ds0.",
+                          "key": "ds.ds0.viewId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Found",
+                  "code": 302,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The URL of the configured Looker Studio report.",
+                        "type": "text/plain"
+                      },
+                      "key": "Location",
+                      "value": "<uri>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:07:48.000Z",
+                  "updatedAt": "2026-07-28T02:07:48.000Z",
+                  "uid": "35240-58d2f170-2c09-4334-bac2-aec5290e1f56"
+                },
+                {
+                  "id": "ca458a6d-143d-4527-9fc4-e6367988f06a",
+                  "name": "Invalid parameters. The request contains unsupported or malformed parameter values.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/create?c.reportId=<string>&c.pageId=<string>&c.mode=view&c.explain=<boolean>&r.reportName=<string>&r.measurementId=<string>&r.keepMeasurementId=<boolean>&ds.ds0.connector=cloudSpanner&ds.ds0.datasourceName=<string>&ds.ds0.refreshFields=<boolean>&ds.ds0.projectId=<string>&ds.ds0.datasetId=<string>&ds.ds0.tableId=<string>&ds.ds0.type=TABLE&ds.ds0.sql=<string>&ds.ds0.spreadsheetId=<string>&ds.ds0.worksheetId=<string>&ds.ds0.hasHeader=<boolean>&ds.ds0.includeHiddenCells=<boolean>&ds.ds0.accountId=<string>&ds.ds0.propertyId=<string>&ds.ds0.viewId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "create"
+                      ],
+                      "query": [
+                        {
+                          "description": "The template report ID. If omitted, a blank report is used as the template.",
+                          "key": "c.reportId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The page ID to display when the report loads. If omitted, the first page is shown.",
+                          "key": "c.pageId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The initial mode for the report. Use 'view' for view mode or 'edit' for edit mode.",
+                          "key": "c.mode",
+                          "value": "view"
+                        },
+                        {
+                          "description": "When set to true, enables a debug dialog that shows how the Linking API parameters are being interpreted.",
+                          "key": "c.explain",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Sets the name for the new report.",
+                          "key": "r.reportName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Configures Google Analytics measurement IDs for the report.",
+                          "key": "r.measurementId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "When set to true, preserves the template report's measurement IDs.",
+                          "key": "r.keepMeasurementId",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Specifies the connector type for data source ds0. When set, the template data source configuration is completely replaced and all required connector parameters must be specified. Supported connectors include bigQuery, cloudSpanner, communityConnector, googleAnalytics, googleCloudStorage, googleSheets, looker, and searchConsole.",
+                          "key": "ds.ds0.connector",
+                          "value": "cloudSpanner"
+                        },
+                        {
+                          "description": "Sets a custom name for data source ds0.",
+                          "key": "ds.ds0.datasourceName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "When set to true, refreshes the field definitions for data source ds0 after configuration.",
+                          "key": "ds.ds0.refreshFields",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "The Google Cloud project ID for data source ds0. Used with BigQuery, Cloud Spanner, and Google Cloud Storage connectors.",
+                          "key": "ds.ds0.projectId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery dataset ID for data source ds0. Used with the BigQuery connector.",
+                          "key": "ds.ds0.datasetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery table ID for data source ds0. Used with the BigQuery TABLE connector type.",
+                          "key": "ds.ds0.tableId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery query type. Use TABLE for standard table access or CUSTOM_QUERY for SQL queries.",
+                          "key": "ds.ds0.type",
+                          "value": "TABLE"
+                        },
+                        {
+                          "description": "The SQL query for BigQuery CUSTOM_QUERY type data sources.",
+                          "key": "ds.ds0.sql",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Sheets spreadsheet ID for data source ds0.",
+                          "key": "ds.ds0.spreadsheetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The worksheet ID within a Google Sheets spreadsheet.",
+                          "key": "ds.ds0.worksheetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether the Google Sheets data source has a header row.",
+                          "key": "ds.ds0.hasHeader",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to include hidden and filtered cells from Google Sheets.",
+                          "key": "ds.ds0.includeHiddenCells",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "The Google Analytics account ID for data source ds0.",
+                          "key": "ds.ds0.accountId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Analytics property ID for data source ds0.",
+                          "key": "ds.ds0.propertyId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Analytics view ID for data source ds0.",
+                          "key": "ds.ds0.viewId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:07:48.000Z",
+                  "updatedAt": "2026-07-28T02:07:48.000Z",
+                  "uid": "35240-ca458a6d-143d-4527-9fc4-e6367988f06a"
+                },
+                {
+                  "id": "71b78049-02ff-43c1-bca0-09937aa81a68",
+                  "name": "The user does not have access to the specified template report or data source.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/create?c.reportId=<string>&c.pageId=<string>&c.mode=view&c.explain=<boolean>&r.reportName=<string>&r.measurementId=<string>&r.keepMeasurementId=<boolean>&ds.ds0.connector=cloudSpanner&ds.ds0.datasourceName=<string>&ds.ds0.refreshFields=<boolean>&ds.ds0.projectId=<string>&ds.ds0.datasetId=<string>&ds.ds0.tableId=<string>&ds.ds0.type=TABLE&ds.ds0.sql=<string>&ds.ds0.spreadsheetId=<string>&ds.ds0.worksheetId=<string>&ds.ds0.hasHeader=<boolean>&ds.ds0.includeHiddenCells=<boolean>&ds.ds0.accountId=<string>&ds.ds0.propertyId=<string>&ds.ds0.viewId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "create"
+                      ],
+                      "query": [
+                        {
+                          "description": "The template report ID. If omitted, a blank report is used as the template.",
+                          "key": "c.reportId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The page ID to display when the report loads. If omitted, the first page is shown.",
+                          "key": "c.pageId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The initial mode for the report. Use 'view' for view mode or 'edit' for edit mode.",
+                          "key": "c.mode",
+                          "value": "view"
+                        },
+                        {
+                          "description": "When set to true, enables a debug dialog that shows how the Linking API parameters are being interpreted.",
+                          "key": "c.explain",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Sets the name for the new report.",
+                          "key": "r.reportName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Configures Google Analytics measurement IDs for the report.",
+                          "key": "r.measurementId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "When set to true, preserves the template report's measurement IDs.",
+                          "key": "r.keepMeasurementId",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Specifies the connector type for data source ds0. When set, the template data source configuration is completely replaced and all required connector parameters must be specified. Supported connectors include bigQuery, cloudSpanner, communityConnector, googleAnalytics, googleCloudStorage, googleSheets, looker, and searchConsole.",
+                          "key": "ds.ds0.connector",
+                          "value": "cloudSpanner"
+                        },
+                        {
+                          "description": "Sets a custom name for data source ds0.",
+                          "key": "ds.ds0.datasourceName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "When set to true, refreshes the field definitions for data source ds0 after configuration.",
+                          "key": "ds.ds0.refreshFields",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "The Google Cloud project ID for data source ds0. Used with BigQuery, Cloud Spanner, and Google Cloud Storage connectors.",
+                          "key": "ds.ds0.projectId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery dataset ID for data source ds0. Used with the BigQuery connector.",
+                          "key": "ds.ds0.datasetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery table ID for data source ds0. Used with the BigQuery TABLE connector type.",
+                          "key": "ds.ds0.tableId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery query type. Use TABLE for standard table access or CUSTOM_QUERY for SQL queries.",
+                          "key": "ds.ds0.type",
+                          "value": "TABLE"
+                        },
+                        {
+                          "description": "The SQL query for BigQuery CUSTOM_QUERY type data sources.",
+                          "key": "ds.ds0.sql",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Sheets spreadsheet ID for data source ds0.",
+                          "key": "ds.ds0.spreadsheetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The worksheet ID within a Google Sheets spreadsheet.",
+                          "key": "ds.ds0.worksheetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether the Google Sheets data source has a header row.",
+                          "key": "ds.ds0.hasHeader",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to include hidden and filtered cells from Google Sheets.",
+                          "key": "ds.ds0.includeHiddenCells",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "The Google Analytics account ID for data source ds0.",
+                          "key": "ds.ds0.accountId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Analytics property ID for data source ds0.",
+                          "key": "ds.ds0.propertyId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Analytics view ID for data source ds0.",
+                          "key": "ds.ds0.viewId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:07:48.000Z",
+                  "updatedAt": "2026-07-28T02:07:48.000Z",
+                  "uid": "35240-71b78049-02ff-43c1-bca0-09937aa81a68"
+                },
+                {
+                  "id": "1522b04f-6c12-4dd0-a215-219b5187423f",
+                  "name": "The specified template report ID was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reporting/create?c.reportId=<string>&c.pageId=<string>&c.mode=view&c.explain=<boolean>&r.reportName=<string>&r.measurementId=<string>&r.keepMeasurementId=<boolean>&ds.ds0.connector=cloudSpanner&ds.ds0.datasourceName=<string>&ds.ds0.refreshFields=<boolean>&ds.ds0.projectId=<string>&ds.ds0.datasetId=<string>&ds.ds0.tableId=<string>&ds.ds0.type=TABLE&ds.ds0.sql=<string>&ds.ds0.spreadsheetId=<string>&ds.ds0.worksheetId=<string>&ds.ds0.hasHeader=<boolean>&ds.ds0.includeHiddenCells=<boolean>&ds.ds0.accountId=<string>&ds.ds0.propertyId=<string>&ds.ds0.viewId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reporting",
+                        "create"
+                      ],
+                      "query": [
+                        {
+                          "description": "The template report ID. If omitted, a blank report is used as the template.",
+                          "key": "c.reportId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The page ID to display when the report loads. If omitted, the first page is shown.",
+                          "key": "c.pageId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The initial mode for the report. Use 'view' for view mode or 'edit' for edit mode.",
+                          "key": "c.mode",
+                          "value": "view"
+                        },
+                        {
+                          "description": "When set to true, enables a debug dialog that shows how the Linking API parameters are being interpreted.",
+                          "key": "c.explain",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Sets the name for the new report.",
+                          "key": "r.reportName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Configures Google Analytics measurement IDs for the report.",
+                          "key": "r.measurementId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "When set to true, preserves the template report's measurement IDs.",
+                          "key": "r.keepMeasurementId",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Specifies the connector type for data source ds0. When set, the template data source configuration is completely replaced and all required connector parameters must be specified. Supported connectors include bigQuery, cloudSpanner, communityConnector, googleAnalytics, googleCloudStorage, googleSheets, looker, and searchConsole.",
+                          "key": "ds.ds0.connector",
+                          "value": "cloudSpanner"
+                        },
+                        {
+                          "description": "Sets a custom name for data source ds0.",
+                          "key": "ds.ds0.datasourceName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "When set to true, refreshes the field definitions for data source ds0 after configuration.",
+                          "key": "ds.ds0.refreshFields",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "The Google Cloud project ID for data source ds0. Used with BigQuery, Cloud Spanner, and Google Cloud Storage connectors.",
+                          "key": "ds.ds0.projectId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery dataset ID for data source ds0. Used with the BigQuery connector.",
+                          "key": "ds.ds0.datasetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery table ID for data source ds0. Used with the BigQuery TABLE connector type.",
+                          "key": "ds.ds0.tableId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The BigQuery query type. Use TABLE for standard table access or CUSTOM_QUERY for SQL queries.",
+                          "key": "ds.ds0.type",
+                          "value": "TABLE"
+                        },
+                        {
+                          "description": "The SQL query for BigQuery CUSTOM_QUERY type data sources.",
+                          "key": "ds.ds0.sql",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Sheets spreadsheet ID for data source ds0.",
+                          "key": "ds.ds0.spreadsheetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The worksheet ID within a Google Sheets spreadsheet.",
+                          "key": "ds.ds0.worksheetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether the Google Sheets data source has a header row.",
+                          "key": "ds.ds0.hasHeader",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to include hidden and filtered cells from Google Sheets.",
+                          "key": "ds.ds0.includeHiddenCells",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "The Google Analytics account ID for data source ds0.",
+                          "key": "ds.ds0.accountId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Analytics property ID for data source ds0.",
+                          "key": "ds.ds0.propertyId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The Google Analytics view ID for data source ds0.",
+                          "key": "ds.ds0.viewId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:07:48.000Z",
+                  "updatedAt": "2026-07-28T02:07:48.000Z",
+                  "uid": "35240-1522b04f-6c12-4dd0-a215-219b5187423f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:48.000Z",
+              "updatedAt": "2026-07-28T02:07:48.000Z",
+              "uid": "35240-9a5b3a33-7636-4236-aed0-6e142e799ee7"
+            }
+          ],
+          "id": "640572e1-be08-4792-9ba3-d5d50737dc5c",
+          "createdAt": "2026-07-28T02:07:48.000Z",
+          "updatedAt": "2026-07-28T02:07:48.000Z",
+          "uid": "35240-640572e1-be08-4792-9ba3-d5d50737dc5c"
+        }
+      ],
+      "id": "4b64061a-b41d-4292-b3ef-02be0c417922",
+      "createdAt": "2026-07-28T02:07:48.000Z",
+      "updatedAt": "2026-07-28T02:07:48.000Z",
+      "uid": "35240-4b64061a-b41d-4292-b3ef-02be0c417922"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://datastudio.googleapis.com/v1"
+    }
+  ]
+}

@@ -1,0 +1,390 @@
+{
+  "info": {
+    "_postman_id": "ddf3c5e4-6c03-4616-8a1c-31b235210bba",
+    "name": "Looker Studio Assets Authentication API",
+    "description": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:07:36.000Z",
+    "updatedAt": "2026-07-28T02:07:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ddf3c5e4-6c03-4616-8a1c-31b235210bba"
+  },
+  "item": [
+    {
+      "name": "connector",
+      "item": [
+        {
+          "name": "getAuthType",
+          "item": [
+            {
+              "name": "Looker Studio Get authentication type",
+              "id": "390ee591-6e23-4a5d-b2cb-cb8485e4a63b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connector/getAuthType",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connector",
+                    "getAuthType"
+                  ]
+                },
+                "description": "Returns the authentication type required by the connector. Looker Studio calls this function to determine how to authenticate the user with the third-party data source. The connector must return one of the supported authentication types."
+              },
+              "response": [
+                {
+                  "id": "6c9be756-3924-453d-b908-faf42f03bc82",
+                  "name": "The authentication type configuration.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/connector/getAuthType",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "connector",
+                        "getAuthType"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"USER_TOKEN\",\n  \"helpUrl\": \"<uri>\"\n}",
+                  "createdAt": "2026-07-28T02:07:37.000Z",
+                  "updatedAt": "2026-07-28T02:07:37.000Z",
+                  "uid": "35240-6c9be756-3924-453d-b908-faf42f03bc82"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:37.000Z",
+              "updatedAt": "2026-07-28T02:07:37.000Z",
+              "uid": "35240-390ee591-6e23-4a5d-b2cb-cb8485e4a63b"
+            }
+          ],
+          "id": "29942964-4b48-46a6-817e-868d4f332b6b",
+          "createdAt": "2026-07-28T02:07:37.000Z",
+          "updatedAt": "2026-07-28T02:07:37.000Z",
+          "uid": "35240-29942964-4b48-46a6-817e-868d4f332b6b"
+        },
+        {
+          "name": "isAuthValid",
+          "item": [
+            {
+              "name": "Looker Studio Validate authentication credentials",
+              "id": "f356f3ff-7958-4efe-a979-3d3804dbf9d0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connector/isAuthValid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connector",
+                    "isAuthValid"
+                  ]
+                },
+                "description": "Validates the current third-party authentication credentials. Looker Studio calls this function to check whether the user's stored credentials are still valid before making data requests."
+              },
+              "response": [
+                {
+                  "id": "5af6ed79-49bc-46c2-bacd-b0fce6320daa",
+                  "name": "Whether the credentials are valid.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/connector/isAuthValid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "connector",
+                        "isAuthValid"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"valid\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T02:07:37.000Z",
+                  "updatedAt": "2026-07-28T02:07:37.000Z",
+                  "uid": "35240-5af6ed79-49bc-46c2-bacd-b0fce6320daa"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:37.000Z",
+              "updatedAt": "2026-07-28T02:07:37.000Z",
+              "uid": "35240-f356f3ff-7958-4efe-a979-3d3804dbf9d0"
+            }
+          ],
+          "id": "db40de9f-9fc1-435e-b5e3-278183c3c4a2",
+          "createdAt": "2026-07-28T02:07:37.000Z",
+          "updatedAt": "2026-07-28T02:07:37.000Z",
+          "uid": "35240-db40de9f-9fc1-435e-b5e3-278183c3c4a2"
+        },
+        {
+          "name": "setCredentials",
+          "item": [
+            {
+              "name": "Looker Studio Store authentication credentials",
+              "id": "78b2f7ab-08ac-42f6-abc8-0caf197ff456",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userPass\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"userToken\": {\n    \"username\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"key\": \"<string>\",\n  \"pathUserPass\": {\n    \"path\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"pathKey\": {\n    \"path\": \"<string>\",\n    \"key\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connector/setCredentials",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connector",
+                    "setCredentials"
+                  ]
+                },
+                "description": "Stores the user's authentication credentials for the third-party data source. Looker Studio calls this function after the user provides their credentials through the authentication UI."
+              },
+              "response": [
+                {
+                  "id": "edde7ba5-e826-44a1-a354-28cbef68fdbc",
+                  "name": "Result of the credential storage operation.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"userPass\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"userToken\": {\n    \"username\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"key\": \"<string>\",\n  \"pathUserPass\": {\n    \"path\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"pathKey\": {\n    \"path\": \"<string>\",\n    \"key\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/connector/setCredentials",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "connector",
+                        "setCredentials"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errorCode\": \"NONE\"\n}",
+                  "createdAt": "2026-07-28T02:07:37.000Z",
+                  "updatedAt": "2026-07-28T02:07:37.000Z",
+                  "uid": "35240-edde7ba5-e826-44a1-a354-28cbef68fdbc"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:37.000Z",
+              "updatedAt": "2026-07-28T02:07:37.000Z",
+              "uid": "35240-78b2f7ab-08ac-42f6-abc8-0caf197ff456"
+            }
+          ],
+          "id": "b40c0046-4168-498f-8beb-8ea81a0be003",
+          "createdAt": "2026-07-28T02:07:37.000Z",
+          "updatedAt": "2026-07-28T02:07:37.000Z",
+          "uid": "35240-b40c0046-4168-498f-8beb-8ea81a0be003"
+        }
+      ],
+      "id": "c9e5d683-5846-4b71-98ec-1b77e78d1590",
+      "createdAt": "2026-07-28T02:07:37.000Z",
+      "updatedAt": "2026-07-28T02:07:37.000Z",
+      "uid": "35240-c9e5d683-5846-4b71-98ec-1b77e78d1590"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://datastudio.googleapis.com/v1"
+    }
+  ]
+}

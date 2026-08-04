@@ -1,0 +1,335 @@
+{
+  "info": {
+    "_postman_id": "4238b5eb-7584-43e4-a3ab-6135f64d1f1b",
+    "name": "Looker Studio Assets Visualization API",
+    "description": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:08:06.000Z",
+    "updatedAt": "2026-07-28T02:08:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4238b5eb-7584-43e4-a3ab-6135f64d1f1b"
+  },
+  "item": [
+    {
+      "name": "visualization",
+      "item": [
+        {
+          "name": "load",
+          "item": [
+            {
+              "name": "Looker Studio Load a community visualization",
+              "id": "4f6f8a85-b948-4a6b-b7b9-c23163fa29ea",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"manifestUrl\": \"<uri>\",\n  \"componentId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/visualization/load",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "visualization",
+                    "load"
+                  ]
+                },
+                "description": "Loads a community visualization into a Looker Studio report. The visualization is identified by its manifest URL hosted on Google Cloud Storage. Looker Studio fetches the manifest, resolves the JavaScript and CSS resources, and renders the visualization with the report's data."
+              },
+              "response": [
+                {
+                  "id": "2c1b4bab-4f15-4f0c-b860-5d77b79b838b",
+                  "name": "The visualization was loaded successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"manifestUrl\": \"<uri>\",\n  \"componentId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/visualization/load",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "visualization",
+                        "load"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"ERROR\",\n  \"componentId\": \"<string>\",\n  \"error\": {\n    \"message\": \"<string>\",\n    \"code\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:08:06.000Z",
+                  "updatedAt": "2026-07-28T02:08:06.000Z",
+                  "uid": "35240-2c1b4bab-4f15-4f0c-b860-5d77b79b838b"
+                },
+                {
+                  "id": "265325fa-6c76-485f-beaa-cf267d8eb977",
+                  "name": "Invalid manifest URL or the manifest does not conform to the required schema.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"manifestUrl\": \"<uri>\",\n  \"componentId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/visualization/load",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "visualization",
+                        "load"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:08:06.000Z",
+                  "updatedAt": "2026-07-28T02:08:06.000Z",
+                  "uid": "35240-265325fa-6c76-485f-beaa-cf267d8eb977"
+                },
+                {
+                  "id": "776c79ee-87d0-4171-af75-76ff97f6dc08",
+                  "name": "The visualization manifest could not be found at the specified URL.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"manifestUrl\": \"<uri>\",\n  \"componentId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/visualization/load",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "visualization",
+                        "load"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:08:06.000Z",
+                  "updatedAt": "2026-07-28T02:08:06.000Z",
+                  "uid": "35240-776c79ee-87d0-4171-af75-76ff97f6dc08"
+                }
+              ],
+              "createdAt": "2026-07-28T02:08:06.000Z",
+              "updatedAt": "2026-07-28T02:08:06.000Z",
+              "uid": "35240-4f6f8a85-b948-4a6b-b7b9-c23163fa29ea"
+            }
+          ],
+          "id": "b4fdeb7b-7d5d-4247-b365-cd9d39ed0736",
+          "createdAt": "2026-07-28T02:08:06.000Z",
+          "updatedAt": "2026-07-28T02:08:06.000Z",
+          "uid": "35240-b4fdeb7b-7d5d-4247-b365-cd9d39ed0736"
+        },
+        {
+          "name": "Looker Studio List community visualizations",
+          "id": "e84d0703-7ea2-4f6b-99ef-f77ff08958e5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/visualization",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "visualization"
+              ]
+            },
+            "description": "Accesses the community visualization gallery where users can browse and discover published community visualizations for use in their Looker Studio reports."
+          },
+          "response": [
+            {
+              "id": "fd1f2654-57d3-443a-92e8-188e9dd6d09b",
+              "name": "Returns the visualization gallery page with available community visualizations.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/visualization",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "visualization"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T02:08:06.000Z",
+              "updatedAt": "2026-07-28T02:08:06.000Z",
+              "uid": "35240-fd1f2654-57d3-443a-92e8-188e9dd6d09b"
+            }
+          ],
+          "createdAt": "2026-07-28T02:08:06.000Z",
+          "updatedAt": "2026-07-28T02:08:06.000Z",
+          "uid": "35240-e84d0703-7ea2-4f6b-99ef-f77ff08958e5"
+        }
+      ],
+      "id": "a34b22bc-5d42-4c2a-b727-116d8e1ad595",
+      "createdAt": "2026-07-28T02:08:06.000Z",
+      "updatedAt": "2026-07-28T02:08:06.000Z",
+      "uid": "35240-a34b22bc-5d42-4c2a-b727-116d8e1ad595"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://datastudio.googleapis.com/v1"
+    }
+  ]
+}

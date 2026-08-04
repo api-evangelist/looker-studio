@@ -1,0 +1,166 @@
+{
+  "info": {
+    "_postman_id": "985bfc11-e1b5-4fbf-9e93-212db439bb55",
+    "name": "Looker Studio Assets Schema API",
+    "description": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:07:59.000Z",
+    "updatedAt": "2026-07-28T02:07:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-985bfc11-e1b5-4fbf-9e93-212db439bb55"
+  },
+  "item": [
+    {
+      "name": "connector",
+      "item": [
+        {
+          "name": "getSchema",
+          "item": [
+            {
+              "name": "Looker Studio Get data schema",
+              "id": "36241965-72ca-4932-9a6f-90cd7ca5239c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configParams\": {\n    \"ea_9f1\": \"<string>\",\n    \"ipsum_21\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connector/getSchema",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connector",
+                    "getSchema"
+                  ]
+                },
+                "description": "Returns the schema (field definitions) for the data that the connector provides. Each field includes an ID, name, data type, semantic type, and whether it is a dimension or metric. Looker Studio uses this schema to understand the structure of the available data."
+              },
+              "response": [
+                {
+                  "id": "11962518-c100-4bbc-9d75-d3bd93b671bd",
+                  "name": "The data schema with field definitions.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"configParams\": {\n    \"ea_9f1\": \"<string>\",\n    \"ipsum_21\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/connector/getSchema",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "connector",
+                        "getSchema"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"schema\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dataType\": \"NUMBER\",\n      \"semantics\": {\n        \"conceptType\": \"METRIC\",\n        \"semanticType\": \"NUMBER\",\n        \"semanticGroup\": \"<string>\",\n        \"isReaggregatable\": \"<boolean>\"\n      },\n      \"group\": \"<string>\",\n      \"formula\": \"<string>\",\n      \"isDefault\": \"<boolean>\",\n      \"defaultAggregationType\": \"NONE\",\n      \"isHidden\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dataType\": \"NUMBER\",\n      \"semantics\": {\n        \"conceptType\": \"DIMENSION\",\n        \"semanticType\": \"METRO_CODE\",\n        \"semanticGroup\": \"<string>\",\n        \"isReaggregatable\": \"<boolean>\"\n      },\n      \"group\": \"<string>\",\n      \"formula\": \"<string>\",\n      \"isDefault\": \"<boolean>\",\n      \"defaultAggregationType\": \"AUTO\",\n      \"isHidden\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:07:59.000Z",
+                  "updatedAt": "2026-07-28T02:07:59.000Z",
+                  "uid": "35240-11962518-c100-4bbc-9d75-d3bd93b671bd"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:59.000Z",
+              "updatedAt": "2026-07-28T02:07:59.000Z",
+              "uid": "35240-36241965-72ca-4932-9a6f-90cd7ca5239c"
+            }
+          ],
+          "id": "642f8fca-0e11-4e27-b206-e08965bd29d6",
+          "createdAt": "2026-07-28T02:07:59.000Z",
+          "updatedAt": "2026-07-28T02:07:59.000Z",
+          "uid": "35240-642f8fca-0e11-4e27-b206-e08965bd29d6"
+        }
+      ],
+      "id": "8b242e87-abd1-44de-b7ba-04473c84bbc8",
+      "createdAt": "2026-07-28T02:07:59.000Z",
+      "updatedAt": "2026-07-28T02:07:59.000Z",
+      "uid": "35240-8b242e87-abd1-44de-b7ba-04473c84bbc8"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://datastudio.googleapis.com/v1"
+    }
+  ]
+}
