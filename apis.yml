@@ -23,7 +23,7 @@ modified: '2026-05-19'
 jsonLd:
   - type: JSONLDContext
     url: json-ld/looker-studio-context.jsonld
-specificationVersion: '0.18'
+specificationVersion: '0.23'
 tags:
   - Analytics
   - Business Intelligence
