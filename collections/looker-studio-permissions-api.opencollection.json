@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Looker Studio Assets Permissions API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio Get asset permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datastudio.googleapis.com/v1/assets/:assetId/permissions",
+            "params": [
+              {
+                "name": "assetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Looker Studio asset."
+              }
+            ]
+          },
+          "docs": "Retrieves the permissions for a specified Looker Studio asset. Returns the role-to-member mapping and an etag for concurrency control."
+        },
+        {
+          "info": {
+            "name": "Looker Studio Update asset permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://datastudio.googleapis.com/v1/assets/:assetId/permissions",
+            "params": [
+              {
+                "name": "assetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Looker Studio asset."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modifies the permissions for a specified Looker Studio asset. Uses the etag for optimistic concurrency control to prevent conflicting updates."
+        },
+        {
+          "info": {
+            "name": "Looker Studio Add members to asset permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.googleapis.com/v1/assets/:assetId/permissions:addMembers",
+            "params": [
+              {
+                "name": "assetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Looker Studio asset."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds one or more members to a Looker Studio asset's permissions with a specified role. Members can be users, groups, domains, or service accounts."
+        },
+        {
+          "info": {
+            "name": "Looker Studio Revoke all permissions for members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.googleapis.com/v1/assets/:assetId/permissions:revokeAllPermissions",
+            "params": [
+              {
+                "name": "assetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the Looker Studio asset."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes specified members from all roles on a Looker Studio asset, effectively revoking their access to the asset entirely."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

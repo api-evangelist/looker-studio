@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Looker Studio Assets Visualization API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visualization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio List community visualizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datastudio.googleapis.com/v1/visualization"
+          },
+          "docs": "Accesses the community visualization gallery where users can browse and discover published community visualizations for use in their Looker Studio reports."
+        },
+        {
+          "info": {
+            "name": "Looker Studio Load a community visualization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.googleapis.com/v1/visualization/load",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Loads a community visualization into a Looker Studio report. The visualization is identified by its manifest URL hosted on Google Cloud Storage. Looker Studio fetches the manifest, resolves the JavaScript and CSS resources, and renders the visualization with the report's data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

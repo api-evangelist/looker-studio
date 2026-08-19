@@ -1,0 +1,491 @@
+{
+  "item": [
+    {
+      "id": "54aa54d4-ecd2-4436-ae9c-7749e36041c2",
+      "name": "Assets",
+      "description": {
+        "content": "Operations for searching and managing Looker Studio assets (reports and data sources).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "521a5357-c254-4fa8-9885-a61fa7fdd767",
+          "name": "Search Looker Studio assets",
+          "request": {
+            "name": "Search Looker Studio assets",
+            "description": {
+              "content": "Searches the authenticated user's Looker Studio assets including reports and data sources. Results can be filtered by asset type. Requires the datastudio or datastudio.readonly OAuth scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets:search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "assetTypes",
+                  "value": "<string>",
+                  "description": "(Required) The types of assets to search for. Valid values are REPORT and DATA_SOURCE."
+                },
+                {
+                  "disabled": false,
+                  "key": "assetTypes",
+                  "value": "<string>",
+                  "description": "(Required) The types of assets to search for. Valid values are REPORT and DATA_SOURCE."
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>",
+                  "description": "Filter assets by title (partial match)."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeTrash",
+                  "value": "false",
+                  "description": "Whether to include trashed assets in the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>",
+                  "description": "Field to order results by, such as title, createTime, or updateTime."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum number of assets to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Token for retrieving the next page of results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e18266f4-1d93-418e-9385-56f260251e70",
+              "name": "Successful response containing matching assets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assetTypes",
+                      "value": "DATA_SOURCE"
+                    },
+                    {
+                      "key": "assetTypes",
+                      "value": "REPORT"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeTrash",
+                      "value": "false"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assets\": [\n    {\n      \"name\": \"string\",\n      \"assetType\": \"REPORT\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"owner\": \"string\",\n      \"creator\": \"string\",\n      \"createTime\": \"1962-01-30T09:18:22.589Z\",\n      \"updateTime\": \"1996-04-02T04:33:26.602Z\",\n      \"updateByMeTime\": \"1966-08-20T16:31:33.710Z\",\n      \"lastViewByMeTime\": \"1971-02-27T03:21:12.653Z\",\n      \"trashed\": true\n    },\n    {\n      \"name\": \"string\",\n      \"assetType\": \"REPORT\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"owner\": \"string\",\n      \"creator\": \"string\",\n      \"createTime\": \"1956-08-17T08:50:54.094Z\",\n      \"updateTime\": \"1949-03-31T03:06:25.866Z\",\n      \"updateByMeTime\": \"1996-04-14T10:27:11.491Z\",\n      \"lastViewByMeTime\": \"1969-01-15T09:55:23.285Z\",\n      \"trashed\": true\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a481da56-c3db-4424-a678-b9701a34e92a",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assetTypes",
+                      "value": "DATA_SOURCE"
+                    },
+                    {
+                      "key": "assetTypes",
+                      "value": "REPORT"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeTrash",
+                      "value": "false"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1500,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad1daf37-30d0-4b63-9f26-a9e6adb462d4",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assetTypes",
+                      "value": "DATA_SOURCE"
+                    },
+                    {
+                      "key": "assetTypes",
+                      "value": "REPORT"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeTrash",
+                      "value": "false"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1500,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e9eb553-ac6f-423b-a95c-108c8cc306da",
+              "name": "Insufficient permissions to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assetTypes",
+                      "value": "DATA_SOURCE"
+                    },
+                    {
+                      "key": "assetTypes",
+                      "value": "REPORT"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeTrash",
+                      "value": "false"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1500,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "289a448e-33a0-467a-a2d8-49315f061b21",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assetTypes",
+                      "value": "DATA_SOURCE"
+                    },
+                    {
+                      "key": "assetTypes",
+                      "value": "REPORT"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeTrash",
+                      "value": "false"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1500,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datastudio.googleapis.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "94bad703-3da8-4b65-8ab5-b21cf4ed1739",
+    "name": "Looker Studio Assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

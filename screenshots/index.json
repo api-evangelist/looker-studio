@@ -6,5 +6,14 @@
     "source_type": "Portal",
     "file": "looker-studio-2026-06-20T184714.png",
     "bytes": 32303
+  },
+  {
+    "repo": "looker-studio",
+    "captured_at": "2026-08-17T082124",
+    "source_url": "https://lookerstudio.google.com",
+    "source_type": "Website",
+    "file": "looker-studio-2026-08-17T082124.png",
+    "bytes": 533784,
+    "capture": "playwright-local"
   }
 ]

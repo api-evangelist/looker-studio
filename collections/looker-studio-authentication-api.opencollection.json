@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Looker Studio Assets Authentication API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio Get authentication type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.googleapis.com/v1/connector/getAuthType",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the authentication type required by the connector. Looker Studio calls this function to determine how to authenticate the user with the third-party data source. The connector must return one of the supported authentication types."
+        },
+        {
+          "info": {
+            "name": "Looker Studio Validate authentication credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.googleapis.com/v1/connector/isAuthValid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates the current third-party authentication credentials. Looker Studio calls this function to check whether the user's stored credentials are still valid before making data requests."
+        },
+        {
+          "info": {
+            "name": "Looker Studio Store authentication credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.googleapis.com/v1/connector/setCredentials",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stores the user's authentication credentials for the third-party data source. Looker Studio calls this function after the user provides their credentials through the authentication UI."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

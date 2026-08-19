@@ -1,0 +1,133 @@
+{
+  "item": [
+    {
+      "id": "9c5fa084-cf54-4290-b953-9341e149b383",
+      "name": "Manifest",
+      "description": {
+        "content": "Operations related to the visualization manifest configuration that defines how a visualization is discovered and loaded.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e8d28831-2344-4efb-adf8-6a80faa1716c",
+          "name": "Looker Studio Get visualization manifest schema",
+          "request": {
+            "name": "Looker Studio Get visualization manifest schema",
+            "description": {
+              "content": "Returns the JSON schema definition for community visualization manifests. The manifest defines the visualization's name, description, resource locations, data configuration, and style elements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visualization",
+                "manifest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e47c04a6-8f93-4bc0-a38d-f15fa8b59b87",
+              "name": "The manifest schema definition.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visualization",
+                    "manifest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"components\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"resource\": {\n        \"js\": \"http://ZuGkahpdI.serVlCq6NHNv+DFrNPLqq-ayow-G\",\n        \"css\": \"https://aHqpLBdlaI.nnghCrAE8MKtadVYW1uVp5ZNct07nb1kQWLu7fUlKIvOGVr\"\n      },\n      \"description\": \"string\",\n      \"iconUrl\": \"https://QBEAHSoWzipIV.gyaa4F,oxHuuLeBJWq8xUAX1VgQT1pCuQLb\",\n      \"config\": {\n        \"data\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"style\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"interactions\": [\n          {\n            \"id\": \"string\",\n            \"supportedActions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"supportedActions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"resource\": {\n        \"js\": \"https://rNaZzfu.ukzIqioY+uUoS\",\n        \"css\": \"https://bsYJStugmoSLoFTglY.uqLUZwEYOmjjFRJBDLJ.e1JqZVgaHcQwjhHz0sX\"\n      },\n      \"description\": \"string\",\n      \"iconUrl\": \"http://shRt.ozzjzoD7B7ZjsPNi20uEqBEjTcmOLz+3yptW1gxW4-2BmwVo095V9J\",\n      \"config\": {\n        \"data\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"style\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"elements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"interactions\": [\n          {\n            \"id\": \"string\",\n            \"supportedActions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"supportedActions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  ],\n  \"organization\": \"string\",\n  \"description\": \"string\",\n  \"logoUrl\": \"https://ZoSn.fwC9vRe-IWv7Tqyw43.djQ1fHllW0FcYjF6lVTbcAxhZZCI\",\n  \"devMode\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datastudio.googleapis.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "36f07b8a-4658-4e89-9887-671463cf390b",
+    "name": "Looker Studio Assets Manifest API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

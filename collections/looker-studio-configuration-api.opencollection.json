@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Looker Studio Assets Configuration API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio Get connector configuration options",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.googleapis.com/v1/connector/getConfig",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the user-configurable options for the connector. Looker Studio displays these options to the user when setting up a data source. The configuration can include text inputs, dropdowns, checkboxes, and informational text. Supports stepped configuration where subsequent config options depend on previous selections."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

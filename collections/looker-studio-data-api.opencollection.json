@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Looker Studio Assets Data API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio Get data rows",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://datastudio.googleapis.com/v1/connector/getData",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetches tabular data from the external source matching the request criteria. Receives configuration parameters, optional date ranges, requested field names, and dimension filters. Returns rows with values in the schema-defined order. Limited to 1 million rows per request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1460 @@
+{
+  "item": [
+    {
+      "id": "6bf9d8b1-ecfc-4631-90a9-54d84b8b9a6b",
+      "name": "Permissions",
+      "description": {
+        "content": "Operations for managing asset permissions including getting, updating, adding, and revoking member access.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab89fcd4-899e-48b9-bee5-6af439ed3460",
+          "name": "Looker Studio Get asset permissions",
+          "request": {
+            "name": "Looker Studio Get asset permissions",
+            "description": {
+              "content": "Retrieves the permissions for a specified Looker Studio asset. Returns the role-to-member mapping and an etag for concurrency control.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets",
+                ":assetId",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) The unique identifier of the Looker Studio asset."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dea32bd4-2c58-429e-89ad-e96da2c0356b",
+              "name": "Successful response containing the asset permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"permissions\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"etag\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17fbcb35-be37-419c-9584-7d4ce46c5744",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d87a4a88-d893-450d-a846-357ae9c07ee4",
+              "name": "Insufficient permissions to view this asset's permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12fc8cbd-2345-4843-b1b0-4a5a204ad984",
+              "name": "Asset not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b48c9e6-420d-4298-8ca1-daa794cd350a",
+          "name": "Looker Studio Update asset permissions",
+          "request": {
+            "name": "Looker Studio Update asset permissions",
+            "description": {
+              "content": "Modifies the permissions for a specified Looker Studio asset. Uses the etag for optimistic concurrency control to prevent conflicting updates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets",
+                ":assetId",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) The unique identifier of the Looker Studio asset."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"permissions\": {\n    \"key_0\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "381063a4-5b0e-46f5-b2a2-59ce4622b8ed",
+              "name": "Successful response with the updated permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": {\n    \"key_0\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"key_1\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"permissions\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"etag\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "300a20cc-e93d-429b-a9d7-a3ebb059fb5a",
+              "name": "Invalid request body or parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": {\n    \"key_0\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"key_1\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9928684c-18c5-4341-8275-4684aac94b0d",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": {\n    \"key_0\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"key_1\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "317cde0d-db4d-4b26-b466-7bcf9d26d727",
+              "name": "Insufficient permissions to modify this asset's permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": {\n    \"key_0\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"key_1\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ffb28013-7d8c-4505-a913-32b198915cf1",
+              "name": "Asset not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": {\n    \"key_0\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"key_1\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "272b93bd-eb79-4f88-8cc4-6c61fb8ba3ce",
+              "name": "Etag mismatch indicating a conflicting concurrent update.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": {\n    \"key_0\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"key_1\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"etag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2a26c0a-6bee-4bc5-9502-b0af9872db35",
+          "name": "Looker Studio Add members to asset permissions",
+          "request": {
+            "name": "Looker Studio Add members to asset permissions",
+            "description": {
+              "content": "Adds one or more members to a Looker Studio asset's permissions with a specified role. Members can be users, groups, domains, or service accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets",
+                ":assetId",
+                "permissions:addMembers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) The unique identifier of the Looker Studio asset."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b56f8e4-091f-4192-8182-45b2e5040208",
+              "name": "Successful response after adding the members.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions:addMembers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"VIEWER\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"permissions\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"etag\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdac1bc6-fe2a-4fa2-b6f9-12b89af28d6c",
+              "name": "Invalid request body or member format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions:addMembers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"VIEWER\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0162c51e-9d82-4493-adeb-0bc4c794aecb",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions:addMembers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"VIEWER\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68828adb-d006-4800-8c28-dccb61707335",
+              "name": "Insufficient permissions to add members to this asset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions:addMembers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"VIEWER\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f62118ca-97e4-4366-8d53-fefeeef35620",
+              "name": "Asset not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions:addMembers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"VIEWER\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6290147c-261c-4b46-ab26-7b0dea9abdbc",
+          "name": "Looker Studio Revoke all permissions for members",
+          "request": {
+            "name": "Looker Studio Revoke all permissions for members",
+            "description": {
+              "content": "Removes specified members from all roles on a Looker Studio asset, effectively revoking their access to the asset entirely.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets",
+                ":assetId",
+                "permissions:revokeAllPermissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) The unique identifier of the Looker Studio asset."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f40f8bf0-623d-4f4a-af9e-e60063e23ca3",
+              "name": "Successful response after revoking the permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions:revokeAllPermissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"permissions\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"etag\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bbe5a01c-0c57-4798-a926-393bb512bd93",
+              "name": "Invalid request body or member format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions:revokeAllPermissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5083aa1c-1ae6-423d-be8f-1dfb1b2562bd",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions:revokeAllPermissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78ecd389-1b90-4cfb-b148-ed26f2ce8869",
+              "name": "Insufficient permissions to revoke access on this asset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions:revokeAllPermissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5c69e0f-9a10-4cd0-998e-208f5648aab2",
+              "name": "Asset not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":assetId",
+                    "permissions:revokeAllPermissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) The unique identifier of the Looker Studio asset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4658,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"details\": [\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"@type\": \"string\",\n        \"reason\": \"string\",\n        \"domain\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datastudio.googleapis.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ce5f5b38-1e14-4139-9eec-f810be3823e7",
+    "name": "Looker Studio Assets Permissions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

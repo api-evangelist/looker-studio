@@ -1,0 +1,154 @@
+{
+  "item": [
+    {
+      "id": "738759ca-e5b5-4496-b5c4-97a6ef2c36ca",
+      "name": "Schema",
+      "description": {
+        "content": "Operations for defining the data structure and field definitions returned by the connector.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "384fff0d-8412-4f24-9bd9-1fc6cee3061f",
+          "name": "Looker Studio Get data schema",
+          "request": {
+            "name": "Looker Studio Get data schema",
+            "description": {
+              "content": "Returns the schema (field definitions) for the data that the connector provides. Each field includes an ID, name, data type, semantic type, and whether it is a dimension or metric. Looker Studio uses this schema to understand the structure of the available data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connector",
+                "getSchema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"configParams\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d434173-8b92-4108-8755-bf595fb00fb5",
+              "name": "The data schema with field definitions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connector",
+                    "getSchema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configParams\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schema\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"dataType\": \"STRING\",\n      \"semantics\": {\n        \"conceptType\": \"METRIC\",\n        \"semanticType\": \"QUARTER\",\n        \"semanticGroup\": \"string\",\n        \"isReaggregatable\": false\n      },\n      \"group\": \"string\",\n      \"formula\": \"string\",\n      \"isDefault\": false,\n      \"defaultAggregationType\": \"COUNT\",\n      \"isHidden\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"dataType\": \"NUMBER\",\n      \"semantics\": {\n        \"conceptType\": \"DIMENSION\",\n        \"semanticType\": \"REGION\",\n        \"semanticGroup\": \"string\",\n        \"isReaggregatable\": false\n      },\n      \"group\": \"string\",\n      \"formula\": \"string\",\n      \"isDefault\": false,\n      \"defaultAggregationType\": \"AUTO\",\n      \"isHidden\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datastudio.googleapis.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/datastudio https://www.googleapis.com/auth/datastudio.readonly https://www.googleapis.com/auth/userinfo.profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f14e2562-5c17-4417-8ebb-4007e3de8ba1",
+    "name": "Looker Studio Assets Schema API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.\n\nContact Support:\n Name: Google",
+      "type": "text/plain"
+    }
+  }
+}

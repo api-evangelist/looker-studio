@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Looker Studio Assets Manifest API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manifest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Looker Studio Get visualization manifest schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datastudio.googleapis.com/v1/visualization/manifest"
+          },
+          "docs": "Returns the JSON schema definition for community visualization manifests. The manifest defines the visualization's name, description, resource locations, data configuration, and style elements."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Looker Studio Assets API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Looker Studio assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://datastudio.googleapis.com/v1/assets:search",
+            "params": [
+              {
+                "name": "assetTypes",
+                "value": "",
+                "type": "query",
+                "description": "The types of assets to search for. Valid values are REPORT and DATA_SOURCE."
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query",
+                "description": "Filter assets by title (partial match)."
+              },
+              {
+                "name": "includeTrash",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include trashed assets in the results."
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "Field to order results by, such as title, createTime, or updateTime."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of assets to return per page."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token for retrieving the next page of results."
+              }
+            ]
+          },
+          "docs": "Searches the authenticated user's Looker Studio assets including reports and data sources. Results can be filtered by asset type. Requires the datastudio or datastudio.readonly OAuth scope."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
