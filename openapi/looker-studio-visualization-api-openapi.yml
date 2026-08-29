@@ -1,20 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Looker Studio Assets Visualization API
-  description: The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.
+  title: Looker Studio Community Visualization API
+  description: Build and deploy custom visualizations for Looker Studio using any JavaScript visualization library. The dscc (Data Studio Community Component) helper library simplifies development by providing functions for data subscriptions, component dimensions, and user interactions. Visualizations are event-driven, receiving data and style information as users interact with the report. This specification documents the hosting and deployment contract for community visualizations.
   version: v1
   contact:
     name: Google
-    url: https://developers.google.com/looker-studio/integrate/api
+    url: https://developers.google.com/looker-studio/visualization
   license:
     name: Google APIs Terms of Service
     url: https://developers.google.com/terms
   termsOfService: https://developers.google.com/terms
 servers:
-- url: https://datastudio.googleapis.com/v1
-  description: Looker Studio API production server
-security:
-- oauth2: []
+- url: https://lookerstudio.google.com
+  description: Looker Studio production server
 tags:
 - name: Visualization
   description: Operations for loading and rendering community visualizations in Looker Studio reports.
@@ -94,18 +92,6 @@ components:
           description: The unique identifier of the report component to render the visualization in.
       required:
       - manifestUrl
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      description: OAuth 2.0 authentication with domain-wide delegation. Requires Google Workspace or Cloud Identity organization.
-      flows:
-        authorizationCode:
-          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
-          tokenUrl: https://oauth2.googleapis.com/token
-          scopes:
-            https://www.googleapis.com/auth/datastudio: Full access to manage Looker Studio assets and permissions.
-            https://www.googleapis.com/auth/datastudio.readonly: Read-only access to Looker Studio assets.
-            https://www.googleapis.com/auth/userinfo.profile: Access to user profile information.
 externalDocs:
-  description: Looker Studio API Reference
-  url: https://developers.google.com/looker-studio/integrate/api/reference
+  description: Looker Studio Community Visualization Documentation
+  url: https://developers.google.com/looker-studio/visualization

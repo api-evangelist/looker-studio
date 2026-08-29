@@ -1,20 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Looker Studio Assets Configuration API
-  description: The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.
+  title: Looker Studio Community Connector Configuration API
+  description: 'Build custom data connectors to bring data from any source into Looker Studio. Connectors are built using Google Apps Script and implement three core functions: getConfig(), getSchema(), and getData(). This specification documents the contract between Looker Studio and community connectors, defining the request and response formats for each required function.'
   version: v1
   contact:
     name: Google
-    url: https://developers.google.com/looker-studio/integrate/api
+    url: https://developers.google.com/looker-studio/connector
   license:
     name: Google APIs Terms of Service
     url: https://developers.google.com/terms
   termsOfService: https://developers.google.com/terms
 servers:
-- url: https://datastudio.googleapis.com/v1
-  description: Looker Studio API production server
-security:
-- oauth2: []
+- url: https://datastudio.google.com/datasources/create
+  description: Looker Studio data source creation endpoint
 tags:
 - name: Configuration
   description: Operations related to connector configuration, including user-configurable options and authentication setup.
@@ -42,6 +40,18 @@ paths:
                 $ref: '#/components/schemas/GetConfigResponse'
 components:
   schemas:
+    GetConfigRequest:
+      type: object
+      description: Request for connector configuration options.
+      properties:
+        languageCode:
+          type: string
+          description: The user's language preference (ISO 639 code).
+        configParams:
+          type: object
+          description: Previously configured parameters. Present during stepped configuration when the user has already filled in some options.
+          additionalProperties:
+            type: string
     ConfigParam:
       type: object
       description: A single configuration parameter definition.
@@ -83,18 +93,6 @@ components:
               value:
                 type: string
                 description: The value submitted when this option is selected.
-    GetConfigRequest:
-      type: object
-      description: Request for connector configuration options.
-      properties:
-        languageCode:
-          type: string
-          description: The user's language preference (ISO 639 code).
-        configParams:
-          type: object
-          description: Previously configured parameters. Present during stepped configuration when the user has already filled in some options.
-          additionalProperties:
-            type: string
     GetConfigResponse:
       type: object
       description: Response containing the connector's configurable options.
@@ -110,18 +108,6 @@ components:
         isSteppedConfig:
           type: boolean
           description: Whether the connector uses stepped configuration where subsequent options depend on previous selections. Defaults to false.
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      description: OAuth 2.0 authentication with domain-wide delegation. Requires Google Workspace or Cloud Identity organization.
-      flows:
-        authorizationCode:
-          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
-          tokenUrl: https://oauth2.googleapis.com/token
-          scopes:
-            https://www.googleapis.com/auth/datastudio: Full access to manage Looker Studio assets and permissions.
-            https://www.googleapis.com/auth/datastudio.readonly: Read-only access to Looker Studio assets.
-            https://www.googleapis.com/auth/userinfo.profile: Access to user profile information.
 externalDocs:
-  description: Looker Studio API Reference
-  url: https://developers.google.com/looker-studio/integrate/api/reference
+  description: Looker Studio Community Connector Documentation
+  url: https://developers.google.com/looker-studio/connector/reference

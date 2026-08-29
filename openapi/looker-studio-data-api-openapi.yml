@@ -1,20 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Looker Studio Assets Data API
-  description: The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.
+  title: Looker Studio Community Connector Data API
+  description: 'Build custom data connectors to bring data from any source into Looker Studio. Connectors are built using Google Apps Script and implement three core functions: getConfig(), getSchema(), and getData(). This specification documents the contract between Looker Studio and community connectors, defining the request and response formats for each required function.'
   version: v1
   contact:
     name: Google
-    url: https://developers.google.com/looker-studio/integrate/api
+    url: https://developers.google.com/looker-studio/connector
   license:
     name: Google APIs Terms of Service
     url: https://developers.google.com/terms
   termsOfService: https://developers.google.com/terms
 servers:
-- url: https://datastudio.googleapis.com/v1
-  description: Looker Studio API production server
-security:
-- oauth2: []
+- url: https://datastudio.google.com/datasources/create
+  description: Looker Studio data source creation endpoint
 tags:
 - name: Data
   description: Operations for fetching data from the external source and returning it to Looker Studio.
@@ -130,32 +128,41 @@ components:
           enum:
           - AND
           - OR
-    GetDataResponse:
+    GetDataRequest:
       type: object
-      description: Response containing the requested data rows.
+      description: Request for fetching data rows from the connector.
       properties:
-        schema:
+        configParams:
+          type: object
+          description: The user-configured parameters.
+          additionalProperties:
+            type: string
+        dateRange:
+          type: object
+          description: The date range for the data request if dateRangeRequired is true.
+          properties:
+            startDate:
+              type: string
+              format: date
+              description: Start date in YYYY-MM-DD format.
+            endDate:
+              type: string
+              format: date
+              description: End date in YYYY-MM-DD format.
+        fields:
           type: array
-          description: The field definitions for the returned data, in the order they appear in each row.
-          items:
-            $ref: '#/components/schemas/Field'
-        rows:
-          type: array
-          description: The data rows. Each row contains values in schema-defined order.
+          description: The list of field names to include in the response.
           items:
             type: object
             properties:
-              values:
-                type: array
-                description: The field values for this row in the same order as the schema fields.
-                items:
-                  oneOf:
-                  - type: string
-                  - type: number
-                  - type: boolean
-        filtersApplied:
-          type: boolean
-          description: Whether the connector applied the requested filters.
+              name:
+                type: string
+                description: The field name as defined in the schema.
+        dimensionFilters:
+          type: array
+          description: Filters to apply to dimension fields.
+          items:
+            $ref: '#/components/schemas/DimensionFilter'
     Field:
       type: object
       description: Defines a single field in the connector's data schema.
@@ -202,53 +209,32 @@ components:
         isHidden:
           type: boolean
           description: Whether the field is hidden from the user interface.
-    GetDataRequest:
+    GetDataResponse:
       type: object
-      description: Request for fetching data rows from the connector.
+      description: Response containing the requested data rows.
       properties:
-        configParams:
-          type: object
-          description: The user-configured parameters.
-          additionalProperties:
-            type: string
-        dateRange:
-          type: object
-          description: The date range for the data request if dateRangeRequired is true.
-          properties:
-            startDate:
-              type: string
-              format: date
-              description: Start date in YYYY-MM-DD format.
-            endDate:
-              type: string
-              format: date
-              description: End date in YYYY-MM-DD format.
-        fields:
+        schema:
           type: array
-          description: The list of field names to include in the response.
+          description: The field definitions for the returned data, in the order they appear in each row.
+          items:
+            $ref: '#/components/schemas/Field'
+        rows:
+          type: array
+          description: The data rows. Each row contains values in schema-defined order.
           items:
             type: object
             properties:
-              name:
-                type: string
-                description: The field name as defined in the schema.
-        dimensionFilters:
-          type: array
-          description: Filters to apply to dimension fields.
-          items:
-            $ref: '#/components/schemas/DimensionFilter'
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      description: OAuth 2.0 authentication with domain-wide delegation. Requires Google Workspace or Cloud Identity organization.
-      flows:
-        authorizationCode:
-          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
-          tokenUrl: https://oauth2.googleapis.com/token
-          scopes:
-            https://www.googleapis.com/auth/datastudio: Full access to manage Looker Studio assets and permissions.
-            https://www.googleapis.com/auth/datastudio.readonly: Read-only access to Looker Studio assets.
-            https://www.googleapis.com/auth/userinfo.profile: Access to user profile information.
+              values:
+                type: array
+                description: The field values for this row in the same order as the schema fields.
+                items:
+                  oneOf:
+                  - type: string
+                  - type: number
+                  - type: boolean
+        filtersApplied:
+          type: boolean
+          description: Whether the connector applied the requested filters.
 externalDocs:
-  description: Looker Studio API Reference
-  url: https://developers.google.com/looker-studio/integrate/api/reference
+  description: Looker Studio Community Connector Documentation
+  url: https://developers.google.com/looker-studio/connector/reference

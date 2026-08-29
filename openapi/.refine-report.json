@@ -1,34 +1,47 @@
 {
   "provider": "looker-studio",
   "sources": [
-    "looker-studio-assets-api-openapi.yml",
-    "looker-studio-authentication-api-openapi.yml",
-    "looker-studio-configuration-api-openapi.yml",
-    "looker-studio-data-api-openapi.yml",
-    "looker-studio-embed-api-openapi.yml",
-    "looker-studio-manifest-api-openapi.yml",
-    "looker-studio-oembed-api-openapi.yml",
-    "looker-studio-permissions-api-openapi.yml",
-    "looker-studio-reports-api-openapi.yml",
-    "looker-studio-schema-api-openapi.yml",
-    "looker-studio-visualization-api-openapi.yml"
+    "_original/looker-studio-api-openapi.yml",
+    "_original/looker-studio-community-connector-api-openapi.yml",
+    "_original/looker-studio-community-visualization-api-openapi.yml",
+    "_original/looker-studio-embedding-api-openapi.yml",
+    "_original/looker-studio-linking-api-openapi.yml"
   ],
   "outputs": [
     "looker-studio-assets-api-openapi.yml",
+    "looker-studio-permissions-api-openapi.yml",
     "looker-studio-authentication-api-openapi.yml",
     "looker-studio-configuration-api-openapi.yml",
     "looker-studio-data-api-openapi.yml",
-    "looker-studio-embed-api-openapi.yml",
-    "looker-studio-manifest-api-openapi.yml",
-    "looker-studio-oembed-api-openapi.yml",
-    "looker-studio-permissions-api-openapi.yml",
-    "looker-studio-reports-api-openapi.yml",
     "looker-studio-schema-api-openapi.yml",
-    "looker-studio-visualization-api-openapi.yml"
+    "looker-studio-manifest-api-openapi.yml",
+    "looker-studio-visualization-api-openapi.yml",
+    "looker-studio-embed-api-openapi.yml",
+    "looker-studio-oembed-api-openapi.yml",
+    "looker-studio-reports-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (5 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "looker-studio-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "looker-studio-community-connector-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "looker-studio-community-visualization-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "looker-studio-embedding-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "looker-studio-linking-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "looker-studio-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "looker-studio-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "looker-studio-configuration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "looker-studio-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "looker-studio-embed-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "looker-studio-manifest-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "looker-studio-oembed-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "looker-studio-permissions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "looker-studio-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "looker-studio-schema-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "looker-studio-visualization-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

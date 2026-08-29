@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Looker Studio Assets Permissions API
+  title: Looker Studio Permissions API
   description: The Looker Studio API enables developers to programmatically manage reports, data sources, and permissions. It provides methods for searching assets and managing asset permissions including getting, updating, adding, and removing members. The API is available to users that belong to an organization with Google Workspace or Cloud Identity.
   version: v1
   contact:
@@ -221,29 +221,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    AddMembersRequest:
-      type: object
-      description: Request body for adding members to an asset's permissions.
-      properties:
-        role:
-          $ref: '#/components/schemas/Role'
-        members:
-          type: array
-          description: List of member identifiers to add. Members use prefixed format such as user:email@example.com, group:group@googlegroups.com, domain:example.com, or serviceAccount:sa@project.iam.gserviceaccount.com.
-          items:
-            type: string
-      required:
-      - role
-      - members
-    Role:
-      type: string
-      description: The access role for a member on a Looker Studio asset.
-      enum:
-      - VIEWER
-      - EDITOR
-      - OWNER
-      - LINK_VIEWER
-      - LINK_EDITOR
     Error:
       type: object
       description: Standard error response from the Looker Studio API.
@@ -276,6 +253,20 @@ components:
                     type: object
                     additionalProperties:
                       type: string
+    AddMembersRequest:
+      type: object
+      description: Request body for adding members to an asset's permissions.
+      properties:
+        role:
+          $ref: '#/components/schemas/Role'
+        members:
+          type: array
+          description: List of member identifiers to add. Members use prefixed format such as user:email@example.com, group:group@googlegroups.com, domain:example.com, or serviceAccount:sa@project.iam.gserviceaccount.com.
+          items:
+            type: string
+      required:
+      - role
+      - members
     RevokePermissionsRequest:
       type: object
       description: Request body for revoking all permissions for specified members.
@@ -287,6 +278,15 @@ components:
             type: string
       required:
       - members
+    Role:
+      type: string
+      description: The access role for a member on a Looker Studio asset.
+      enum:
+      - VIEWER
+      - EDITOR
+      - OWNER
+      - LINK_VIEWER
+      - LINK_EDITOR
     Permissions:
       type: object
       description: Represents the permissions configuration for a Looker Studio asset, mapping roles to arrays of member identifiers.
