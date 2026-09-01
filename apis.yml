@@ -466,7 +466,7 @@ apis:
   humanURL: https://developers.google.com/looker-studio/integrate/api
   baseURL: https://datastudio.googleapis.com/v1
   tags:
-  - Manifest
+  - Manifests
   tags_raw:
   - Manifest
   properties:
