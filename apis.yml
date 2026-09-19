@@ -881,6 +881,8 @@ apis:
   humanURL: https://developers.google.com/looker-studio/integrate/api
   baseURL: https://datastudio.googleapis.com/v1
   tags:
+  - oEmbed
+  tags_raw:
   - o Embed
   properties:
   - type: OpenAPI
