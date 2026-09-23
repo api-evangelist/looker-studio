@@ -40,6 +40,15 @@ paths:
                 $ref: '#/components/schemas/GetSchemaResponse'
 components:
   schemas:
+    GetSchemaResponse:
+      type: object
+      description: Response containing the data schema.
+      properties:
+        schema:
+          type: array
+          description: The list of field definitions.
+          items:
+            $ref: '#/components/schemas/Field'
     Field:
       type: object
       description: Defines a single field in the connector's data schema.
@@ -86,15 +95,6 @@ components:
         isHidden:
           type: boolean
           description: Whether the field is hidden from the user interface.
-    GetSchemaResponse:
-      type: object
-      description: Response containing the data schema.
-      properties:
-        schema:
-          type: array
-          description: The list of field definitions.
-          items:
-            $ref: '#/components/schemas/Field'
     FieldSemantics:
       type: object
       description: Semantic information about a field.

@@ -58,6 +58,19 @@ paths:
           description: The visualization manifest could not be found at the specified URL.
 components:
   schemas:
+    LoadVisualizationRequest:
+      type: object
+      description: Request to load a community visualization.
+      properties:
+        manifestUrl:
+          type: string
+          format: uri
+          description: The URL to the visualization's manifest.json file, typically hosted on Google Cloud Storage.
+        componentId:
+          type: string
+          description: The unique identifier of the report component to render the visualization in.
+      required:
+      - manifestUrl
     LoadVisualizationResponse:
       type: object
       description: Response after successfully loading a community visualization.
@@ -79,19 +92,6 @@ components:
               type: string
             code:
               type: string
-    LoadVisualizationRequest:
-      type: object
-      description: Request to load a community visualization.
-      properties:
-        manifestUrl:
-          type: string
-          format: uri
-          description: The URL to the visualization's manifest.json file, typically hosted on Google Cloud Storage.
-        componentId:
-          type: string
-          description: The unique identifier of the report component to render the visualization in.
-      required:
-      - manifestUrl
 externalDocs:
   description: Looker Studio Community Visualization Documentation
   url: https://developers.google.com/looker-studio/visualization

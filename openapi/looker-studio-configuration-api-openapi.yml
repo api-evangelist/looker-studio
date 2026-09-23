@@ -40,18 +40,21 @@ paths:
                 $ref: '#/components/schemas/GetConfigResponse'
 components:
   schemas:
-    GetConfigRequest:
+    GetConfigResponse:
       type: object
-      description: Request for connector configuration options.
+      description: Response containing the connector's configurable options.
       properties:
-        languageCode:
-          type: string
-          description: The user's language preference (ISO 639 code).
         configParams:
-          type: object
-          description: Previously configured parameters. Present during stepped configuration when the user has already filled in some options.
-          additionalProperties:
-            type: string
+          type: array
+          description: The list of configuration elements to display to the user.
+          items:
+            $ref: '#/components/schemas/ConfigParam'
+        dateRangeRequired:
+          type: boolean
+          description: Whether the connector requires a date range to be specified by the user. Defaults to false.
+        isSteppedConfig:
+          type: boolean
+          description: Whether the connector uses stepped configuration where subsequent options depend on previous selections. Defaults to false.
     ConfigParam:
       type: object
       description: A single configuration parameter definition.
@@ -93,21 +96,18 @@ components:
               value:
                 type: string
                 description: The value submitted when this option is selected.
-    GetConfigResponse:
+    GetConfigRequest:
       type: object
-      description: Response containing the connector's configurable options.
+      description: Request for connector configuration options.
       properties:
+        languageCode:
+          type: string
+          description: The user's language preference (ISO 639 code).
         configParams:
-          type: array
-          description: The list of configuration elements to display to the user.
-          items:
-            $ref: '#/components/schemas/ConfigParam'
-        dateRangeRequired:
-          type: boolean
-          description: Whether the connector requires a date range to be specified by the user. Defaults to false.
-        isSteppedConfig:
-          type: boolean
-          description: Whether the connector uses stepped configuration where subsequent options depend on previous selections. Defaults to false.
+          type: object
+          description: Previously configured parameters. Present during stepped configuration when the user has already filled in some options.
+          additionalProperties:
+            type: string
 externalDocs:
   description: Looker Studio Community Connector Documentation
   url: https://developers.google.com/looker-studio/connector/reference

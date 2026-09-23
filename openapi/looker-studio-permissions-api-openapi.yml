@@ -253,20 +253,6 @@ components:
                     type: object
                     additionalProperties:
                       type: string
-    AddMembersRequest:
-      type: object
-      description: Request body for adding members to an asset's permissions.
-      properties:
-        role:
-          $ref: '#/components/schemas/Role'
-        members:
-          type: array
-          description: List of member identifiers to add. Members use prefixed format such as user:email@example.com, group:group@googlegroups.com, domain:example.com, or serviceAccount:sa@project.iam.gserviceaccount.com.
-          items:
-            type: string
-      required:
-      - role
-      - members
     RevokePermissionsRequest:
       type: object
       description: Request body for revoking all permissions for specified members.
@@ -278,15 +264,6 @@ components:
             type: string
       required:
       - members
-    Role:
-      type: string
-      description: The access role for a member on a Looker Studio asset.
-      enum:
-      - VIEWER
-      - EDITOR
-      - OWNER
-      - LINK_VIEWER
-      - LINK_EDITOR
     Permissions:
       type: object
       description: Represents the permissions configuration for a Looker Studio asset, mapping roles to arrays of member identifiers.
@@ -301,6 +278,29 @@ components:
         etag:
           type: string
           description: An opaque string used for optimistic concurrency control. Include this value in update requests to prevent conflicting modifications.
+    AddMembersRequest:
+      type: object
+      description: Request body for adding members to an asset's permissions.
+      properties:
+        role:
+          $ref: '#/components/schemas/Role'
+        members:
+          type: array
+          description: List of member identifiers to add. Members use prefixed format such as user:email@example.com, group:group@googlegroups.com, domain:example.com, or serviceAccount:sa@project.iam.gserviceaccount.com.
+          items:
+            type: string
+      required:
+      - role
+      - members
+    Role:
+      type: string
+      description: The access role for a member on a Looker Studio asset.
+      enum:
+      - VIEWER
+      - EDITOR
+      - OWNER
+      - LINK_VIEWER
+      - LINK_EDITOR
   securitySchemes:
     oauth2:
       type: oauth2

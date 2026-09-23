@@ -20,7 +20,9 @@
     "looker-studio-oembed-api-openapi.yml",
     "looker-studio-reports-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -29,7 +31,9 @@
     "looker-studio-community-connector-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "looker-studio-community-visualization-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "looker-studio-embedding-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "looker-studio-linking-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+    "looker-studio-linking-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: looker-studio-o-embed-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 11 total)"
   ],
   "skipped": [
     "looker-studio-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -38,7 +42,7 @@
     "looker-studio-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "looker-studio-embed-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "looker-studio-manifest-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "looker-studio-oembed-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "looker-studio-o-embed-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "looker-studio-permissions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "looker-studio-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "looker-studio-schema-api-openapi.yml: previously refined output, superseded by openapi/_original/",
