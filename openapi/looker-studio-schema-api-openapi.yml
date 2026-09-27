@@ -40,15 +40,15 @@ paths:
                 $ref: '#/components/schemas/GetSchemaResponse'
 components:
   schemas:
-    GetSchemaResponse:
+    GetSchemaRequest:
       type: object
-      description: Response containing the data schema.
+      description: Request for the connector's data schema.
       properties:
-        schema:
-          type: array
-          description: The list of field definitions.
-          items:
-            $ref: '#/components/schemas/Field'
+        configParams:
+          type: object
+          description: The user-configured parameters.
+          additionalProperties:
+            type: string
     Field:
       type: object
       description: Defines a single field in the connector's data schema.
@@ -95,6 +95,15 @@ components:
         isHidden:
           type: boolean
           description: Whether the field is hidden from the user interface.
+    GetSchemaResponse:
+      type: object
+      description: Response containing the data schema.
+      properties:
+        schema:
+          type: array
+          description: The list of field definitions.
+          items:
+            $ref: '#/components/schemas/Field'
     FieldSemantics:
       type: object
       description: Semantic information about a field.
@@ -150,15 +159,6 @@ components:
         isReaggregatable:
           type: boolean
           description: Whether the metric can be re-aggregated.
-    GetSchemaRequest:
-      type: object
-      description: Request for the connector's data schema.
-      properties:
-        configParams:
-          type: object
-          description: The user-configured parameters.
-          additionalProperties:
-            type: string
 externalDocs:
   description: Looker Studio Community Connector Documentation
   url: https://developers.google.com/looker-studio/connector/reference
