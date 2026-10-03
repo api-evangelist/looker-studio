@@ -102,18 +102,38 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    SearchAssetsResponse:
+    Error:
       type: object
-      description: Response from the asset search endpoint.
+      description: Standard error response from the Looker Studio API.
       properties:
-        assets:
-          type: array
-          description: The list of matching assets.
-          items:
-            $ref: '#/components/schemas/Asset'
-        nextPageToken:
-          type: string
-          description: Token to retrieve the next page of results. Empty if there are no more results.
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable error message.
+            status:
+              type: string
+              description: The error status string.
+            details:
+              type: array
+              description: Additional error details.
+              items:
+                type: object
+                properties:
+                  '@type':
+                    type: string
+                  reason:
+                    type: string
+                  domain:
+                    type: string
+                  metadata:
+                    type: object
+                    additionalProperties:
+                      type: string
     Asset:
       type: object
       description: Represents a Looker Studio asset such as a report or data source.
@@ -154,44 +174,24 @@ components:
         trashed:
           type: boolean
           description: Whether the asset is in the trash.
+    SearchAssetsResponse:
+      type: object
+      description: Response from the asset search endpoint.
+      properties:
+        assets:
+          type: array
+          description: The list of matching assets.
+          items:
+            $ref: '#/components/schemas/Asset'
+        nextPageToken:
+          type: string
+          description: Token to retrieve the next page of results. Empty if there are no more results.
     AssetType:
       type: string
       description: The type of Looker Studio asset.
       enum:
       - REPORT
       - DATA_SOURCE
-    Error:
-      type: object
-      description: Standard error response from the Looker Studio API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: The HTTP status code.
-            message:
-              type: string
-              description: A human-readable error message.
-            status:
-              type: string
-              description: The error status string.
-            details:
-              type: array
-              description: Additional error details.
-              items:
-                type: object
-                properties:
-                  '@type':
-                    type: string
-                  reason:
-                    type: string
-                  domain:
-                    type: string
-                  metadata:
-                    type: object
-                    additionalProperties:
-                      type: string
   securitySchemes:
     oauth2:
       type: oauth2

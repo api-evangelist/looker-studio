@@ -40,15 +40,6 @@ paths:
                 $ref: '#/components/schemas/GetSchemaResponse'
 components:
   schemas:
-    GetSchemaRequest:
-      type: object
-      description: Request for the connector's data schema.
-      properties:
-        configParams:
-          type: object
-          description: The user-configured parameters.
-          additionalProperties:
-            type: string
     Field:
       type: object
       description: Defines a single field in the connector's data schema.
@@ -159,6 +150,15 @@ components:
         isReaggregatable:
           type: boolean
           description: Whether the metric can be re-aggregated.
+    GetSchemaRequest:
+      type: object
+      description: Request for the connector's data schema.
+      properties:
+        configParams:
+          type: object
+          description: The user-configured parameters.
+          additionalProperties:
+            type: string
 externalDocs:
   description: Looker Studio Community Connector Documentation
   url: https://developers.google.com/looker-studio/connector/reference

@@ -70,6 +70,45 @@ components:
                   max:
                     type: integer
                     description: Maximum number of fields allowed.
+    VisualizationComponent:
+      type: object
+      description: A single visualization component within a manifest.
+      properties:
+        id:
+          type: string
+          description: The unique identifier for this component.
+        name:
+          type: string
+          description: The display name of the component.
+        description:
+          type: string
+          description: A description of the component's purpose.
+        iconUrl:
+          type: string
+          format: uri
+          description: URL to the component's icon image.
+        resource:
+          $ref: '#/components/schemas/VisualizationResource'
+        config:
+          $ref: '#/components/schemas/VisualizationConfig'
+      required:
+      - id
+      - name
+      - resource
+    VisualizationResource:
+      type: object
+      description: The JavaScript and CSS resources required to render the visualization.
+      properties:
+        js:
+          type: string
+          format: uri
+          description: URL to the visualization's JavaScript bundle.
+        css:
+          type: string
+          format: uri
+          description: URL to the visualization's CSS stylesheet.
+      required:
+      - js
     VisualizationManifest:
       type: object
       description: The manifest file that defines a community visualization's metadata, resources, data requirements, and style configuration.
@@ -98,6 +137,25 @@ components:
       required:
       - name
       - components
+    VisualizationConfig:
+      type: object
+      description: Configuration defining the visualization's data requirements and style options.
+      properties:
+        data:
+          type: array
+          description: Data configuration specifying what dimensions and metrics the visualization requires.
+          items:
+            $ref: '#/components/schemas/DataConfig'
+        style:
+          type: array
+          description: Style configuration specifying the user-configurable style elements that appear in the Looker Studio property panel.
+          items:
+            $ref: '#/components/schemas/StyleConfig'
+        interactions:
+          type: array
+          description: Interaction configurations defining how the visualization responds to user interactions like filtering.
+          items:
+            $ref: '#/components/schemas/InteractionConfig'
     StyleConfig:
       type: object
       description: Defines a group of style elements that appear in the Looker Studio property panel for the visualization.
@@ -140,64 +198,6 @@ components:
               defaultValue:
                 type: string
                 description: The default value for this style element.
-    VisualizationResource:
-      type: object
-      description: The JavaScript and CSS resources required to render the visualization.
-      properties:
-        js:
-          type: string
-          format: uri
-          description: URL to the visualization's JavaScript bundle.
-        css:
-          type: string
-          format: uri
-          description: URL to the visualization's CSS stylesheet.
-      required:
-      - js
-    VisualizationComponent:
-      type: object
-      description: A single visualization component within a manifest.
-      properties:
-        id:
-          type: string
-          description: The unique identifier for this component.
-        name:
-          type: string
-          description: The display name of the component.
-        description:
-          type: string
-          description: A description of the component's purpose.
-        iconUrl:
-          type: string
-          format: uri
-          description: URL to the component's icon image.
-        resource:
-          $ref: '#/components/schemas/VisualizationResource'
-        config:
-          $ref: '#/components/schemas/VisualizationConfig'
-      required:
-      - id
-      - name
-      - resource
-    VisualizationConfig:
-      type: object
-      description: Configuration defining the visualization's data requirements and style options.
-      properties:
-        data:
-          type: array
-          description: Data configuration specifying what dimensions and metrics the visualization requires.
-          items:
-            $ref: '#/components/schemas/DataConfig'
-        style:
-          type: array
-          description: Style configuration specifying the user-configurable style elements that appear in the Looker Studio property panel.
-          items:
-            $ref: '#/components/schemas/StyleConfig'
-        interactions:
-          type: array
-          description: Interaction configurations defining how the visualization responds to user interactions like filtering.
-          items:
-            $ref: '#/components/schemas/InteractionConfig'
     InteractionConfig:
       type: object
       description: Defines an interaction type that the visualization supports, such as filter interactions.

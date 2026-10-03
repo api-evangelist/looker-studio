@@ -221,45 +221,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    AddMembersRequest:
-      type: object
-      description: Request body for adding members to an asset's permissions.
-      properties:
-        role:
-          $ref: '#/components/schemas/Role'
-        members:
-          type: array
-          description: List of member identifiers to add. Members use prefixed format such as user:email@example.com, group:group@googlegroups.com, domain:example.com, or serviceAccount:sa@project.iam.gserviceaccount.com.
-          items:
-            type: string
-      required:
-      - role
-      - members
-    Permissions:
-      type: object
-      description: Represents the permissions configuration for a Looker Studio asset, mapping roles to arrays of member identifiers.
-      properties:
-        permissions:
-          type: object
-          description: A mapping of roles to arrays of member identifiers. Each key is a Role value and each value is an array of member strings.
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        etag:
-          type: string
-          description: An opaque string used for optimistic concurrency control. Include this value in update requests to prevent conflicting modifications.
-    RevokePermissionsRequest:
-      type: object
-      description: Request body for revoking all permissions for specified members.
-      properties:
-        members:
-          type: array
-          description: List of member identifiers whose permissions should be revoked. Members use prefixed format such as user:email@example.com.
-          items:
-            type: string
-      required:
-      - members
     Role:
       type: string
       description: The access role for a member on a Looker Studio asset.
@@ -301,6 +262,45 @@ components:
                     type: object
                     additionalProperties:
                       type: string
+    RevokePermissionsRequest:
+      type: object
+      description: Request body for revoking all permissions for specified members.
+      properties:
+        members:
+          type: array
+          description: List of member identifiers whose permissions should be revoked. Members use prefixed format such as user:email@example.com.
+          items:
+            type: string
+      required:
+      - members
+    Permissions:
+      type: object
+      description: Represents the permissions configuration for a Looker Studio asset, mapping roles to arrays of member identifiers.
+      properties:
+        permissions:
+          type: object
+          description: A mapping of roles to arrays of member identifiers. Each key is a Role value and each value is an array of member strings.
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        etag:
+          type: string
+          description: An opaque string used for optimistic concurrency control. Include this value in update requests to prevent conflicting modifications.
+    AddMembersRequest:
+      type: object
+      description: Request body for adding members to an asset's permissions.
+      properties:
+        role:
+          $ref: '#/components/schemas/Role'
+        members:
+          type: array
+          description: List of member identifiers to add. Members use prefixed format such as user:email@example.com, group:group@googlegroups.com, domain:example.com, or serviceAccount:sa@project.iam.gserviceaccount.com.
+          items:
+            type: string
+      required:
+      - role
+      - members
   securitySchemes:
     oauth2:
       type: oauth2
