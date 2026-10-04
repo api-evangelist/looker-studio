@@ -1,21 +1,19 @@
-# Kin Score artifact — looker-studio — 2026-08-28T221322
+# Kin Score artifact — looker-studio — 2026-10-03T024842
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: looker-studio
-  schema_version: 0.15.1
-  scored_at: '2026-08-28'
-  run_ts: 2026-08-28T221322
-  composite: 54.5
+  schema_version: 0.23.0
+  scored_at: '2026-10-03'
+  run_ts: 2026-10-03T024842
+  composite: 55.6
   band: strong
   facets:
-    discoverability: 75.9
-    contract_quality: 67.9
-    governance: 9.8
-    operational_transparency: 52.6
-    developer_ergonomics: 69.0
-    commercial_clarity: 40.8
+    discoverability: 78.6
+    contract_quality: 61.9
     contract_governance: 9.8
+    operational_transparency: 52.6
+    developer_ergonomics: 65.5
     access_clarity: 40.8
   agent_readiness:
     score: 31.8
@@ -40,6 +38,12 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 40.2
+    matched_via: fallback
   provenance:
     agentic_access: derived
     contracts:

@@ -881,6 +881,8 @@ apis:
   humanURL: https://developers.google.com/looker-studio/integrate/api
   baseURL: https://datastudio.googleapis.com/v1
   tags:
+  - oEmbed
+  tags_raw:
   - o Embed
   properties:
   - type: OpenAPI
@@ -961,6 +963,9 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: CapabilityMap
+    url: capabilities/looker-studio-capability-edges.yml
+    name: Looker Studio Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/looker-studio/overview
   - type: AgenticAccess
