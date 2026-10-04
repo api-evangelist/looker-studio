@@ -86,16 +86,17 @@ paths:
                 $ref: '#/components/schemas/SetCredentialsResponse'
 components:
   schemas:
-    AuthTypeResponse:
-      type: object
-      description: Response from getAuthType containing the authentication configuration.
-      properties:
-        type:
-          $ref: '#/components/schemas/AuthType'
-        helpUrl:
-          type: string
-          format: uri
-          description: Optional URL to help documentation for authentication setup.
+    AuthType:
+      type: string
+      description: The type of authentication used by the connector.
+      enum:
+      - NONE
+      - OAUTH2
+      - KEY
+      - USER_PASS
+      - USER_TOKEN
+      - PATH_USER_PASS
+      - PATH_KEY
     SetCredentialsResponse:
       type: object
       description: Response from setCredentials.
@@ -106,6 +107,16 @@ components:
           enum:
           - NONE
           - INVALID_CREDENTIALS
+    AuthTypeResponse:
+      type: object
+      description: Response from getAuthType containing the authentication configuration.
+      properties:
+        type:
+          $ref: '#/components/schemas/AuthType'
+        helpUrl:
+          type: string
+          format: uri
+          description: Optional URL to help documentation for authentication setup.
     SetCredentialsRequest:
       type: object
       description: Request to store credentials for the third-party service.
@@ -147,17 +158,6 @@ components:
               type: string
             key:
               type: string
-    AuthType:
-      type: string
-      description: The type of authentication used by the connector.
-      enum:
-      - NONE
-      - OAUTH2
-      - KEY
-      - USER_PASS
-      - USER_TOKEN
-      - PATH_USER_PASS
-      - PATH_KEY
 externalDocs:
   description: Looker Studio Community Connector Documentation
   url: https://developers.google.com/looker-studio/connector/reference

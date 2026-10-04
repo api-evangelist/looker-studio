@@ -33,129 +33,6 @@ paths:
                 $ref: '#/components/schemas/VisualizationManifest'
 components:
   schemas:
-    DataConfig:
-      type: object
-      description: Defines a data source slot that the visualization requires, specifying the number and type of dimensions and metrics.
-      properties:
-        id:
-          type: string
-          description: Unique identifier for this data configuration.
-        label:
-          type: string
-          description: Display label for this data source in the property panel.
-        elements:
-          type: array
-          description: The dimension and metric slots for this data source.
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: Unique identifier for this element.
-              label:
-                type: string
-                description: Display label for this element.
-              type:
-                type: string
-                description: Whether this element accepts dimensions or metrics.
-                enum:
-                - DIMENSION
-                - METRIC
-              options:
-                type: object
-                properties:
-                  min:
-                    type: integer
-                    description: Minimum number of fields required.
-                  max:
-                    type: integer
-                    description: Maximum number of fields allowed.
-    VisualizationComponent:
-      type: object
-      description: A single visualization component within a manifest.
-      properties:
-        id:
-          type: string
-          description: The unique identifier for this component.
-        name:
-          type: string
-          description: The display name of the component.
-        description:
-          type: string
-          description: A description of the component's purpose.
-        iconUrl:
-          type: string
-          format: uri
-          description: URL to the component's icon image.
-        resource:
-          $ref: '#/components/schemas/VisualizationResource'
-        config:
-          $ref: '#/components/schemas/VisualizationConfig'
-      required:
-      - id
-      - name
-      - resource
-    VisualizationResource:
-      type: object
-      description: The JavaScript and CSS resources required to render the visualization.
-      properties:
-        js:
-          type: string
-          format: uri
-          description: URL to the visualization's JavaScript bundle.
-        css:
-          type: string
-          format: uri
-          description: URL to the visualization's CSS stylesheet.
-      required:
-      - js
-    VisualizationManifest:
-      type: object
-      description: The manifest file that defines a community visualization's metadata, resources, data requirements, and style configuration.
-      properties:
-        name:
-          type: string
-          description: The display name of the visualization.
-        organization:
-          type: string
-          description: The organization or developer that created the visualization.
-        description:
-          type: string
-          description: A description of what the visualization does.
-        logoUrl:
-          type: string
-          format: uri
-          description: URL to the visualization's logo image.
-        devMode:
-          type: boolean
-          description: Whether the visualization is in development mode. Development mode disables caching.
-        components:
-          type: array
-          description: The list of visualization components defined in this manifest.
-          items:
-            $ref: '#/components/schemas/VisualizationComponent'
-      required:
-      - name
-      - components
-    VisualizationConfig:
-      type: object
-      description: Configuration defining the visualization's data requirements and style options.
-      properties:
-        data:
-          type: array
-          description: Data configuration specifying what dimensions and metrics the visualization requires.
-          items:
-            $ref: '#/components/schemas/DataConfig'
-        style:
-          type: array
-          description: Style configuration specifying the user-configurable style elements that appear in the Looker Studio property panel.
-          items:
-            $ref: '#/components/schemas/StyleConfig'
-        interactions:
-          type: array
-          description: Interaction configurations defining how the visualization responds to user interactions like filtering.
-          items:
-            $ref: '#/components/schemas/InteractionConfig'
     StyleConfig:
       type: object
       description: Defines a group of style elements that appear in the Looker Studio property panel for the visualization.
@@ -198,6 +75,85 @@ components:
               defaultValue:
                 type: string
                 description: The default value for this style element.
+    DataConfig:
+      type: object
+      description: Defines a data source slot that the visualization requires, specifying the number and type of dimensions and metrics.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this data configuration.
+        label:
+          type: string
+          description: Display label for this data source in the property panel.
+        elements:
+          type: array
+          description: The dimension and metric slots for this data source.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Unique identifier for this element.
+              label:
+                type: string
+                description: Display label for this element.
+              type:
+                type: string
+                description: Whether this element accepts dimensions or metrics.
+                enum:
+                - DIMENSION
+                - METRIC
+              options:
+                type: object
+                properties:
+                  min:
+                    type: integer
+                    description: Minimum number of fields required.
+                  max:
+                    type: integer
+                    description: Maximum number of fields allowed.
+    VisualizationManifest:
+      type: object
+      description: The manifest file that defines a community visualization's metadata, resources, data requirements, and style configuration.
+      properties:
+        name:
+          type: string
+          description: The display name of the visualization.
+        organization:
+          type: string
+          description: The organization or developer that created the visualization.
+        description:
+          type: string
+          description: A description of what the visualization does.
+        logoUrl:
+          type: string
+          format: uri
+          description: URL to the visualization's logo image.
+        devMode:
+          type: boolean
+          description: Whether the visualization is in development mode. Development mode disables caching.
+        components:
+          type: array
+          description: The list of visualization components defined in this manifest.
+          items:
+            $ref: '#/components/schemas/VisualizationComponent'
+      required:
+      - name
+      - components
+    VisualizationResource:
+      type: object
+      description: The JavaScript and CSS resources required to render the visualization.
+      properties:
+        js:
+          type: string
+          format: uri
+          description: URL to the visualization's JavaScript bundle.
+        css:
+          type: string
+          format: uri
+          description: URL to the visualization's CSS stylesheet.
+      required:
+      - js
     InteractionConfig:
       type: object
       description: Defines an interaction type that the visualization supports, such as filter interactions.
@@ -212,6 +168,50 @@ components:
             type: string
             enum:
             - FILTER
+    VisualizationConfig:
+      type: object
+      description: Configuration defining the visualization's data requirements and style options.
+      properties:
+        data:
+          type: array
+          description: Data configuration specifying what dimensions and metrics the visualization requires.
+          items:
+            $ref: '#/components/schemas/DataConfig'
+        style:
+          type: array
+          description: Style configuration specifying the user-configurable style elements that appear in the Looker Studio property panel.
+          items:
+            $ref: '#/components/schemas/StyleConfig'
+        interactions:
+          type: array
+          description: Interaction configurations defining how the visualization responds to user interactions like filtering.
+          items:
+            $ref: '#/components/schemas/InteractionConfig'
+    VisualizationComponent:
+      type: object
+      description: A single visualization component within a manifest.
+      properties:
+        id:
+          type: string
+          description: The unique identifier for this component.
+        name:
+          type: string
+          description: The display name of the component.
+        description:
+          type: string
+          description: A description of the component's purpose.
+        iconUrl:
+          type: string
+          format: uri
+          description: URL to the component's icon image.
+        resource:
+          $ref: '#/components/schemas/VisualizationResource'
+        config:
+          $ref: '#/components/schemas/VisualizationConfig'
+      required:
+      - id
+      - name
+      - resource
 externalDocs:
   description: Looker Studio Community Visualization Documentation
   url: https://developers.google.com/looker-studio/visualization
