@@ -1,0 +1,34 @@
+slug: looker-studio
+provider: Looker Studio
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Permissions
+  spec_file: looker-studio-permissions-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: POST /assets/{assetId}/permissions:addMembers  Add members to asset permissions
+  reason: Operations get/update permissions, add members and revoke all permissions on assets — access
+    management over resources.
+- tag: Assets
+  spec_file: looker-studio-assets-api-openapi.yml
+  capability_id: BC-610.50
+  capability_id_l1: BC-610
+  capability_name: Analytics & BI Management
+  confidence: 0.7
+  evidence: GET /assets:search 'Search Looker Studio assets'; 'programmatically manage reports, data sources,
+    and permissions'
+  reason: Assets here are BI reports and data sources in a dashboarding tool, so the surface serves analytics/BI
+    delivery. Single search operation plus permissions makes it partly administrative, hence 0.7.
