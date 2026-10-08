@@ -62,3 +62,28 @@ plans:
       - name: Managed Google Cloud support
       - name: Cloud Identity / Workspace integration
       - name: Enterprise asset management
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  - subscription
+  units:
+  - seat
+  plans:
+  - name: Looker Studio (Free)
+    access: freemium
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Looker Studio Pro
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
