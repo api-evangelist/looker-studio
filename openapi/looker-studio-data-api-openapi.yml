@@ -40,6 +40,146 @@ paths:
                 $ref: '#/components/schemas/GetDataResponse'
 components:
   schemas:
+    GetDataRequest:
+      type: object
+      description: Request for fetching data rows from the connector.
+      properties:
+        configParams:
+          type: object
+          description: The user-configured parameters.
+          additionalProperties:
+            type: string
+        dateRange:
+          type: object
+          description: The date range for the data request if dateRangeRequired is true.
+          properties:
+            startDate:
+              type: string
+              format: date
+              description: Start date in YYYY-MM-DD format.
+            endDate:
+              type: string
+              format: date
+              description: End date in YYYY-MM-DD format.
+        fields:
+          type: array
+          description: The list of field names to include in the response.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The field name as defined in the schema.
+        dimensionFilters:
+          type: array
+          description: Filters to apply to dimension fields.
+          items:
+            $ref: '#/components/schemas/DimensionFilter'
+    Field:
+      type: object
+      description: Defines a single field in the connector's data schema.
+      properties:
+        name:
+          type: string
+          description: The unique identifier for the field.
+        label:
+          type: string
+          description: The display name for the field.
+        description:
+          type: string
+          description: A description of the field's contents.
+        dataType:
+          type: string
+          description: The data type of the field values.
+          enum:
+          - STRING
+          - NUMBER
+          - BOOLEAN
+        semantics:
+          $ref: '#/components/schemas/FieldSemantics'
+        group:
+          type: string
+          description: An optional group name for organizing related fields.
+        formula:
+          type: string
+          description: An optional calculated field formula.
+        isDefault:
+          type: boolean
+          description: Whether this field is included by default in new charts.
+        defaultAggregationType:
+          type: string
+          description: The default aggregation type for metric fields.
+          enum:
+          - AVG
+          - COUNT
+          - COUNT_DISTINCT
+          - MAX
+          - MIN
+          - SUM
+          - AUTO
+          - NONE
+        isHidden:
+          type: boolean
+          description: Whether the field is hidden from the user interface.
+    DimensionFilter:
+      type: object
+      description: A filter applied to a dimension field.
+      properties:
+        fieldName:
+          type: string
+          description: The name of the dimension field to filter.
+        values:
+          type: array
+          description: The values to filter by.
+          items:
+            type: string
+        type:
+          type: string
+          description: The filter operator type.
+          enum:
+          - EQUALS
+          - CONTAINS
+          - REGEXP_PARTIAL_MATCH
+          - REGEXP_EXACT_MATCH
+          - IN_LIST
+          - IS_NULL
+          - BETWEEN
+          - NUMERIC_GREATER_THAN
+          - NUMERIC_GREATER_THAN_OR_EQUAL
+          - NUMERIC_LESS_THAN
+          - NUMERIC_LESS_THAN_OR_EQUAL
+        operator:
+          type: string
+          description: The logical operator for combining multiple filter conditions.
+          enum:
+          - AND
+          - OR
+    GetDataResponse:
+      type: object
+      description: Response containing the requested data rows.
+      properties:
+        schema:
+          type: array
+          description: The field definitions for the returned data, in the order they appear in each row.
+          items:
+            $ref: '#/components/schemas/Field'
+        rows:
+          type: array
+          description: The data rows. Each row contains values in schema-defined order.
+          items:
+            type: object
+            properties:
+              values:
+                type: array
+                description: The field values for this row in the same order as the schema fields.
+                items:
+                  oneOf:
+                  - type: string
+                  - type: number
+                  - type: boolean
+        filtersApplied:
+          type: boolean
+          description: Whether the connector applied the requested filters.
     FieldSemantics:
       type: object
       description: Semantic information about a field.
@@ -95,146 +235,6 @@ components:
         isReaggregatable:
           type: boolean
           description: Whether the metric can be re-aggregated.
-    GetDataRequest:
-      type: object
-      description: Request for fetching data rows from the connector.
-      properties:
-        configParams:
-          type: object
-          description: The user-configured parameters.
-          additionalProperties:
-            type: string
-        dateRange:
-          type: object
-          description: The date range for the data request if dateRangeRequired is true.
-          properties:
-            startDate:
-              type: string
-              format: date
-              description: Start date in YYYY-MM-DD format.
-            endDate:
-              type: string
-              format: date
-              description: End date in YYYY-MM-DD format.
-        fields:
-          type: array
-          description: The list of field names to include in the response.
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-                description: The field name as defined in the schema.
-        dimensionFilters:
-          type: array
-          description: Filters to apply to dimension fields.
-          items:
-            $ref: '#/components/schemas/DimensionFilter'
-    DimensionFilter:
-      type: object
-      description: A filter applied to a dimension field.
-      properties:
-        fieldName:
-          type: string
-          description: The name of the dimension field to filter.
-        values:
-          type: array
-          description: The values to filter by.
-          items:
-            type: string
-        type:
-          type: string
-          description: The filter operator type.
-          enum:
-          - EQUALS
-          - CONTAINS
-          - REGEXP_PARTIAL_MATCH
-          - REGEXP_EXACT_MATCH
-          - IN_LIST
-          - IS_NULL
-          - BETWEEN
-          - NUMERIC_GREATER_THAN
-          - NUMERIC_GREATER_THAN_OR_EQUAL
-          - NUMERIC_LESS_THAN
-          - NUMERIC_LESS_THAN_OR_EQUAL
-        operator:
-          type: string
-          description: The logical operator for combining multiple filter conditions.
-          enum:
-          - AND
-          - OR
-    Field:
-      type: object
-      description: Defines a single field in the connector's data schema.
-      properties:
-        name:
-          type: string
-          description: The unique identifier for the field.
-        label:
-          type: string
-          description: The display name for the field.
-        description:
-          type: string
-          description: A description of the field's contents.
-        dataType:
-          type: string
-          description: The data type of the field values.
-          enum:
-          - STRING
-          - NUMBER
-          - BOOLEAN
-        semantics:
-          $ref: '#/components/schemas/FieldSemantics'
-        group:
-          type: string
-          description: An optional group name for organizing related fields.
-        formula:
-          type: string
-          description: An optional calculated field formula.
-        isDefault:
-          type: boolean
-          description: Whether this field is included by default in new charts.
-        defaultAggregationType:
-          type: string
-          description: The default aggregation type for metric fields.
-          enum:
-          - AVG
-          - COUNT
-          - COUNT_DISTINCT
-          - MAX
-          - MIN
-          - SUM
-          - AUTO
-          - NONE
-        isHidden:
-          type: boolean
-          description: Whether the field is hidden from the user interface.
-    GetDataResponse:
-      type: object
-      description: Response containing the requested data rows.
-      properties:
-        schema:
-          type: array
-          description: The field definitions for the returned data, in the order they appear in each row.
-          items:
-            $ref: '#/components/schemas/Field'
-        rows:
-          type: array
-          description: The data rows. Each row contains values in schema-defined order.
-          items:
-            type: object
-            properties:
-              values:
-                type: array
-                description: The field values for this row in the same order as the schema fields.
-                items:
-                  oneOf:
-                  - type: string
-                  - type: number
-                  - type: boolean
-        filtersApplied:
-          type: boolean
-          description: Whether the connector applied the requested filters.
 externalDocs:
   description: Looker Studio Community Connector Documentation
   url: https://developers.google.com/looker-studio/connector/reference
